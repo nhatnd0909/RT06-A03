@@ -30,11 +30,15 @@
     </servlet>
     <servlet>
         <servlet-name>SignupControl</servlet-name>
-        <servlet-class>SignupControl</servlet-class>
+        <servlet-class>control.SignupControl</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DetailControl</servlet-name>
         <servlet-class>control.DetailControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchControl</servlet-name>
+        <servlet-class>control.SearchControl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>DetailControl</servlet-name>
         <url-pattern>/detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchControl</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
