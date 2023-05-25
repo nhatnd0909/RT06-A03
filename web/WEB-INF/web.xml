@@ -40,6 +40,10 @@
         <servlet-name>SearchControl</servlet-name>
         <servlet-class>control.SearchControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProfileControl</servlet-name>
+        <servlet-class>control.ProfileControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>SearchControl</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileControl</servlet-name>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
