@@ -117,7 +117,7 @@ public class DAO {
         }
         return null;
     }
-
+    
     public void createAccount(String user, String pass) {
         String query = "INSERT INTO NguoiDung(TaiKhoan, MatKhau,role)\n"
                 + "VALUES (?,?,1);";
@@ -130,7 +130,15 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-
+    public Account findAccountByUsername(String username) {
+        List<Account> list = getAllAccount();
+        for (Account a : list) {
+            if (a.getUserName().equals(username)) {
+                return a;
+            }
+        }
+        return null;
+    }
     public List<Car> getCarByID(String idCar) {
         List<Car> list = new ArrayList<>();
         String query = "select xe.MaXe,tenxe,tenloaixe,tenhangsanxuat,LoaiNhienLieu,MauSac,SoGhe,TrangThai,TinhTrangXe,NamSanXuat,Img,GiaThueNgay,GiaThueGio\n"
@@ -207,5 +215,9 @@ public class DAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+    public static void main(String[] args) {
+        DAO dao = new DAO();
+        System.out.println(dao.findAccountByUsername("dinhnhat"));
     }
 }
