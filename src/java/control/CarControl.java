@@ -19,15 +19,15 @@ import java.util.List;
  *
  * @author ACER
  */
-public class PricingControl extends HttpServlet {
+public class CarControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        DAO b = new DAO();
-        List<Car> list = b.getAllCar();
+        DAO dao = new DAO();
+        List<Car> list = dao.getAllCar();
         int size = list.size();
         int totalItems = list.size();
-        int itemsPerPage = 6;
+        int itemsPerPage = 9;
         int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
         int offset = (currentPage - 1) * itemsPerPage;
         List<Car> pageCars = list.subList(offset, Math.min(offset + itemsPerPage, totalItems));
@@ -35,6 +35,6 @@ public class PricingControl extends HttpServlet {
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("listCar", pageCars);
-        request.getRequestDispatcher("pricing.jsp").forward(request, response);
+        request.getRequestDispatcher("car.jsp").forward(request, response);
     } 
 }

@@ -16,6 +16,10 @@
         <servlet-name>PricingControl</servlet-name>
         <servlet-class>control.PricingControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CarControl</servlet-name>
+        <servlet-class>control.CarControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>PricingControl</servlet-name>
         <url-pattern>/pricing</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarControl</servlet-name>
+        <url-pattern>/car</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

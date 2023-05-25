@@ -1,6 +1,6 @@
 <%-- 
-    Document   : pricing.jsp
-    Created on : May 25, 2023, 10:35:43 AM
+    Document   : car.jsp
+    Created on : May 25, 2023, 10:39:48 AM
     Author     : ACER
 --%>
 
@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Pricing</title>
+        <title>Car</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
         <link rel="stylesheet" href="css/animate.css">
+
         <link rel="stylesheet" href="css/owl.carousel.min.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
         <link rel="stylesheet" href="css/magnific-popup.css">
@@ -22,9 +23,51 @@
         <link rel="stylesheet" href="css/ionicons.min.css">
         <link rel="stylesheet" href="css/bootstrap-datepicker.css">
         <link rel="stylesheet" href="css/jquery.timepicker.css">
+
         <link rel="stylesheet" href="css/flaticon.css">
         <link rel="stylesheet" href="css/icomoon.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+              integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <style>
+            .searchBox {
+                background: #fff;
+                height: 60px;
+                border-radius: 40px;
+                border:solid 2px black ;
+                padding: 10px;
+                margin-bottom: 10px;
+                width: 250px;
+            }
+            .searchButton {
+                color: black;
+                float: right;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: #59b7ee;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s;
+            }
+            .searchInput {
+                border: none;
+                background: #fff;
+                outline: none;
+                float: left;
+                padding: 0;
+                color: black;
+                font-size: 16px;
+                transition: 0.4s;
+                line-height: 40px;
+                width: 170px;
+                padding: 0 6px;
+
+            }
+        </style>
     </head>
     <body>
 
@@ -39,17 +82,15 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a href="home" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="about" class="nav-link">About</a></li>
-                        <!--	          <li class="nav-item"><a href="services" class="nav-link">Services</a></li>-->
-                        <li class="nav-item active"><a href="pricing" class="nav-link">Pricing</a></li>
-                        <li class="nav-item"><a href="car" class="nav-link">Cars</a></li>
+                        <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
+                        <li class="nav-item active"><a href="car" class="nav-link">Cars</a></li>
                         <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
-                            <c:if test="${sessionScope.id != null}">
+                        <c:if test="${sessionScope.id != null}">
                             <li class="nav-item"><a href="profile?id=${sessionScope.id}" class="nav-link">Profile</a></li> 
                             <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
-                            </c:if>
-                            <c:if test="${sessionScope.id == null}">
+                        </c:if>
+                        <c:if test="${sessionScope.id == null}">
                             <li class="nav-item"><a href="login" class="nav-link">Login</a></li>
-
                         </c:if>
                     </ul>
                 </div>
@@ -62,104 +103,79 @@
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
                     <div class="col-md-9 ftco-animate pb-5">
-                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Pricing <i class="ion-ios-arrow-forward"></i></span></p>
-                        <h1 class="mb-3 bread">Pricing</h1>
+                        <p class="breadcrumbs"><span class="mr-2"><a href="home">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Cars <i class="ion-ios-arrow-forward"></i></span></p>
+                        <h1 class="mb-3 bread">Choose Your Car</h1>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="ftco-section ftco-cart">
+
+        <section class="ftco-section bg-light">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12 ftco-animate">
-                        <div class="car-list">
-                            <table class="table">
-                                <thead class="thead-primary">
-                                    <tr class="text-center">
-                                        <th>&nbsp;</th>
-                                        <th>&nbsp;</th>
-                                        <th class="bg-primary heading">Per Hour Rate</th>
-                                        <th class="bg-dark heading">Per Day Rate</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${listCar}" var="list">
-                                        <tr class="">
-                                            <td class="car-image"><div class="img" style="background-image:url(images/${list.img});"></div></td>
-                                            <td class="product-name">
-                                                <h3>${list.carName}</h3>
-                                                <p class="mb-0 rated">
-                                                    <span>rated:</span>
-                                                    <span class="ion-ios-star"></span>
-                                                    <span class="ion-ios-star"></span>
-                                                    <span class="ion-ios-star"></span>
-                                                    <span class="ion-ios-star"></span>
-                                                    <span class="ion-ios-star"></span>
-                                                </p>
-                                            </td>
+                <!--  -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10 col-md-10">
 
-                                            <td class="price">
-                                                <p class="btn-custom"><a href="#">Rent a car</a></p>
-                                                <div class="price-rate">
-                                                    <h3>
-                                                        <span class="num"><small class="currency"></small>${list.pricePerHour}K</span>
-                                                        <span class="per">/per hour</span>
-                                                    </h3>
-
-                                                </div>
-                                            </td>
-
-                                            <td class="price">
-                                                <p class="btn-custom"><a href="#">Rent a car</a></p>
-                                                <div class="price-rate">
-                                                    <h3>
-                                                        <span class="num"><small class="currency"></small>${list.pricePerDay}K</span>
-                                                        <span class="per">/per day</span>
-                                                    </h3>
-                                                    <span class="subheading"></span>
-                                                </div>
-                                            </td>
-                                        </tr><!-- END TR-->
-                                    </c:forEach>
-
-
-                                </tbody>
-                            </table>
-                            <ul class="pagination">
-                                <c:if test="${currentPage == 1}">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">First</a>
-                                    </li>
-                                </c:if>
-                                <c:if test="${currentPage > 1}">
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page=1">First</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page=${currentPage - 1}">${currentPage-1}</a>
-                                    </li>
-                                </c:if>
-
-                                <li class="page-item active"><a class="page-link" href="?page=${currentPage}">${currentPage}</a></li>
-
-                                <c:if test="${currentPage < totalPages}">
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page=${currentPage + 1}">${currentPage + 1}</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page=${totalPages}">End</a>
-                                    </li>
-                                </c:if>
-                                <c:if test="${currentPage == totalPages}">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">End</a>
-                                    </li>
-                                </c:if>
-                            </ul>
+                        </div>
+                        <div class="col-sm-2 col-md-2 d-flex justify-content-end" style="margin-bottom:20px;">
+                            <a href="search?searchInput="> 
+                                <button type="button" class="btn btn-primary" style="padding: 18px 20px; width: 150px; font-size: 19px;">Search Car</button>
+                            </a>
                         </div>
                     </div>
                 </div>
+                <!--  -->
+
+                <div class="row">
+                    <c:forEach items="${listCar}" var="list">
+                        <div class="col-md-4">
+                            <div class="car-wrap rounded ftco-animate">
+                                <div class="img rounded d-flex align-items-end" style="background-image: url(images/${list.img});">
+                                </div>
+                                <div class="text">
+                                    <h2 class="mb-0"><a href="car-single.jsp">${list.carName}</a></h2>
+                                    <div class="d-flex mb-3">
+                                        <span class="cat">${list.manufacturer}</span>
+                                        <p class="price ml-auto">${list.pricePerDay}K <span>/day</span></p>
+                                    </div>
+                                    <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="detail?cid=${list.idCar}" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>         
+                </div>
+                <ul class="pagination">
+                    <c:if test="${currentPage == 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="#">First</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${currentPage > 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">First</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=${currentPage - 1}">${currentPage-1}</a>
+                        </li>
+                    </c:if>
+                    <li class="page-item active"><a class="page-link" href="?page=${currentPage}">${currentPage}</a></li>
+
+                    <c:if test="${currentPage < totalPages}">
+                        <li class="page-item">
+                            <a class="page-link" href="?page=${currentPage + 1}">${currentPage + 1}</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=${totalPages}">End</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${currentPage == totalPages}">
+                        <li class="page-item">
+                            <a class="page-link" href="#">End</a>
+                        </li>
+                    </c:if>
+                </ul>
             </div>
         </section>
         <section class="ftco-section">
@@ -273,11 +289,8 @@
             </div>
         </footer>
 
-
-
         <!-- loader -->
         <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
 
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -296,6 +309,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
-
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
