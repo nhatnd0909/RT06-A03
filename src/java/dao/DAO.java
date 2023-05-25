@@ -4,6 +4,7 @@
  */
 package dao;
 
+import entity.Account;
 import entity.Car;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +17,8 @@ import java.util.List;
  * @author ACER
  */
 public class DAO {
-     Connection conn = null;
+
+    Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
 
@@ -52,7 +54,8 @@ public class DAO {
         }
         return total;
     }
-        public List<Car> getAllFeeaturedCar() {
+
+    public List<Car> getAllFeeaturedCar() {
         List<Car> list = new ArrayList<>();
         String query = "select top 5 xe.MaXe,tenxe,tenloaixe,tenhangsanxuat,LoaiNhienLieu,MauSac,SoGhe,TrangThai,TinhTrangXe,NamSanXuat,Img,GiaThueNgay,GiaThueGio \n"
                 + "from Xe inner join LoaiXe on xe.IDLoaiXe = LoaiXe.IDLoaiXe\n"
@@ -68,5 +71,40 @@ public class DAO {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    public List<Account> getAllAccount() {
+        List<Account> list = new ArrayList<>();
+        String query = "select * from NguoiDung";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBoolean(10), rs.getString(11), rs.getString(12), rs.getBoolean(13), rs.getString(14)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public Account getAccountByID(int id) {
+        List<Account> list = getAllAccount();
+        for (Account a : list) {
+            if (a.getID() == id) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Account login(String username, String password) {
+        List<Account> list = getAllAccount();
+        for (Account a : list) {
+            if (a.getUserName().equals(username) && a.getPassword().equals(password)) {
+                return a;
+            }
+        }
+        return null;
     }
 }
