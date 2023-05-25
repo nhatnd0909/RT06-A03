@@ -8,6 +8,10 @@
         <servlet-name>AboutControl</servlet-name>
         <servlet-class>control.AboutControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ContactControl</servlet-name>
+        <servlet-class>control.ContactControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>AboutControl</servlet-name>
         <url-pattern>/about</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContactControl</servlet-name>
+        <url-pattern>/contact</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
