@@ -32,6 +32,10 @@
         <servlet-name>SignupControl</servlet-name>
         <servlet-class>SignupControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailControl</servlet-name>
+        <servlet-class>control.DetailControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>SignupControl</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailControl</servlet-name>
+        <url-pattern>/detail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
