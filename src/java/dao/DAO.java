@@ -188,4 +188,24 @@ public class DAO {
         }
         return list;
     }
+
+    public void updateAccount(int ID, String name, String phone, String CCCD, String dob, String gender, String email, String address) {
+        String query = "UPDATE NguoiDung\n"
+                + "SET Ten = ?,SoDienThoai=?,CCCD=?,NgaySinh=?,GioiTinh=?,Email=?,DiaChi=?\n"
+                + "WHERE ID = ?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, phone);
+            ps.setString(3, CCCD);
+            ps.setString(4, dob);
+            ps.setString(5, gender);
+            ps.setString(6, email);
+            ps.setString(7, address);
+            ps.setInt(8, ID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }
