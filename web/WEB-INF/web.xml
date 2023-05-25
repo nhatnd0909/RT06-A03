@@ -12,6 +12,10 @@
         <servlet-name>ContactControl</servlet-name>
         <servlet-class>control.ContactControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PricingControl</servlet-name>
+        <servlet-class>control.PricingControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ContactControl</servlet-name>
         <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PricingControl</servlet-name>
+        <url-pattern>/pricing</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
