@@ -182,7 +182,9 @@
                                         <br>
                                         <button type="button" class="btn btn-light" onclick="changePass()">Change
                                             Password</button>
+                                        <p class="text-warning" style="font-size: 20px">${mess}</p>
                                     </div>
+                                    
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
@@ -198,7 +200,7 @@
                                     
                                     <div class="form-group" style="width: 50%;">
                                         <div class="col-xs-12">
-                                            <p class="text-warning" style="font-size: 20px">${mess}</p>
+                                            
                                             <label for="odd-pass">
                                                 <h4>Odd Password</h4>
                                             </label>
@@ -211,7 +213,7 @@
                                             <label for="new-pass">
                                                 <h4>New Password</h4>
                                             </label>
-                                            <input type="password" class="form-control" name="new-pass" id="newPass"
+                                            <input type="password" class="form-control" name="newPass" id="newPass"
                                                    placeholder="Enter your new password">
                                         </div>
                                     </div>
@@ -220,7 +222,7 @@
                                             <label for="re-pass">
                                                 <h4>Re Enter a New Password</h4>
                                             </label>
-                                            <input type="password" class="form-control" name="re-pass" id="rePass"
+                                            <input type="password" class="form-control" name="rePass" id="rePass"
                                                    placeholder="Re enter new password">
                                         </div>
                                     </div>

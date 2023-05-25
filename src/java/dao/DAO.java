@@ -216,6 +216,19 @@ public class DAO {
         } catch (Exception e) {
         }
     }
+        public void updatePassword(int ID, String password) {
+        String query = "UPDATE NguoiDung\n"
+                + "SET MatKhau = ?\n"
+                + "WHERE ID = ?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, password);
+            ps.setInt(2, ID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
     public static void main(String[] args) {
         DAO dao = new DAO();
         System.out.println(dao.findAccountByUsername("dinhnhat"));
