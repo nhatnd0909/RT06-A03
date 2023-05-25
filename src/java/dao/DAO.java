@@ -107,4 +107,27 @@ public class DAO {
         }
         return null;
     }
+
+    public Account checkUserExit(String username) {
+        List<Account> list = getAllAccount();
+        for (Account a : list) {
+            if (a.getUserName().equals(username)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public void createAccount(String user, String pass) {
+        String query = "INSERT INTO NguoiDung(TaiKhoan, MatKhau,role)\n"
+                + "VALUES (?,?,1);";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }
