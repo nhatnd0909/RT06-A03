@@ -4,9 +4,17 @@
         <servlet-name>HomeControl</servlet-name>
         <servlet-class>control.HomeControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AboutControl</servlet-name>
+        <servlet-class>control.AboutControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AboutControl</servlet-name>
+        <url-pattern>/about</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
