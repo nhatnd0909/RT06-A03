@@ -128,7 +128,7 @@
                                             <h4>Phone</h4>
                                         </label>
                                         <input type="text" value="${account.phone}" class="form-control" name="phone"
-                                               placeholder="enter phone">
+                                               placeholder="enter phone" pattern="(84|0[3|5|7|8|9])+([0-9]{8})">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -153,7 +153,6 @@
                                     <div class="col-xs-6">
                                         <label>
                                             <h4>Gender</h4>
-                                            
                                         </label>
                                         <input type="text" value="${account.gender}" class="form-control" name="gender"
                                                placeholder="enter you gender">
@@ -166,7 +165,7 @@
                                             <h4>Email</h4>
                                         </label>
                                         <input type="email" value="${account.email}" class="form-control" name="email" id="email"
-                                               placeholder="your@email.com">
+                                               placeholder="your@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                     </div>
                                 </div>
                                 <div class="form-group">
