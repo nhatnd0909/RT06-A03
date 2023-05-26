@@ -205,7 +205,7 @@
                                                 <h4>Odd Password</h4>
                                             </label>
                                             <input type="password" class="form-control" name="oddPass" id="oddPass"
-                                                   placeholder="Ente your odd password">
+                                                   placeholder="Ente your odd password" required>
                                         </div>
                                     </div>
                                     <div class="form-group" style="width: 50%;">
@@ -214,7 +214,7 @@
                                                 <h4>New Password</h4>
                                             </label>
                                             <input type="password" class="form-control" name="newPass" id="newPass"
-                                                   placeholder="Enter your new password">
+                                                   placeholder="Enter your new password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$" required>
                                         </div>
                                     </div>
                                     <div class="form-group" style="width: 50%;">
@@ -223,9 +223,10 @@
                                                 <h4>Re Enter a New Password</h4>
                                             </label>
                                             <input type="password" class="form-control" name="rePass" id="rePass"
-                                                   placeholder="Re enter new password">
+                                                   placeholder="Re enter new password" required>
+                                            <lable style="color: #000">*Password must contains 3-32 characters, at least 1 uppercase 1 lowercase</lable>
                                         </div>
-                                    </div>
+                                    </div>                        
                                     <div class="form-group">
                                         <div class="col-xs-12">
                                             <br>
