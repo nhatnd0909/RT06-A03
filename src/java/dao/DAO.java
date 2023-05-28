@@ -6,6 +6,9 @@ package dao;
 
 import entity.Account;
 import entity.Car;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -107,7 +110,19 @@ public class DAO {
         }
         return null;
     }
-
+    public String MD5(String str) {
+        String result = "";
+        MessageDigest digest;
+        try {
+            digest = MessageDigest.getInstance("MD5");
+            digest.update(str.getBytes());
+            BigInteger bigInteger = new BigInteger(1, digest.digest());
+            result = bigInteger.toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
     public Account checkUserExit(String username) {
         List<Account> list = getAllAccount();
         for (Account a : list) {
@@ -231,6 +246,6 @@ public class DAO {
     }
     public static void main(String[] args) {
         DAO dao = new DAO();
-        System.out.println(dao.findAccountByUsername("dinhnhat"));
+        System.out.println(dao.MD5("Admin123"));
     }
 }

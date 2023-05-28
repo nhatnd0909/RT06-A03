@@ -24,18 +24,17 @@ public class SignupControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try {
+            DAO dao = new DAO();
             String user = request.getParameter("username");
-            String pass = request.getParameter("password");
-            String repass = request.getParameter("repassword");
-            
+            String pass = dao.MD5(request.getParameter("password"));
+            String repass = dao.MD5(request.getParameter("repassword"));       
             if (!pass.equals(repass)) {
                 request.setAttribute("messSignup", "Repeat Password not match!");
                 request.setAttribute("userSignup", user);
                 request.setAttribute("passSignup", pass);
                 request.setAttribute("repassSignup", repass);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
-            } else {
-                DAO dao = new DAO();
+            } else {      
                 Account acc = dao.checkUserExit(user);
                 if (acc == null) {           
                     dao.createAccount(user, pass);

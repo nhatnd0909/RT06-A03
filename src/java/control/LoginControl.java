@@ -29,9 +29,9 @@ public class LoginControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
          try {
-            String user = request.getParameter("username");
-            String pass = request.getParameter("password");
             DAO dao = new DAO();
+            String user = request.getParameter("username");
+            String pass = dao.MD5(request.getParameter("password"));
             Account account = dao.login(user, pass);
             if (account != null) {
                 request.getSession().setAttribute("id", account.getID());

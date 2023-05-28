@@ -38,9 +38,9 @@ public class ChangePasswordControl extends HttpServlet {
 //        }
         DAO dao = new DAO();
         int ID = Integer.parseInt(request.getParameter("id"));
-        String oddPass = request.getParameter("oddPass");
-        String newPass = request.getParameter("newPass");
-        String rePass = request.getParameter("rePass");
+        String oddPass = dao.MD5(request.getParameter("oddPass"));
+        String newPass = dao.MD5(request.getParameter("newPass"));
+        String rePass = dao.MD5(request.getParameter("rePass"));
         Account account = dao.getAccountByID(ID);
         if (!account.getPassword().equals(oddPass)) {
             String mess = "Old password does not match!";
