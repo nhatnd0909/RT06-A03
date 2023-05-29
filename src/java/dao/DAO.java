@@ -6,6 +6,7 @@ package dao;
 
 import entity.Account;
 import entity.Car;
+import entity.Staff;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -74,6 +75,22 @@ public class DAO {
         return total;
     }
 
+    public int getTotalStaff() {
+        String query = "select Count(MaNhanVien)\n"
+                + "from NhanVien";
+        int total = 0;
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return total;
+    }
+
     public List<Car> getAllFeeaturedCar() {
         List<Car> list = new ArrayList<>();
         String query = "select top 5 xe.MaXe,tenxe,tenloaixe,tenhangsanxuat,LoaiNhienLieu,MauSac,SoGhe,TrangThai,TinhTrangXe,NamSanXuat,Img,GiaThueNgay,GiaThueGio \n"
@@ -101,6 +118,21 @@ public class DAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getBoolean(13), rs.getString(14)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Staff> getAllStaff() {
+        List<Staff> list = new ArrayList<>();
+        String query = "select * from NhanVien";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Staff(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
         } catch (Exception e) {
         }
@@ -268,9 +300,10 @@ public class DAO {
 
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<Account> list = dao.getAllAccount();
-//        for(Account o: list){
-//            System.out.println(o);
-//        }
+        List<Staff> list = dao.getAllStaff();
+        for (Staff o : list) {
+            System.out.println(o);
+        }
+        System.out.println(dao.getTotalStaff());
     }
 }
