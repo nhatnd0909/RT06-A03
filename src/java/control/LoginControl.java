@@ -38,7 +38,7 @@ public class LoginControl extends HttpServlet {
                 if (account.isRole()) {
                     response.sendRedirect("home");
                 } else if (!account.isRole()) {
-                    response.sendRedirect("adminDashboardController");
+                    response.sendRedirect("admindashboard");
                 }
             } else {
                 String mess = "Wrong Username or Password!";

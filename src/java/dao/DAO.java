@@ -58,6 +58,22 @@ public class DAO {
         return total;
     }
 
+    public int getTotalUser() {
+        String query = "select Count(id)\n"
+                + "from nguoidung";
+        int total = 0;
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return total;
+    }
+
     public List<Car> getAllFeeaturedCar() {
         List<Car> list = new ArrayList<>();
         String query = "select top 5 xe.MaXe,tenxe,tenloaixe,tenhangsanxuat,LoaiNhienLieu,MauSac,SoGhe,TrangThai,TinhTrangXe,NamSanXuat,Img,GiaThueNgay,GiaThueGio \n"
@@ -84,7 +100,7 @@ public class DAO {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBoolean(10), rs.getString(11), rs.getString(12), rs.getBoolean(13), rs.getString(14)));
+                list.add(new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12), rs.getBoolean(13), rs.getString(14)));
             }
         } catch (Exception e) {
         }
@@ -110,6 +126,7 @@ public class DAO {
         }
         return null;
     }
+
     public String MD5(String str) {
         String result = "";
         MessageDigest digest;
@@ -123,6 +140,7 @@ public class DAO {
         }
         return result;
     }
+
     public Account checkUserExit(String username) {
         List<Account> list = getAllAccount();
         for (Account a : list) {
@@ -132,7 +150,7 @@ public class DAO {
         }
         return null;
     }
-    
+
     public void createAccount(String user, String pass) {
         String query = "INSERT INTO NguoiDung(TaiKhoan, MatKhau,role)\n"
                 + "VALUES (?,?,1);";
@@ -145,6 +163,7 @@ public class DAO {
         } catch (Exception e) {
         }
     }
+
     public Account findAccountByUsername(String username) {
         List<Account> list = getAllAccount();
         for (Account a : list) {
@@ -154,6 +173,7 @@ public class DAO {
         }
         return null;
     }
+
     public List<Car> getCarByID(String idCar) {
         List<Car> list = new ArrayList<>();
         String query = "select xe.MaXe,tenxe,tenloaixe,tenhangsanxuat,LoaiNhienLieu,MauSac,SoGhe,TrangThai,TinhTrangXe,NamSanXuat,Img,GiaThueNgay,GiaThueGio\n"
@@ -231,7 +251,8 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-        public void updatePassword(int ID, String password) {
+
+    public void updatePassword(int ID, String password) {
         String query = "UPDATE NguoiDung\n"
                 + "SET MatKhau = ?\n"
                 + "WHERE ID = ?;";
@@ -244,8 +265,12 @@ public class DAO {
         } catch (Exception e) {
         }
     }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        System.out.println(dao.MD5("Admin123"));
+        List<Account> list = dao.getAllAccount();
+//        for(Account o: list){
+//            System.out.println(o);
+//        }
     }
 }

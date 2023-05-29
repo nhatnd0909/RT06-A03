@@ -21,16 +21,16 @@ public class Account {
     private String gender;
     private String phone;
     private String email;
-    private boolean license;
+    private String license;
     private String imgLicense;
     private String imgCCCD;
     private boolean role;
-    private String Address;
+    private String address;
 
     public Account() {
     }
 
-    public Account(int ID, String name, String userName, String password, String CCCD, Date DOB, String gender, String phone, String email, boolean license, String imgLicense, String imgCCCD, boolean role, String Address) {
+    public Account(int ID, String name, String userName, String password, String CCCD, Date DOB, String gender, String phone, String email, String license, String imgLicense, String imgCCCD, boolean role, String address) {
         this.ID = ID;
         this.name = name;
         this.userName = userName;
@@ -44,7 +44,7 @@ public class Account {
         this.imgLicense = imgLicense;
         this.imgCCCD = imgCCCD;
         this.role = role;
-        this.Address = Address;
+        this.address = address;
     }
 
     public int getID() {
@@ -119,11 +119,11 @@ public class Account {
         this.email = email;
     }
 
-    public boolean isLicense() {
+    public String getLicense() {
         return license;
     }
 
-    public void setLicense(boolean license) {
+    public void setLicense(String license) {
         this.license = license;
     }
 
@@ -152,16 +152,16 @@ public class Account {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "Account{" + "ID=" + ID + ", name=" + name + ", userName=" + userName + ", password=" + password + ", CCCD=" + CCCD + ", DOB=" + DOB + ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", license=" + license + ", imgLicense=" + imgLicense + ", imgCCCD=" + imgCCCD + ", role=" + role + ", Address=" + Address + '}';
+        return "Account{" + "ID=" + ID + ", name=" + name + ", userName=" + userName + ", password=" + password + ", CCCD=" + CCCD + ", DOB=" + DOB + ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", license=" + license + ", imgLicense=" + imgLicense + ", imgCCCD=" + imgCCCD + ", role=" + role + ", address=" + address + '}';
     }
-
+    
 }

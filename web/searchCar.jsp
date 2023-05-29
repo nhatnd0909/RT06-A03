@@ -124,7 +124,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 col-md-9">
-
+                            
                         </div>
                         <div class="col-sm-12 col-md-3">
                             <form action="search" method="GET">
@@ -196,7 +196,6 @@
             <div class="container">
                 <div class="row justify-content-center mb-5">
                     <div class="col-md-7 text-center heading-section ftco-animate">
-
                         <h2 class="mb-3">Why Choose Us?</h2>
                     </div>
                 </div>
