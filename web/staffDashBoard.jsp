@@ -73,7 +73,7 @@
             </ul>
             <ul class="side-menu">
                 <li>
-                    <a href="#" class="logout">
+                    <a href="logout" class="logout">
                         <i class='bx bxs-log-out-circle'></i>
                         <span class="text">Logout</span>
                     </a>
@@ -138,7 +138,7 @@
                     <div class="order">
                         <div class="head">
                             <h3>User Infomation</h3>
-                            <i class='bx bx-search'></i>
+                            <a href="#"><i class="fa-solid fa-plus fa-xl"></i></a>
                             <i class='bx bx-filter'></i>
                         </div>
                         <table>
