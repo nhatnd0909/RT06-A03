@@ -1,6 +1,6 @@
 <%-- 
-    Document   : adminDashBoard
-    Created on : May 29, 2023, 9:14:18 PM
+    Document   : carDashBoard
+    Created on : May 30, 2023, 12:09:12 AM
     Author     : ACER
 --%>
 
@@ -21,6 +21,7 @@
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
 
     <body>
@@ -33,14 +34,14 @@
                 <span class="text">Admin Dashboard</span>
             </a>
             <ul class="side-menu top">
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="admindashboard">
                         <i class='bx bxs-dashboard'></i>
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="cardashboard">
+                <li class="active">
+                    <a href="#">
                         <i class="fa-solid fa-car-side fa-xs"></i>
                         <span class="text">Car Management</span>
                     </a>
@@ -72,7 +73,7 @@
             </ul>
             <ul class="side-menu">
                 <li>
-                    <a href="logout" class="logout">
+                    <a href="#" class="logout">
                         <i class='bx bxs-log-out-circle'></i>
                         <span class="text">Logout</span>
                     </a>
@@ -118,7 +119,7 @@
                             </li>
                             <li><i class='bx bx-chevron-right'></i></li>
                             <li>
-                                <a class="active" href="#">Home</a>
+                                <a class="active" href="#">Car Management</a>
                             </li>
                         </ul>
                     </div>
@@ -126,108 +127,109 @@
 
                 <ul class="box-info">
                     <li>
-                        <i class='bx bxs-calendar-check'></i>
+                        <i class="fa-solid fa-car-side fa-2xl"></i>
                         <span class="text">
-                            <h3>${totalCar}</h3>
-                            <p>Car</p>
-                        </span>
-                    </li>
-                    <li>
-                        <i class='bx bxs-group'></i>
-                        <span class="text">
-                            <h3>${totalUser}</h3>
-                            <p>User</p>
-                        </span>
-                    </li>
-                    <li>
-                        <i class='bx bxs-dollar-circle'></i>
-                        <span class="text">
-                            <h3>$2543</h3>
-                            <p>Total Income</p>
+                            <h3>1020</h3>
+                            <p>Total Car</p>
                         </span>
                     </li>
                 </ul>
                 <div class="table-data">
                     <div class="order">
                         <div class="head">
-                            <h3>User</h3>
-                            <i class='bx bx-filter'></i>
-                        </div>
-                        <table>
-
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Citizen Identification</th>
-                                    <th>Day Of Birth</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>License</th>
-                                    <th>Address</th>
-                                </tr>
-                            </thead>
-                            <c:forEach items="${listUser}" var="list">
-                                <tbody>
-                                    <tr>
-                                        <td>${list.name}</td>
-                                        <td>${list.CCCD}</td>
-                                        <td>${list.DOB}</td>
-                                        <td>${list.gender}</td>
-                                        <td>${list.phone}</td>
-                                        <td>${list.email}</td>
-                                        <td>${list.license}</td>
-                                        <td>${list.address}</td>
-                                    </tr>
-                                </tbody>
-                            </c:forEach>        
-                        </table>
-                    </div>
-                </div>   
-                <div class="table-data">
-                    <div class="order">
-                        <div class="head">
                             <h3>Car Infomation</h3>
+                            <i class='bx bx-search'></i>
                             <i class='bx bx-filter'></i>
                         </div>
                         <table>
-
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Type</th>
                                     <th>Manufactor</th>
-                                    <th>Type Fuel</th>
+                                    <th>Fuel</th>
+                                    <th>Color</th>
+                                    <th>Seat</th>
                                     <th>Status</th>
+                                    <th>Decription</th>
                                     <th>Year</th>
+                                    <th>Img</th>
                                     <th>Price Per Day</th>
-                                    <th>Price Per Month</th>
+                                    <th>Price Per Hour</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <c:forEach items="${listCar}" var="list">
                                 <tbody>
                                     <tr>
+                                        <td>${list.idCar}</td>
                                         <td>${list.carName}</td>
                                         <td>${list.carType}</td>
                                         <td>${list.manufacturer}</td>
                                         <td>${list.typeFuel}</td>
+                                        <td>${list.color}</td>
+                                        <td>${list.numberOfSeat}</td>
                                         <td>${list.status}</td>
+                                        <td>${list.description}</td>
                                         <td>${list.yearOfManufacture}</td>
+                                        <td>${list.img}</td>
                                         <td>${list.pricePerDay}</td>
                                         <td>${list.pricePerHour}</td>
+                                        <td>
+                                            <a href="">
+                                                <i class="fa-solid fa-circle-info fa-xl"></i>
+                                            </a>
+                                        </td>
                                     </tr>
-                                </tbody>
-                            </c:forEach>        
+                                </tbody>                     
+                            </c:forEach> 
                         </table>
+                        <div >
+                            <ul class="pagination">
+                                <c:if test="${currentPage == 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">First</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${currentPage > 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1">First</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=${currentPage - 1}">${currentPage-1}</a>
+                                    </li>
+                                </c:if>
+                                <li class="page-item active"><a class="page-link" href="?page=${currentPage}">${currentPage}</a></li>
+
+                                <c:if test="${currentPage < totalPages}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=${currentPage + 1}">${currentPage + 1}</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=${totalPages}">End</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${currentPage == totalPages}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">End</a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </div>
                     </div>
-                </div> 
+
             </main>
+
             <!-- MAIN -->
         </section>
         <!-- CONTENT -->
 
 
         <script src="js/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 
 </html>

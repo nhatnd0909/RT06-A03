@@ -341,7 +341,12 @@ body {
 #content nav #switch-mode:checked+.switch-mode::before {
     left: calc(100% - (25px - 4px) - 2px);
 }
-
+li:nth-child(1) .fa-solid {
+    background: var(--light-blue);
+    color: var(--blue);
+    padding: 45px 25px;
+    border-radius: 20%;
+}
 /* NAVBAR */
 
 
