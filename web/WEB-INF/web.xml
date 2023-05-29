@@ -56,6 +56,10 @@
         <servlet-name>CarDashBoardControl</servlet-name>
         <servlet-class>control.CarDashBoardControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserDashBoardControl</servlet-name>
+        <servlet-class>control.UserDashBoardControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>CarDashBoardControl</servlet-name>
         <url-pattern>/cardashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserDashBoardControl</servlet-name>
+        <url-pattern>/userdashboard</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

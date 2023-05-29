@@ -1,6 +1,6 @@
 <%-- 
-    Document   : carDashBoard
-    Created on : May 30, 2023, 12:09:12 AM
+    Document   : UserDashBoard
+    Created on : May 30, 2023, 12:36:36 AM
     Author     : ACER
 --%>
 
@@ -40,14 +40,14 @@
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="cardashboard">
                         <i class="fa-solid fa-car-side fa-xs"></i>
                         <span class="text">Car Management</span>
                     </a>
                 </li>
-                <li>
-                    <a href="userdashboard">
+                <li class="active">
+                    <a href="#">
                         <i class='bx bxs-group'></i>
                         <span class="text">User Management</span>
                     </a>
@@ -119,7 +119,7 @@
                             </li>
                             <li><i class='bx bx-chevron-right'></i></li>
                             <li>
-                                <a class="active" href="#">Car Management</a>
+                                <a class="active" href="#">User Management</a>
                             </li>
                         </ul>
                     </div>
@@ -127,55 +127,47 @@
 
                 <ul class="box-info">
                     <li>
-                        <i class="fa-solid fa-car-side fa-2xl"></i>
+                        <i class="fa-solid fa-user fa-2xl"></i>
                         <span class="text">
-                            <h3>${totalCar}</h3>
-                            <p>Total Car</p>
+                            <h3>${totalUser}</h3>
+                            <p>Total User</p>
                         </span>
                     </li>
                 </ul>
                 <div class="table-data">
                     <div class="order">
                         <div class="head">
-                            <h3>Car Infomation</h3>
+                            <h3>User Infomation</h3>
                             <i class='bx bx-search'></i>
                             <i class='bx bx-filter'></i>
                         </div>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Manufactor</th>
-                                    <th>Fuel</th>
-                                    <th>Color</th>
-                                    <th>Seat</th>
-                                    <th>Status</th>
-                                    <th>Decription</th>
-                                    <th>Year</th>
-                                    <th>Img</th>
-                                    <th>Price Per Day</th>
-                                    <th>Price Per Hour</th>
+                                    <th>UserName</th>
+                                    <th>Citizen Identification</th>
+                                    <th>Day Of Birth</th>
+                                    <th>Gender</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>License</th>
+                                    <th>Address</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <c:forEach items="${listCar}" var="list">
+                            <c:forEach items="${listUser}" var="list">
                                 <tbody>
                                     <tr>
-                                        <td>${list.idCar}</td>
-                                        <td>${list.carName}</td>
-                                        <td>${list.carType}</td>
-                                        <td>${list.manufacturer}</td>
-                                        <td>${list.typeFuel}</td>
-                                        <td>${list.color}</td>
-                                        <td>${list.numberOfSeat}</td>
-                                        <td>${list.status}</td>
-                                        <td>${list.description}</td>
-                                        <td>${list.yearOfManufacture}</td>
-                                        <td>${list.img}</td>
-                                        <td>${list.pricePerDay}</td>
-                                        <td>${list.pricePerHour}</td>
+                                        <td>${list.name}</td>
+                                        <td>${list.userName}</td>
+                                        <td>${list.CCCD}</td>
+                                        <td>${list.DOB}</td>
+                                        <td>${list.gender}</td>
+                                        <td>${list.phone}</td>
+                                        <td>${list.email}</td>
+                                        <td>${list.license}</td>
+                                        <td>${list.address}</td>
                                         <td>
                                             <a href="">
                                                 <i class="fa-solid fa-circle-info fa-xl"></i>
@@ -233,3 +225,5 @@
     </body>
 
 </html>
+
+
