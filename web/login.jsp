@@ -42,8 +42,19 @@
                     <a href="#">Forgot password?</a>
                     <input type="submit" value="Login" />
                 </form>
+                <div class="media-options" style="display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     border: 1px solid #CACACA;
+                     padding: 10px;
+                     margin-top: 5px;
+                     border-radius: 2%;">
+                    <a href="signupgoogle" class="field google">
+                        <img src="images/google-img.png" alt="" class="google-img" style="margin-right: 10px">
+                        <span>Signup with Google</span>
+                    </a>
+                </div>
             </div>
-
             <script>
                 const wrapper = document.querySelector(".wrapper"),
                         signupHeader = document.querySelector(".signup header"),

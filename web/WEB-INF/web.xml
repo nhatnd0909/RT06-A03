@@ -64,6 +64,14 @@
         <servlet-name>StaffDashBoardControl</servlet-name>
         <servlet-class>control.StaffDashBoardControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SendEmail</servlet-name>
+        <servlet-class>control.SendEmail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignupGoogleControl</servlet-name>
+        <servlet-class>control.SignupGoogleControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -127,6 +135,14 @@
     <servlet-mapping>
         <servlet-name>StaffDashBoardControl</servlet-name>
         <url-pattern>/staffdashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendEmail</servlet-name>
+        <url-pattern>/SendEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignupGoogleControl</servlet-name>
+        <url-pattern>/signupgoogle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
