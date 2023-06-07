@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="css/flaticon.css">
         <link rel="stylesheet" href="css/icomoon.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -42,13 +43,13 @@
                         <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
                         <li class="nav-item active"><a href="car" class="nav-link">Cars</a></li>
                         <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
-                        <c:if test="${sessionScope.id != null}">
+                            <c:if test="${sessionScope.id != null}">
                             <li class="nav-item"><a href="profile?id=${sessionScope.id}" class="nav-link">Profile</a></li> 
                             <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.id == null}">
+                            </c:if>
+                            <c:if test="${sessionScope.id == null}">
                             <li class="nav-item"><a href="login" class="nav-link">Login</a></li>
-                        </c:if>
+                            </c:if>
                     </ul>
                 </div>
             </div>
@@ -77,281 +78,330 @@
                                 <div class="img rounded" style="background-image: url(images/${list.img});"></div>
                                 <div class="text text-center">
                                     <span class="subheading">${list.manufacturer}</span>
-                                    <h2>${list.carName}</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md d-flex align-self-stretch ftco-animate">
-                            <div class="media block-6 services">
-                                <div class="media-body py-md-4">
-                                    <div class="d-flex mb-3 align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-dashboard"></span></div>
-                                        <div class="text">
-                                            <h3 class="heading mb-0 pl-3">
-                                                Mileage
-                                                <span>40,000</span>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>      
-                        </div>
-                        <div class="col-md d-flex align-self-stretch ftco-animate">
-                            <div class="media block-6 services">
-                                <div class="media-body py-md-4">
-                                    <div class="d-flex mb-3 align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
-                                        <div class="text">
-                                            <h3 class="heading mb-0 pl-3">
-                                                Transmission
-                                                <span>Manual</span>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>      
-                        </div>
-                        <div class="col-md d-flex align-self-stretch ftco-animate">
-                            <div class="media block-6 services">
-                                <div class="media-body py-md-4">
-                                    <div class="d-flex mb-3 align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
-                                        <div class="text">
-                                            <h3 class="heading mb-0 pl-3">
-                                                Seats
-                                                <span>${list.numberOfSeat} Adults</span>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>      
-                        </div>
-                        <div class="col-md d-flex align-self-stretch ftco-animate">
-                            <div class="media block-6 services">
-                                <div class="media-body py-md-4">
-                                    <div class="d-flex mb-3 align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-backpack"></span></div>
-                                        <div class="text">
-                                            <h3 class="heading mb-0 pl-3">
-                                                Luggage
-                                                <span>4 Bags</span>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>      
-                        </div>
-                        <div class="col-md d-flex align-self-stretch ftco-animate">
-                            <div class="media block-6 services">
-                                <div class="media-body py-md-4">
-                                    <div class="d-flex mb-3 align-items-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-diesel"></span></div>
-                                        <div class="text">
-                                            <h3 class="heading mb-0 pl-3">
-                                                Fuel
-                                                <span>${list.typeFuel}</span>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>      
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 pills">
-                            <div class="bd-example bd-example-tabs">
-                                <div class="d-flex justify-content-center">
-                                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Features</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Review</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <ul class="features">
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Airconditions</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Child Seat</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Luggage</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Music</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <ul class="features">
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Seat Belt</li>
-                                                    <li class="remove"><span class="ion-ios-close"></span>Sleeping Bed</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Water</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Bluetooth</li>
-                                                    <li class="remove"><span class="ion-ios-close"></span>Onboard computer</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <ul class="features">
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Audio input</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Long Term Trips</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Car Kit</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Remote central locking</li>
-                                                    <li class="check"><span class="ion-ios-checkmark"></span>Climate control</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-                                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
-                                        <div class="row">
-                                            <div class="col-md-7">
-                                                <h3 class="head">23 Reviews</h3>
-                                                <div class="review d-flex">
-                                                    <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                                                    <div class="desc">
-                                                        <h4>
-                                                            <span class="text-left">Jacob Webb</span>
-                                                            <span class="text-right">14 March 2018</span>
-                                                        </h4>
-                                                        <p class="star">
-                                                            <span>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                            </span>
-                                                            <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                                        </p>
-                                                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                                    </div>
-                                                </div>
-                                                <div class="review d-flex">
-                                                    <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                                                    <div class="desc">
-                                                        <h4>
-                                                            <span class="text-left">Jacob Webb</span>
-                                                            <span class="text-right">14 March 2018</span>
-                                                        </h4>
-                                                        <p class="star">
-                                                            <span>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                            </span>
-                                                            <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                                        </p>
-                                                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                                    </div>
-                                                </div>
-                                                <div class="review d-flex">
-                                                    <div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
-                                                    <div class="desc">
-                                                        <h4>
-                                                            <span class="text-left">Jacob Webb</span>
-                                                            <span class="text-right">14 March 2018</span>
-                                                        </h4>
-                                                        <p class="star">
-                                                            <span>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                            </span>
-                                                            <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                                        </p>
-                                                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="rating-wrap">
-                                                    <h3 class="head">Give a Review</h3>
-                                                    <div class="wrap">
-                                                        <p class="star">
-                                                            <span>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                (98%)
-                                                            </span>
-                                                            <span>20 Reviews</span>
-                                                        </p>
-                                                        <p class="star">
-                                                            <span>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                (85%)
-                                                            </span>
-                                                            <span>10 Reviews</span>
-                                                        </p>
-                                                        <p class="star">
-                                                            <span>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                (70%)
-                                                            </span>
-                                                            <span>5 Reviews</span>
-                                                        </p>
-                                                        <p class="star">
-                                                            <span>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                (10%)
-                                                            </span>
-                                                            <span>0 Reviews</span>
-                                                        </p>
-                                                        <p class="star">
-                                                            <span>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                <i class="ion-ios-star"></i>
-                                                                (0%)
-                                                            </span>
-                                                            <span>0 Reviews</span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <h3 style="font-weight: bold">${list.carName}</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
+                <div class="row">
+                    <div class="col-md-9">
+                        <h4>General Features</h4>
+                        <c:forEach items="${list}" var="list">
+                            <div class="row">
+                                <div class="col-md d-flex align-self-stretch ftco-animate">
+                                    <div class="media block-6 services">
+                                        <div class="media-body py-md-4">
+                                            <div class="d-flex mb-3 align-items-center">
+                                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
+                                                <div class="text">
+                                                    <h3 class="heading mb-0 pl-3">
+                                                        Seats
+                                                        <span>${list.numberOfSeat} Adults</span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>      
+                                </div>
+                                <div class="col-md d-flex align-self-stretch ftco-animate">
+                                    <div class="media block-6 services">
+                                        <div class="media-body py-md-4">
+                                            <div class="d-flex mb-3 align-items-center">
+                                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
+                                                <div class="text">
+                                                    <h3 class="heading mb-0 pl-3">
+                                                        Manufacturer
+                                                        <span>${list.manufacturer}</span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>      
+                                </div>
+                                <div class="col-md d-flex align-self-stretch ftco-animate">
+                                    <div class="media block-6 services">
+                                        <div class="media-body py-md-4">
+                                            <div class="d-flex mb-3 align-items-center">
+                                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-diesel"></span></div>
+                                                <div class="text">
+                                                    <h3 class="heading mb-0 pl-3">
+                                                        Fuel
+                                                        <span>${list.typeFuel}</span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>      
+                                </div>
+                                <div class="col-md d-flex align-self-stretch ftco-animate">
+                                    <div class="media block-6 services">
+                                        <div class="media-body py-md-4">
+                                            <div class="d-flex mb-3 align-items-center">
+                                                <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
+                                                <div class="text">
+                                                    <h3 class="heading mb-0 pl-3">
+                                                        Color
+                                                        <span>${list.color}</span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>      
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 pills">
+                                    <div class="bd-example bd-example-tabs">
+                                        <div class="d-flex justify-content-center">
+                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Features</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Review</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <ul class="features">
+                                                            <li class="check"><span class="ion-ios-checkmark"></span>Airconditions</li>
+                                                            <li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
+                                                            <li class="check"><span class="ion-ios-checkmark"></span>Luggage</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <ul class="features">
+                                                            <li class="check"><span class="ion-ios-checkmark"></span>Seat Belt</li>
+                                                            <li class="check"><span class="ion-ios-checkmark"></span>Water</li>
+                                                            <li class="check"><span class="ion-ios-checkmark"></span>Bluetooth</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <ul class="features">
+                                                            <li class="check"><span class="ion-ios-checkmark"></span>Audio input</li>
+                                                            <li class="check"><span class="ion-ios-checkmark"></span>Car Kit</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+                                                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                                <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <h3 class="head">23 Reviews</h3>
+                                                        <div class="review d-flex">
+                                                            <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+                                                            <div class="desc">
+                                                                <h4>
+                                                                    <span class="text-left">Jacob Webb</span>
+                                                                    <span class="text-right">14 March 2018</span>
+                                                                </h4>
+                                                                <p class="star">
+                                                                    <span>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                    </span>
+                                                                    <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                                                                </p>
+                                                                <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review d-flex">
+                                                            <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+                                                            <div class="desc">
+                                                                <h4>
+                                                                    <span class="text-left">Jacob Webb</span>
+                                                                    <span class="text-right">14 March 2018</span>
+                                                                </h4>
+                                                                <p class="star">
+                                                                    <span>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                    </span>
+                                                                    <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                                                                </p>
+                                                                <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="rating-wrap">
+                                                            <h3 class="head">Give a Review</h3>
+                                                            <div class="wrap">
+                                                                <p class="star">
+                                                                    <span>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        (98%)
+                                                                    </span>
+                                                                    <span>20 Reviews</span>
+                                                                </p>
+                                                                <p class="star">
+                                                                    <span>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        (85%)
+                                                                    </span>
+                                                                    <span>10 Reviews</span>
+                                                                </p>
+                                                                <p class="star">
+                                                                    <span>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        (70%)
+                                                                    </span>
+                                                                    <span>5 Reviews</span>
+                                                                </p>
+                                                                <p class="star">
+                                                                    <span>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        <i class="ion-ios-star"></i>
+                                                                        (10%)
+                                                                    </span>
+                                                                    <span>0 Reviews</span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 50px">        
+                                <div class="" style="width: 100%">
+                                    <h4>Car Rental Procedure</h4>
+                                    <div class="card" style="background-color: #fef7f4;border-radius: 10px">
+                                        <div class="row">
+                                            <div class="col-md-5" style="margin-left: 20px">
+                                                <p class="note text-danger" style="font-size: 13px"><img src="images/info.png" alt="alt"/>Mandatory</p>
+                                                <p style="color: black"><img src="images/id-card.png" alt="alt"/>CMND and GPLX</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p class="" style="font-size: 13px"><img src="images/info.png" alt="alt"/>Choose 1 of 2 forms</p>
+                                                <p style="color: black"><img src="images/passport.png" alt="alt"/>Passport</p>
+                                                <p style="color: black"><img src="images/idcard .png" alt="alt"/>CCCD with chip</p>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 50px">        
+                                <div class="" style="width: 100%">
+                                    <h4>Collateral</h4>
+                                    <div class="card" style="background-color: #fef7f4;border-radius: 10px">
+                                        <div class="">
+                                            <p style="color: black; margin-left: 20px">15 million (cash/transfer to the car owner when receiving the car) or Motorcycle (with original tie) worth 15 million</p>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 50px">        
+                                <div class="" style="width: 100%">
+                                    <h4>Rules</h4>
+                                    <p>Other rule:</p>
+                                    <ul>
+                                        <li>Use the vehicle for the right purpose.</li>
+                                        <li>Do not use the rental car for illegal or illegal purposes.</li>
+                                        <li>Do not use rental cars for pledge or mortgage.</li>
+                                        <li>No smoking, chewing gum, or littering in the vehicle.</li>
+                                        <li>Do not carry flammable and explosive national goods.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 50px">
+                                <div class="" style="width: 100%">
+                                    <h4>Cancellation policy</h4>
+                                    <div class="row" style="border: 1px solid black">
+                                        <div class="col-5 col-md-5">
+                                            <h5>Cancellation Time</h5>
+                                            <p style="color: black">Within 1 hour After Deposit</p>
+                                            <p style="color: black">Before Trip >7 Days</p>
+                                            <p style="color: black">Within 7 Days Before Trip</p>
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+                                        <div class="col-5 col-md-5">
+                                            <h5>Refund Policy</h5>
+                                            <p style="color: black">100% Cashback</p>
+                                            <p style="color: black">70% Cashback</p>
+                                            <p style="color: black">50% Cashback</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <div class="col-md-3">
+                        <c:forEach items="${list}" var="list">
+                            <div class="card" style="width: 18rem; border-radius:5%; background-color: #f7fbff">
+                                <div class="card-body">
+                                    <h3 class="card-title d-flex justify-content-center" "><span>Rental Details</span></h3>
+                                    <div>
+                                        <div class="card clearfix">
+                                            <div class="" style="color: black;margin: 5px">
+                                                <p class="float-left">Rented Day:</p>
+                                                <div class="wrap-date float-right">
+                                                    <span class="value" style="font-weight: bold">06/06/2023</span>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                        <p class="note text-danger" style="font-size: 11px"><i class="fa-light fa-triangle-exclamation" style="color: #ce5f5f;"></i>Car was busy during the above time. Please book another car or choose a suitable time</p>
+                                        <div class="card">
+                                            <div style="margin: 5px">
+                                                <p class="" style="font-size: 13px">Pick-up location</p>
+                                                <p class="" style="color: black">Trường ĐH FPT Đà Nẵng</p>
+                                                <p style="font-size: 11px">Car owners are supported to deliver the car to the place. Specific address will be displayed after deposit</p>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix" style="">
+                                            <p class="float-left" style="color: black">Day rent:</p>
+                                            <p class="float-right" style="color: black;font-weight: bold"><span>${list.pricePerDay}K</span>/ Day</p>
+                                        </div>
+
+                                        <div class="clearfix" style="">
+                                            <p class="float-left" style="color: black">Hour rent:</p>
+                                            <p class="float-right" style="color: black;font-weight: bold"><span>${list.pricePerHour}K</span>/ Hour</p>
+                                        </div>
+                                    </div>  
+                                    <a href="#"><button type="button" class="btn btn-primary btn-lg btn-block">Book Car</button></a>
+                                </div>        
+                            </div>
+                        </c:forEach>
+
+                    </div>
+                </div>
+
             </div>
         </section>
-
         <section class="ftco-section ftco-no-pt">
             <div class="container">
                 <div class="row justify-content-center">

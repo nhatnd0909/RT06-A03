@@ -137,8 +137,8 @@
                 <div class="table-data">
                     <div class="order">
                         <div class="head">
-                            <h3>User Infomation</h3>
-                            <a href="#"><i class="fa-solid fa-plus fa-xl"></i></a>
+                            <h3>Staff Information</h3>
+                            <a href="#"><i class="fa-solid fa-plus fa-xl" data-toggle="modal" data-target="#addmodel"></i></a>
                             <i class='bx bx-filter'></i>
                         </div>
                         <table>
@@ -168,7 +168,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                </tbody>                     
+                                </tbody>
                             </c:forEach> 
                         </table>
                         <div >
@@ -209,8 +209,83 @@
 
             <!-- MAIN -->
         </section>
+
         <!-- CONTENT -->
 
+        <!-- Modal -->
+        <div class="modal fade" id="addmodel" tabindex="-1" role="dialog"
+             aria-labelledby="addmodel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="staffdashboard" method="POST">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add New Staff</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        ID
+                                    </td>
+                                    <td>
+                                        <input type="text" name="id" placeholder="Enter ID">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>
+                                        <input type="text" name="name" placeholder="Enter Name">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Day of Birth
+                                    </td>
+                                    <td>
+                                        <input type="text" name="dob" placeholder="Enter Day of birth">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Gender
+                                    </td>
+                                    <td>
+                                        <input type="text" name="gender" placeholder="Enter Gender">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Phone Number
+                                    </td>
+                                    <td>
+                                        <input type="text" name="phone" placeholder="Enter Phone Number">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Address
+                                    </td>
+                                    <td>
+                                        <input type="text" name="address" placeholder="Enter Address">
+                                    </td>
+                                </tr>                         
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
 
         <script src="js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

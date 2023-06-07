@@ -298,6 +298,25 @@ public class DAO {
         }
     }
 
+    public void createStaff(String id, String name, String dob, String gender, String address, String phone) {
+        String query = "INSERT INTO NhanVien(manhanvien, tennhanvien, ngaysinh, gioitinh,diachi,sodienthoai)\n"
+                + "VALUES (?,N?,?,?,N?,?);";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(3, dob);
+            ps.setString(4, gender);
+            ps.setString(5, address);
+            ps.setString(6, phone);
+            System.out.println("ss");
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
         List<Staff> list = dao.getAllStaff();
@@ -305,5 +324,6 @@ public class DAO {
             System.out.println(o);
         }
         System.out.println(dao.getTotalStaff());
+        dao.createStaff("NV06", "Nguyen Dinh Nhat", "09-09-2002", "Male", "Thua Thien Hue", "0936152782");
     }
 }
