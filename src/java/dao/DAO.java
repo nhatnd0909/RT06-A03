@@ -43,6 +43,36 @@ public class DAO {
         return list;
     }
 
+    public List<String> getManufactory() {
+        List<String> list = new ArrayList<>();
+        String query = "select TenHangSanXuat from HangSanXuat";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<String> getType() {
+        List<String> list = new ArrayList<>();
+        String query = "select TenLoaiXe from LoaiXe";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public int getTotalCar() {
         String query = "select Count(MaXe)\n"
                 + "from Xe";
@@ -264,6 +294,104 @@ public class DAO {
         return list;
     }
 
+    public List<Car> getCarBySearch(String txtSearch, String type, String manufacturer, int pricePerDay, int pricePerHour) {
+        List<Car> list = new ArrayList<>();
+        if (pricePerDay == 0 && pricePerHour == 0) {
+            String query = "select xe.MaXe,tenxe,tenloaixe,tenhangsanxuat,LoaiNhienLieu,MauSac,SoGhe,TrangThai,TinhTrangXe,NamSanXuat,Img,GiaThueNgay,GiaThueGio\n"
+                    + "from Xe inner join LoaiXe on xe.IDLoaiXe = LoaiXe.IDLoaiXe\n"
+                    + "inner join hangsanxuat on xe.IDHSX = HangSanXuat.IDHSX\n"
+                    + "where TenXe like ? and TenLoaiXe like ? and TenHangSanXuat like ? ";
+            try {
+                conn = new dbcontext.DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setString(1, "%" + txtSearch + "%");
+                ps.setString(2, "%" + type + "%");
+                ps.setString(3, "%" + manufacturer + "%");
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    list.add(new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
+                }
+            } catch (Exception e) {
+            }
+        } else if (pricePerHour == 0) {
+            int priceMin = 0, priceMax = 0;
+            if (pricePerDay == 1) {
+                priceMin = 0;
+                priceMax = 800;
+            } else if (pricePerDay == 2) {
+                priceMin = 801;
+                priceMax = 1000;
+            } else if (pricePerDay == 3) {
+                priceMin = 1001;
+                priceMax = 1500;
+            } else if (pricePerDay == 3) {
+                priceMin = 1501;
+                priceMax = 2000;
+            } else if (pricePerDay == 4) {
+                priceMin = 2001;
+                priceMax = 1000000;
+            }
+            String query = "select xe.MaXe,tenxe,tenloaixe,tenhangsanxuat,LoaiNhienLieu,MauSac,SoGhe,TrangThai,TinhTrangXe,NamSanXuat,Img,GiaThueNgay,GiaThueGio\n"
+                    + "from Xe inner join LoaiXe on xe.IDLoaiXe = LoaiXe.IDLoaiXe\n"
+                    + "inner join hangsanxuat on xe.IDHSX = HangSanXuat.IDHSX\n"
+                    + "where TenXe like ? and TenLoaiXe like ? and TenHangSanXuat like ? \n"
+                    + "and GiaThueNgay between ? and ?";
+            try {
+                conn = new dbcontext.DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setString(1, "%" + txtSearch + "%");
+                ps.setString(2, "%" + type + "%");
+                ps.setString(3, "%" + manufacturer + "%");
+                ps.setInt(4, priceMin);
+                ps.setInt(5, priceMax);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    list.add(new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
+                }
+            } catch (Exception e) {
+            }
+        } else if (pricePerDay == 0) {
+            int priceMin = 0, priceMax = 0;
+            if (pricePerHour == 1) {
+                priceMin = 0;
+                priceMax = 40;
+            } else if (pricePerHour == 2) {
+                priceMin = 41;
+                priceMax = 60;
+            } else if (pricePerHour == 3) {
+                priceMin = 61;
+                priceMax = 80;
+            } else if (pricePerHour == 3) {
+                priceMin = 81;
+                priceMax = 100;
+            } else if (pricePerHour == 4) {
+                priceMin = 101;
+                priceMax = 1000000;
+            }
+            String query = "select xe.MaXe,tenxe,tenloaixe,tenhangsanxuat,LoaiNhienLieu,MauSac,SoGhe,TrangThai,TinhTrangXe,NamSanXuat,Img,GiaThueNgay,GiaThueGio\n"
+                    + "from Xe inner join LoaiXe on xe.IDLoaiXe = LoaiXe.IDLoaiXe\n"
+                    + "inner join hangsanxuat on xe.IDHSX = HangSanXuat.IDHSX\n"
+                    + "where TenXe like ? and TenLoaiXe like ? and TenHangSanXuat like ? \n"
+                    + "and GiaThueGio between ? and ?";
+            try {
+                conn = new dbcontext.DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setString(1, "%" + txtSearch + "%");
+                ps.setString(2, "%" + type + "%");
+                ps.setString(3, "%" + manufacturer + "%");
+                ps.setInt(4, priceMin);
+                ps.setInt(5, priceMax);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    list.add(new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
+                }
+            } catch (Exception e) {
+            }
+        }
+
+        return list;
+    }
+
     public void updateAccount(int ID, String name, String phone, String CCCD, String dob, String gender, String email, String address) {
         String query = "UPDATE NguoiDung\n"
                 + "SET Ten = ?,SoDienThoai=?,CCCD=?,NgaySinh=?,GioiTinh=?,Email=?,DiaChi=?\n"
@@ -312,18 +440,16 @@ public class DAO {
             ps.setString(6, phone);
             System.out.println("ss");
             ps.executeUpdate();
-            
+
         } catch (Exception e) {
         }
     }
 
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<Staff> list = dao.getAllStaff();
-        for (Staff o : list) {
+        List<Car> list = dao.getCarBySearch("", "", "", 0, 0);
+        for (Car o : list) {
             System.out.println(o);
         }
-        System.out.println(dao.getTotalStaff());
-        dao.createStaff("NV06", "Nguyen Dinh Nhat", "09-09-2002", "Male", "Thua Thien Hue", "0936152782");
     }
 }

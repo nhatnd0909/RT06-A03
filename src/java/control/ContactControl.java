@@ -22,4 +22,10 @@ public class ContactControl extends HttpServlet {
     throws ServletException, IOException {
         request.getRequestDispatcher("contact.jsp").forward(request, response);
     } 
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+    }
+    
 }

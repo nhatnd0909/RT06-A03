@@ -141,8 +141,8 @@
                                                 <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
                                                 <div class="text">
                                                     <h3 class="heading mb-0 pl-3">
-                                                        Color
-                                                        <span>${list.color}</span>
+                                                        Type
+                                                        <span>${list.carType}</span>
                                                     </h3>
                                                 </div>
                                             </div>
@@ -322,7 +322,7 @@
                                         </div> 
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                             <div class="row" style="margin-top: 50px">        
                                 <div class="" style="width: 100%">
                                     <h4>Rules</h4>
@@ -336,41 +336,19 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 50px">
-                                <div class="" style="width: 100%">
-                                    <h4>Cancellation policy</h4>
-                                    <div class="row" style="border: 1px solid black">
-                                        <div class="col-5 col-md-5">
-                                            <h5>Cancellation Time</h5>
-                                            <p style="color: black">Within 1 hour After Deposit</p>
-                                            <p style="color: black">Before Trip >7 Days</p>
-                                            <p style="color: black">Within 7 Days Before Trip</p>
-                                        </div>
-                                        <div class="col-md-2">
-
-                                        </div>
-                                        <div class="col-5 col-md-5">
-                                            <h5>Refund Policy</h5>
-                                            <p style="color: black">100% Cashback</p>
-                                            <p style="color: black">70% Cashback</p>
-                                            <p style="color: black">50% Cashback</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </c:forEach>
                     </div>
                     <div class="col-md-3">
                         <c:forEach items="${list}" var="list">
                             <div class="card" style="width: 18rem; border-radius:5%; background-color: #f7fbff">
                                 <div class="card-body">
-                                    <h3 class="card-title d-flex justify-content-center" "><span>Rental Details</span></h3>
+                                    <h3 class="card-title d-flex justify-content-center"><span class="text-primary">Rental Details</span></h3>
                                     <div>
-                                        <div class="card clearfix">
-                                            <div class="" style="color: black;margin: 5px">
+                                        <div class="card clearfix" style="">
+                                            <div class="" style="color: black;margin: 5px;font-size: 15px">
                                                 <p class="float-left">Rented Day:</p>
                                                 <div class="wrap-date float-right">
-                                                    <span class="value" style="font-weight: bold">06/06/2023</span>
+                                                    <span class="value"">06/06/2023</span>
                                                 </div>
                                             </div>   
                                         </div>
@@ -378,18 +356,18 @@
                                         <div class="card">
                                             <div style="margin: 5px">
                                                 <p class="" style="font-size: 13px">Pick-up location</p>
-                                                <p class="" style="color: black">Trường ĐH FPT Đà Nẵng</p>
+                                                <p class="" style="color: black">Hải Châu - Đà Nẵng</p>
                                                 <p style="font-size: 11px">Car owners are supported to deliver the car to the place. Specific address will be displayed after deposit</p>
                                             </div>
                                         </div>
                                         <div class="clearfix" style="">
                                             <p class="float-left" style="color: black">Day rent:</p>
-                                            <p class="float-right" style="color: black;font-weight: bold"><span>${list.pricePerDay}K</span>/ Day</p>
+                                            <p class="float-right" style="color: black"><span>${list.pricePerDay}K</span>/ Day</p>
                                         </div>
 
                                         <div class="clearfix" style="">
                                             <p class="float-left" style="color: black">Hour rent:</p>
-                                            <p class="float-right" style="color: black;font-weight: bold"><span>${list.pricePerHour}K</span>/ Hour</p>
+                                            <p class="float-right" style="color: black;"><span>${list.pricePerHour}K</span>/ Hour</p>
                                         </div>
                                     </div>  
                                     <a href="#"><button type="button" class="btn btn-primary btn-lg btn-block">Book Car</button></a>

@@ -92,13 +92,13 @@
                         <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
                         <li class="nav-item active"><a href="car" class="nav-link">Cars</a></li>
                         <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
-                        <c:if test="${sessionScope.id != null}">
+                            <c:if test="${sessionScope.id != null}">
                             <li class="nav-item"><a href="profile?id=${sessionScope.id}" class="nav-link">Profile</a></li> 
                             <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.id == null}">
+                            </c:if>
+                            <c:if test="${sessionScope.id == null}">
                             <li class="nav-item"><a href="login" class="nav-link">Login</a></li>
-                        </c:if>
+                            </c:if>
                     </ul>
                 </div>
             </div>
@@ -121,13 +121,48 @@
         <section class="ftco-section bg-light">
             <div class="container">
                 <!--  -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-9">
-                            
-                        </div>
-                        <div class="col-sm-12 col-md-3">
-                            <form action="search" method="GET">
+                <div class="container">  
+                    <div class="clearfix">
+                        <form action="search" method="GET">
+                            <div class="d-flex float-left">
+                                <div class="filter">
+                                    <select class="form-control form-control-lg" name="manufacturer">
+                                        <option value="">Manufacturer</option>
+                                        <c:forEach items="${listManufactory}" var="listManufactory">
+                                            <option value="${listManufactory}">${listManufactory}</option>
+                                        </c:forEach> 
+                                    </select>
+                                </div>
+                                <div class="filter">
+                                    <select class="form-control form-control-lg" name="type" style="margin-left: 10px">
+                                        <option value="">Type</option>
+                                        <c:forEach items="${listType}" var="listType">
+                                            <option value="${listType}">${listType}</option>
+                                        </c:forEach> 
+                                    </select>
+                                </div>
+                                <div class="filter">
+                                    <select class="form-control form-control-lg" name="pricePerDay" style="margin-left: 30px">
+                                        <option value="0">Price per Day</option>
+                                        <option value="1">Less than 800k</option>
+                                        <option value="2">From 800k to 1.000k</option>
+                                        <option value="3">From 1.000k to 1.500k</option>
+                                        <option value="4">From 1.500k to 2.000k</option>
+                                        <option value="4">More than 2.000k</option>
+                                    </select>
+                                </div>
+                                <div class="filter">
+                                    <select class="form-control form-control-lg" name="pricePerHour" style="margin-left: 40px">
+                                        <option value="0">Price per Hour</option>
+                                        <option value="1">Less than 40k</option>
+                                        <option value="2">From 40k to 60k</option>
+                                        <option value="3">From 60k to 80k</option>
+                                        <option value="4">From 80k to 100k</option>
+                                        <option value="4">More than 100k</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="float-left" style="margin: 20px 0">
                                 <div class="searchBox">
                                     <input class="searchInput" value="${searchInput}" type="text" name="searchInput" placeholder="Search">
                                     <button class="searchButton" type="submit" href="#">
@@ -136,10 +171,10 @@
                                         </i>
                                     </button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
+                </div>   
                 <!--  -->
 
                 <div class="row">
@@ -160,6 +195,36 @@
                         </div>
                     </c:forEach>         
                 </div>
+                <!--                <ul class="pagination">
+                <c:if test="${currentPage == 1}">
+                    <li class="page-item">
+                        <a class="page-link" href="#">First</a>
+                    </li>
+                </c:if>
+                <c:if test="${currentPage > 1}">
+                    <li class="page-item">
+                                                <a class="page-link" href="search?searchInput=${searchInput}&page=1">First</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage - 1}">${currentPage-1}</a>
+                    </li>
+                </c:if>
+                <li class="page-item active"><a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage}">${currentPage}</a></li>
+
+                <c:if test="${currentPage < totalPages}">
+                    <li class="page-item">
+                        <a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage + 1}">${currentPage + 1}</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="search?searchInput=${searchInput}&&page=${totalPages}">End</a>
+                    </li>
+                </c:if>
+                <c:if test="${currentPage == totalPages}">
+                    <li class="page-item">
+                        <a class="page-link" href="#">End</a>
+                    </li>
+                </c:if>
+            </ul>-->
                 <ul class="pagination">
                     <c:if test="${currentPage == 1}">
                         <li class="page-item">
@@ -168,20 +233,20 @@
                     </c:if>
                     <c:if test="${currentPage > 1}">
                         <li class="page-item">
-                            <a class="page-link" href="search?searchInput=${searchInput}&page=1">First</a>
+                            <a class="page-link" href="search?manufacturer=${manufacturer}&type=${type}&pricePerDay=${pricePerDay}&pricePerHour=${pricePerHour}&searchInput=${searchInput}&page=1">First</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage - 1}">${currentPage-1}</a>
+                            <a class="page-link" href="search?manufacturer=${manufacturer}&type=${type}&pricePerDay=${pricePerDay}&pricePerHour=${pricePerHour}&searchInput=${searchInput}&page=${currentPage - 1}">${currentPage-1}</a>
                         </li>
                     </c:if>
-                    <li class="page-item active"><a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage}">${currentPage}</a></li>
+                    <li class="page-item active"><a class="page-link" href="search?manufacturer=${manufacturer}&type=${type}&pricePerDay=${pricePerDay}&pricePerHour=${pricePerHour}&searchInput=${searchInput}&page=${currentPage}">${currentPage}</a></li>
 
                     <c:if test="${currentPage < totalPages}">
                         <li class="page-item">
-                            <a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage + 1}">${currentPage + 1}</a>
+                            <a class="page-link" href="search?manufacturer=${manufacturer}&type=${type}&pricePerDay=${pricePerDay}&pricePerHour=${pricePerHour}&searchInput=${searchInput}&page=${currentPage + 1}">${currentPage + 1}</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="search?searchInput=${searchInput}&&page=${totalPages}">End</a>
+                            <a class="page-link" href="search?manufacturer=${manufacturer}&type=${type}&pricePerDay=${pricePerDay}&pricePerHour=${pricePerHour}&searchInput=${searchInput}&&page=${totalPages}">End</a>
                         </li>
                     </c:if>
                     <c:if test="${currentPage == totalPages}">
