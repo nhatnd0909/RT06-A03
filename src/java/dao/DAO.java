@@ -428,7 +428,7 @@ public class DAO {
 
     public void createStaff(String id, String name, String dob, String gender, String address, String phone) {
         String query = "INSERT INTO NhanVien(manhanvien, tennhanvien, ngaysinh, gioitinh,diachi,sodienthoai)\n"
-                + "VALUES (?,N?,?,?,N?,?);";
+                + "VALUES ('NV',N'nam','09/09/2002','male',N'hue','123')";
         try {
             conn = new dbcontext.DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -438,18 +438,39 @@ public class DAO {
             ps.setString(4, gender);
             ps.setString(5, address);
             ps.setString(6, phone);
-            System.out.println("ss");
             ps.executeUpdate();
-
         } catch (Exception e) {
         }
     }
 
+    public List<Car> createNewStaff(String id, String name, String dob, String gender, String address, String phone) {
+        List<Car> list = new ArrayList<>();
+        String query = "INSERT INTO NhanVien(manhanvien, tennhanvien, ngaysinh, gioitinh,diachi,sodienthoai)\n"
+                + "VALUES (?,?,?,?,?,?)";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(3, dob);
+            ps.setString(4, gender);
+            ps.setString(5, address);
+            ps.setString(6, phone);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<Car> list = dao.getCarBySearch("", "", "", 0, 0);
-        for (Car o : list) {
-            System.out.println(o);
-        }
+//        List<Car> list = dao.getCarBySearch("", "", "", 0, 0);
+//        for (Car o : list) {
+//            System.out.println(o);
+//        }
+        dao.createNewStaff("NV06", "Nhat", "2002-09-09", "Male", "hue", "0936152482");
     }
 }

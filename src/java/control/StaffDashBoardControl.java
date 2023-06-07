@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package control;
 
 import dao.DAO;
@@ -24,7 +23,7 @@ public class StaffDashBoardControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         DAO dao = new DAO();
         int totalStaff = dao.getTotalStaff();
         List<Staff> list = dao.getAllStaff();
@@ -40,12 +39,34 @@ public class StaffDashBoardControl extends HttpServlet {
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("listStaff", pageCars);
         request.getRequestDispatcher("staffDashBoard.jsp").forward(request, response);
-    } 
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        
+            throws ServletException, IOException {
+        DAO dao = new DAO();
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String dob = request.getParameter("dob");
+        String gender = request.getParameter("gender");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        dao.createNewStaff(id, name, dob, gender, address, phone);
+        int totalStaff = dao.getTotalStaff();
+        List<Staff> list = dao.getAllStaff();
+        int size = list.size();
+        int totalItems = list.size();
+        int itemsPerPage = 9;
+        int currentPage = (request.getParameter("page") != null) ? Integer.parseInt(request.getParameter("page")) : 1;
+        int offset = (currentPage - 1) * itemsPerPage;
+        List<Staff> pageCars = list.subList(offset, Math.min(offset + itemsPerPage, totalItems));
+        int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
+        request.setAttribute("totalStaff", totalStaff);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("listStaff", pageCars);
+        request.getRequestDispatcher("staffDashBoard.jsp").forward(request, response);
+
     }
 
 }

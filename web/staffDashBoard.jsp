@@ -248,7 +248,7 @@
                                         Day of Birth
                                     </td>
                                     <td>
-                                        <input type="text" name="dob" placeholder="Enter Day of birth">
+                                        <input type="date" name="dob" placeholder="Enter Day of birth">
                                     </td>
                                 </tr>
                                 <tr>
@@ -256,7 +256,10 @@
                                         Gender
                                     </td>
                                     <td>
-                                        <input type="text" name="gender" placeholder="Enter Gender">
+                                        <select name="gender">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -279,14 +282,13 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button class="btn btn-primary">Add</button>
                         </div>
                     </form>
 
                 </div>
             </div>
         </div>
-
         <script src="js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
