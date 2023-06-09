@@ -84,6 +84,10 @@
         <servlet-name>DeleteStaffControl</servlet-name>
         <servlet-class>control.DeleteStaffControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewUserControl</servlet-name>
+        <servlet-class>control.ViewUserControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>DeleteStaffControl</servlet-name>
         <url-pattern>/deleteStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewUserControl</servlet-name>
+        <url-pattern>/viewUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

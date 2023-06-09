@@ -139,7 +139,6 @@
                         <div class="head">
                             <h3>User Infomation</h3>
                             <a href="#"><i class="fa-solid fa-plus fa-xl"></i></a>
-                            <i class='bx bx-filter'></i>
                         </div>
                         <table>
                             <thead>
@@ -169,7 +168,7 @@
                                         <td>${list.license}</td>
                                         <td>${list.address}</td>
                                         <td>
-                                            <a href="">
+                                            <a href="viewUser?uid=${list.ID}">
                                                 <i class="fa-solid fa-circle-info fa-xl"></i>
                                             </a>
                                         </td>
@@ -210,7 +209,7 @@
                             </ul>
                         </div>
                     </div>
-
+                </div>
             </main>
 
             <!-- MAIN -->

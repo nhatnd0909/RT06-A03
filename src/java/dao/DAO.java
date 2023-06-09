@@ -515,7 +515,7 @@ public class DAO {
 //        for (Staff o : list) {
 //            System.out.println(o);
 //        }
-        dao.deleteStaff("NV07");
+        System.out.println(dao.getAccountByID(2));
 
     }
 }
