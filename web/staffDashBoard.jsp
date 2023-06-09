@@ -139,7 +139,6 @@
                         <div class="head">
                             <h3>Staff Information</h3>
                             <a href="#"><i class="fa-solid fa-plus fa-xl" data-toggle="modal" data-target="#addmodel"></i></a>
-                            <i class='bx bx-filter'></i>
                         </div>
                         <table>
                             <thead>
@@ -163,7 +162,7 @@
                                         <td>${list.phone}</td>
                                         <td>${list.address}</td>
                                         <td>
-                                            <a href="">
+                                            <a href="informationStaff?sid=${list.id}">
                                                 <i class="fa-solid fa-circle-info fa-xl"></i>
                                             </a>
                                         </td>
@@ -204,7 +203,7 @@
                             </ul>
                         </div>
                     </div>
-
+                </div>
             </main>
 
             <!-- MAIN -->
@@ -301,59 +300,59 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            ID
-                                        </td>
-                                        <td>
-                                            <input type="text" name="id" placeholder="${staff.id}">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Name
-                                        </td>
-                                        <td>
-                                            <input type="text" name="name" placeholder="${staff.name}">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Day of Birth
-                                        </td>
-                                        <td>
-                                            <input type="date" name="dob" value="${staff.dob}" placeholder="Enter Day of birth">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Gender
-                                        </td>
-                                        <td>
-                                            <select name="gender">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Phone Number
-                                        </td>
-                                        <td>
-                                            <input type="text" name="phone" placeholder="${staff.phone}">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Address
-                                        </td>
-                                        <td>
-                                            <input type="text" name="address" placeholder="${staff.address}">
-                                        </td>
-                                    </tr>
-                                </table>
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        ID
+                                    </td>
+                                    <td>
+                                        <input type="text" name="id" placeholder="${staff.id}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>
+                                        <input type="text" name="name" placeholder="${staff.name}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Day of Birth
+                                    </td>
+                                    <td>
+                                        <input type="date" name="dob" value="${staff.dob}" placeholder="Enter Day of birth">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Gender
+                                    </td>
+                                    <td>
+                                        <select name="gender">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Phone Number
+                                    </td>
+                                    <td>
+                                        <input type="text" name="phone" placeholder="${staff.phone}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Address
+                                    </td>
+                                    <td>
+                                        <input type="text" name="address" placeholder="${staff.address}">
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary">Save changes</button>

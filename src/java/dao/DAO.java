@@ -168,6 +168,7 @@ public class DAO {
         }
         return list;
     }
+
     public Staff getStaffByID(String id) {
         List<Staff> list = getAllStaff();
         for (Staff a : list) {
@@ -177,6 +178,7 @@ public class DAO {
         }
         return null;
     }
+
     public Account getAccountByID(int id) {
         List<Account> list = getAllAccount();
         for (Account a : list) {
@@ -472,14 +474,48 @@ public class DAO {
         }
         return list;
     }
-    
+
+    public void updateStaff(String id, String name, String dob, String gender, String address, String phone) {
+        String query = "UPDATE NhanVien\n"
+                + "SET MaNhanVien = ?,TenNhanVien=?,NgaySinh=?,GioiTinh=?,DiaChi=?,SodienThoai=?\n"
+                + "WHERE MaNhanVien = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(3, dob);
+            ps.setString(4, gender);
+            ps.setString(5, address);
+            ps.setString(6, phone);
+            ps.setString(7, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteStaff(String id) {
+        String query = "DELETE FROM NhanVien WHERE MaNhanVien=?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<Staff> list = dao.getAllStaff();
-        for (Staff o : list) {
-            System.out.println(o);
-        }
-        System.out.println(dao.getStaffByID("NV01"));
-        
+//        List<Staff> list = dao.getAllStaff();
+//        for (Staff o : list) {
+//            System.out.println(o);
+//        }
+        dao.deleteStaff("NV07");
+
     }
 }
