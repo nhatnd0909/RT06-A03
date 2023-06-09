@@ -168,7 +168,15 @@ public class DAO {
         }
         return list;
     }
-
+    public Staff getStaffByID(String id) {
+        List<Staff> list = getAllStaff();
+        for (Staff a : list) {
+            if (a.getId().equalsIgnoreCase(id)) {
+                return a;
+            }
+        }
+        return null;
+    }
     public Account getAccountByID(int id) {
         List<Account> list = getAllAccount();
         for (Account a : list) {
@@ -464,13 +472,14 @@ public class DAO {
         }
         return list;
     }
-
+    
     public static void main(String[] args) {
         DAO dao = new DAO();
-//        List<Car> list = dao.getCarBySearch("", "", "", 0, 0);
-//        for (Car o : list) {
-//            System.out.println(o);
-//        }
-        dao.createNewStaff("NV06", "Nhat", "2002-09-09", "Male", "hue", "0936152482");
+        List<Staff> list = dao.getAllStaff();
+        for (Staff o : list) {
+            System.out.println(o);
+        }
+        System.out.println(dao.getStaffByID("NV01"));
+        
     }
 }

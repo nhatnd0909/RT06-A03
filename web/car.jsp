@@ -120,7 +120,7 @@
 
                         </div>
                         <div class="col-sm-2 col-md-2 d-flex justify-content-end" style="margin-bottom:20px;">
-                            <a href="search?searchInput="> 
+                            <a href="search?manufacturer=&type=&pricePerDay=0&pricePerHour=0&searchInput="> 
                                 <button type="button" class="btn btn-primary" style="padding: 18px 20px; width: 150px; font-size: 19px;">Search Car</button>
                             </a>
                         </div>

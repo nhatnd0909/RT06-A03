@@ -41,13 +41,13 @@
                         <li class="nav-item"><a href="pricing" class="nav-link">Pricing</a></li>
                         <li class="nav-item"><a href="car" class="nav-link">Cars</a></li>
                         <li class="nav-item active"><a href="contact" class="nav-link">Contact</a></li>
-                        <c:if test="${sessionScope.id != null}">
+                            <c:if test="${sessionScope.id != null}">
                             <li class="nav-item"><a href="profile?id=${sessionScope.id}" class="nav-link">Profile</a></li> 
                             <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.id == null}">
+                            </c:if>
+                            <c:if test="${sessionScope.id == null}">
                             <li class="nav-item"><a href="login" class="nav-link">Login</a></li>
-                        </c:if>
+                            </c:if>
                     </ul>
                 </div>
             </div>
@@ -97,7 +97,10 @@
                         </div>
                     </div>
                     <div class="col-md-8 block-9 mb-md-5">
-                        <form action="#" class="bg-light p-5 contact-form">
+                        <form action="contact" method="POST" class="bg-light p-5 contact-form">
+                            <div>
+                                <h3 class="text-warning">${messRe}</h3>
+                            </div>
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" placeholder="Your Name">
                             </div>

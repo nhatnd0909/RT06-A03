@@ -289,6 +289,80 @@
                 </div>
             </div>
         </div>
+        <form action="" method="">
+            <div class="modal fade bd-example-modal-lg" id="information" tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Information Staff</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            ID
+                                        </td>
+                                        <td>
+                                            <input type="text" name="id" placeholder="${staff.id}">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Name
+                                        </td>
+                                        <td>
+                                            <input type="text" name="name" placeholder="${staff.name}">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Day of Birth
+                                        </td>
+                                        <td>
+                                            <input type="date" name="dob" value="${staff.dob}" placeholder="Enter Day of birth">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Gender
+                                        </td>
+                                        <td>
+                                            <select name="gender">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Phone Number
+                                        </td>
+                                        <td>
+                                            <input type="text" name="phone" placeholder="${staff.phone}">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Address
+                                        </td>
+                                        <td>
+                                            <input type="text" name="address" placeholder="${staff.address}">
+                                        </td>
+                                    </tr>
+                                </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-warning">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
         <script src="js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

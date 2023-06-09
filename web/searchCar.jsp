@@ -195,36 +195,6 @@
                         </div>
                     </c:forEach>         
                 </div>
-                <!--                <ul class="pagination">
-                <c:if test="${currentPage == 1}">
-                    <li class="page-item">
-                        <a class="page-link" href="#">First</a>
-                    </li>
-                </c:if>
-                <c:if test="${currentPage > 1}">
-                    <li class="page-item">
-                                                <a class="page-link" href="search?searchInput=${searchInput}&page=1">First</a>
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage - 1}">${currentPage-1}</a>
-                    </li>
-                </c:if>
-                <li class="page-item active"><a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage}">${currentPage}</a></li>
-
-                <c:if test="${currentPage < totalPages}">
-                    <li class="page-item">
-                        <a class="page-link" href="search?searchInput=${searchInput}&page=${currentPage + 1}">${currentPage + 1}</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="search?searchInput=${searchInput}&&page=${totalPages}">End</a>
-                    </li>
-                </c:if>
-                <c:if test="${currentPage == totalPages}">
-                    <li class="page-item">
-                        <a class="page-link" href="#">End</a>
-                    </li>
-                </c:if>
-            </ul>-->
                 <ul class="pagination">
                     <c:if test="${currentPage == 1}">
                         <li class="page-item">
