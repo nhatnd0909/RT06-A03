@@ -134,12 +134,14 @@
                         </span>
                     </li>
                 </ul>
+                <h3>
+                    ${mess}
+                </h3>
                 <div class="table-data">
                     <div class="order">
                         <div class="head">
-                            <h3>Car Infomation</h3>
-                            <a href="#"><i class="fa-solid fa-plus fa-xl"></i></a>
-                            <i class='bx bx-filter'></i>
+                            <h3>Car Information</h3>
+                            <a href="#"><i class="fa-solid fa-plus fa-xl" data-toggle="modal" data-target="#car"></i></a>
                         </div>
                         <table>
                             <thead>
@@ -224,7 +226,129 @@
             <!-- MAIN -->
         </section>
         <!-- CONTENT -->
+        <form action="addcar" method="POST">
+            <div class="modal fade bd-example-modal-lg" id="car" tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Car</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        Car ID
+                                    </td>
+                                    <td>
+                                        <input type="text" name="id" placeholder="Car ID">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Car Name
+                                    </td>
+                                    <td>
+                                        <input type="text" name="name" placeholder="Car Name">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Car Type
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="type" style="max-width: 40%">
+                                            <c:forEach items="${listType}" var="listType">
+                                                <option value="${listType}">${listType}</option>
+                                            </c:forEach> 
+                                        </select>
+                                    </td>
 
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Manufacturer
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="manufactory" style="max-width: 40%">
+                                            <c:forEach items="${listManufactory}" var="listManufactory">
+                                                <option value="${listManufactory}">${listManufactory}</option>
+                                            </c:forEach> 
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Fuel
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="fuel" style="max-width: 40%">
+                                            <option value="Petrol">Petrol</option>
+                                            <option value="Gasoline">Gasoline</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Car Color
+                                    </td>
+                                    <td>
+                                        <input type="text" name="color"color" placeholder="Car Color">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Number of Seat
+                                    </td>
+                                    <td>
+                                        <input type="text" name="seat" placeholder="Number of Seat">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Year of manufacture 
+                                    </td>
+                                    <td>
+                                        <input type="text" name="year" placeholder="Year of manufacture ">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Car IMG
+                                    </td>
+                                    <td>
+                                        <input type="text" name="img" placeholder="Car IMG">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Price per Day
+                                    </td>
+                                    <td>
+                                        <input type="text" name="pricePerDay" placeholder="Price per Day">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Price per Hour
+                                    </td>
+                                    <td>
+                                        <input type="text" name="pricePerHour" placeholder="Price per Hour">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
         <script src="js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

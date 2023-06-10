@@ -88,6 +88,10 @@
         <servlet-name>ViewUserControl</servlet-name>
         <servlet-class>control.ViewUserControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCarControl</servlet-name>
+        <servlet-class>control.AddCarControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>ViewUserControl</servlet-name>
         <url-pattern>/viewUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCarControl</servlet-name>
+        <url-pattern>/addcar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -509,13 +509,77 @@ public class DAO {
         }
     }
 
+    public void createNewCar(String id, String name, String type, String manufacturer, String fuel, String color, int seat, String year, String img, int pricePerDay, int pricePerHour) {
+        int hangSanxuat = 0, loaixe = 0;
+        if (manufacturer.equalsIgnoreCase("Toyota")) {
+            hangSanxuat = 1;
+        } else if (manufacturer.equalsIgnoreCase("Chevrolet")) {
+            hangSanxuat = 2;
+        } else if (manufacturer.equalsIgnoreCase("Ford")) {
+            hangSanxuat = 3;
+        } else if (manufacturer.equalsIgnoreCase("Honda")) {
+            hangSanxuat = 4;
+        } else if (manufacturer.equalsIgnoreCase("Hyundai")) {
+            hangSanxuat = 5;
+        } else if (manufacturer.equalsIgnoreCase("Kia")) {
+            hangSanxuat = 6;
+        } else if (manufacturer.equalsIgnoreCase("Mitsubishi")) {
+            hangSanxuat = 7;
+        } else if (manufacturer.equalsIgnoreCase("Mazda")) {
+            hangSanxuat = 8;
+        } else if (manufacturer.equalsIgnoreCase("Peugeot")) {
+            hangSanxuat = 9;
+        } else if (manufacturer.equalsIgnoreCase("Mercedes")) {
+            hangSanxuat = 10;
+        }
+
+        if (type.equalsIgnoreCase("Sedan")) {
+            loaixe = 1;
+        } else if (type.equalsIgnoreCase("SUV")) {
+            loaixe = 2;
+        } else if (type.equalsIgnoreCase("HatchBack")) {
+            loaixe = 3;
+        } else if (type.equalsIgnoreCase("Roadster")) {
+            loaixe = 4;
+        } else if (type.equalsIgnoreCase("Pickup")) {
+            loaixe = 5;
+        } else if (type.equalsIgnoreCase("Van")) {
+            loaixe = 6;
+        } else if (type.equalsIgnoreCase("Coupe")) {
+            loaixe = 7;
+        } else if (type.equalsIgnoreCase("Supercar")) {
+            loaixe = 8;
+        } else if (type.equalsIgnoreCase("Cabriolet")) {
+            loaixe = 9;
+        } else if (type.equalsIgnoreCase("MiniVan")) {
+            loaixe = 10;
+        }
+        String query = "INSERT [dbo].[Xe] ([MaXe], [TenXe], [IDLoaiXe], [IDHSX], [SoGhe], [LoaiNhienLieu], [MauSac], [TrangThai], [TinhTrangXe], [NamSanXuat], [Img], [GiaThueNgay], [GiaThueGio]) \n"
+                + "VALUES (?,?, ?, ?, ?, N'Petrol', ?, N'Free', N'New', ?, ?, ?, ?)";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setInt(3, loaixe);
+            ps.setInt(4, hangSanxuat);
+            ps.setInt(5, seat);
+            ps.setString(6, color);
+            ps.setString(7, year);
+            ps.setString(8, img);
+            ps.setInt(9, pricePerDay);
+            ps.setInt(10, pricePerHour);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<Staff> list = dao.getAllStaff();
 //        for (Staff o : list) {
 //            System.out.println(o);
 //        }
-        System.out.println(dao.getAccountByID(2));
-
+        dao.createNewCar("CCCC1", "Honda", "HatchBack", "Honda", "Petrol", "White", 0, "2014", "img.png", 789, 201);
     }
 }
