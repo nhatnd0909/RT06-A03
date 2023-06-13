@@ -574,12 +574,100 @@ public class DAO {
         }
     }
 
+    public void updateCar(String id, String name, String type, String manufacturer, String fuel,
+            String color, int seat, String year, String img, int pricePerDay, int pricePerHour,String status,String description) {
+        int hangSanxuat = 1, loaixe = 1;
+        if (manufacturer.equalsIgnoreCase("Toyota")) {
+            hangSanxuat = 1;
+        } else if (manufacturer.equalsIgnoreCase("Chevrolet")) {
+            hangSanxuat = 2;
+        } else if (manufacturer.equalsIgnoreCase("Ford")) {
+            hangSanxuat = 3;
+        } else if (manufacturer.equalsIgnoreCase("Honda")) {
+            hangSanxuat = 4;
+        } else if (manufacturer.equalsIgnoreCase("Hyundai")) {
+            hangSanxuat = 5;
+        } else if (manufacturer.equalsIgnoreCase("Kia")) {
+            hangSanxuat = 6;
+        } else if (manufacturer.equalsIgnoreCase("Mitsubishi")) {
+            hangSanxuat = 7;
+        } else if (manufacturer.equalsIgnoreCase("Mazda")) {
+            hangSanxuat = 8;
+        } else if (manufacturer.equalsIgnoreCase("Peugeot")) {
+            hangSanxuat = 9;
+        } else if (manufacturer.equalsIgnoreCase("Mercedes")) {
+            hangSanxuat = 10;
+        }
+
+        if (type.equalsIgnoreCase("Sedan")) {
+            loaixe = 1;
+        } else if (type.equalsIgnoreCase("SUV")) {
+            loaixe = 2;
+        } else if (type.equalsIgnoreCase("HatchBack")) {
+            loaixe = 3;
+        } else if (type.equalsIgnoreCase("Roadster")) {
+            loaixe = 4;
+        } else if (type.equalsIgnoreCase("Pickup")) {
+            loaixe = 5;
+        } else if (type.equalsIgnoreCase("Van")) {
+            loaixe = 6;
+        } else if (type.equalsIgnoreCase("Coupe")) {
+            loaixe = 7;
+        } else if (type.equalsIgnoreCase("Supercar")) {
+            loaixe = 8;
+        } else if (type.equalsIgnoreCase("Cabriolet")) {
+            loaixe = 9;
+        } else if (type.equalsIgnoreCase("MiniVan")) {
+            loaixe = 10;
+        }
+        String query = "UPDATE Xe\n"
+                + "SET MaXe = ?,TenXe=?, IDLoaiXe=? , IDHSX=?, SoGhe =?, LoaiNhienLieu =?, MauSac =?, TrangThai=?, TinhTrangXe=?, \n"
+                + "NamSanXuat=?,Img =?, GiaThueNgay=? , GiaThueGio=?\n"
+                + "WHere MaXe = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setInt(3, loaixe);
+            ps.setInt(4, hangSanxuat);
+            ps.setInt(5, seat);
+            ps.setString(6,fuel);
+            ps.setString(7,color);
+            ps.setString(8,status);
+            ps.setString(9,description);
+            ps.setString(10,year);
+            ps.setString(11,img);
+            ps.setInt(12, pricePerDay);
+            ps.setInt(13, pricePerHour);
+            ps.setString(14, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCar(String id) {
+        String query = "DELETE FROM Xe WHERE MaXe=?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<Staff> list = dao.getAllStaff();
 //        for (Staff o : list) {
 //            System.out.println(o);
 //        }
-        dao.createNewCar("CCCC1", "Honda", "HatchBack", "Honda", "Petrol", "White", 0, "2014", "img.png", 789, 201);
+        dao.updateCar("AAAA", "Honda", "suv", "honda", "", "", 0, "", "", 0, 0, "", "");
+//        dao.updateCar(id, name, type, manufacturer, fuel, color, 0, year, img, 0, 0, status, description);
     }
 }

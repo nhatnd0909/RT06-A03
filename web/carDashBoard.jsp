@@ -179,7 +179,7 @@
                                         <td>${list.pricePerDay}</td>
                                         <td>${list.pricePerHour}</td>
                                         <td>
-                                            <a href="">
+                                            <a href="informationcar?cid=${list.idCar}">
                                                 <i class="fa-solid fa-circle-info fa-xl"></i>
                                             </a>
                                         </td>

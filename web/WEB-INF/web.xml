@@ -92,6 +92,14 @@
         <servlet-name>AddCarControl</servlet-name>
         <servlet-class>control.AddCarControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InformationCarControl</servlet-name>
+        <servlet-class>control.InformationCarControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCarControl</servlet-name>
+        <servlet-class>control.DeleteCarControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -183,6 +191,14 @@
     <servlet-mapping>
         <servlet-name>AddCarControl</servlet-name>
         <url-pattern>/addcar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InformationCarControl</servlet-name>
+        <url-pattern>/informationcar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCarControl</servlet-name>
+        <url-pattern>/deletecar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
