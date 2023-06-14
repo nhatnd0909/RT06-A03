@@ -175,7 +175,7 @@
                                         </label>
                                         <input type="text" value="${account.address}" class="form-control" name="address" placeholder="Address">
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <br>
@@ -196,12 +196,12 @@
                             <div class="tab-pane" id="changePass1">
                                 <hr> 
                                 <form class="form" action="changePass?id=${sessionScope.id}" method="post" id="changePass" style="display: none;">
-                                    
+
                                     <div class="form-group" style="width: 50%;">
                                         <div class="col-xs-12">
-                                            
+
                                             <label for="odd-pass">
-<!--                                                <h4>Odd Password</h4>-->
+                                                <!--                                                <h4>Odd Password</h4>-->
                                             </label>
                                             <input type="password" class="form-control" name="oddPass" id="oddPass"
                                                    placeholder="Ente your odd password" required>
@@ -210,7 +210,7 @@
                                     <div class="form-group" style="width: 50%;">
                                         <div class="col-xs-12">
                                             <label for="new-pass">
-<!--                                                <h4>New Password</h4>-->
+                                                <!--                                                <h4>New Password</h4>-->
                                             </label>
                                             <input type="password" class="form-control" name="newPass" id="newPass"
                                                    placeholder="Enter your new password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$" required>
@@ -219,7 +219,7 @@
                                     <div class="form-group" style="width: 50%;">
                                         <div class="col-xs-12">
                                             <label for="re-pass">
-<!--                                                <h4>Re Enter a New Password</h4>-->
+                                                <!--                                                <h4>Re Enter a New Password</h4>-->
                                             </label>
                                             <input type="password" class="form-control" name="rePass" id="rePass"
                                                    placeholder="Re enter new password" required>

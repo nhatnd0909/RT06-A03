@@ -100,6 +100,10 @@
         <servlet-name>DeleteCarControl</servlet-name>
         <servlet-class>control.DeleteCarControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookCarControl</servlet-name>
+        <servlet-class>control.BookCarControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>DeleteCarControl</servlet-name>
         <url-pattern>/deletecar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookCarControl</servlet-name>
+        <url-pattern>/bookcar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -30,11 +31,12 @@ public class LoginControl extends HttpServlet {
     throws ServletException, IOException {
          try {
             DAO dao = new DAO();
+            HttpSession session = request.getSession();
             String user = request.getParameter("username");
             String pass = dao.MD5(request.getParameter("password"));
             Account account = dao.login(user, pass);
             if (account != null) {
-                request.getSession().setAttribute("id", account.getID());
+                session.setAttribute("id", account.getID());
                 if (account.isRole()) {
                     response.sendRedirect("home");
                 } else if (!account.isRole()) {

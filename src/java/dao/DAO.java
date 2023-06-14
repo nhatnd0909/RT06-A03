@@ -575,7 +575,7 @@ public class DAO {
     }
 
     public void updateCar(String id, String name, String type, String manufacturer, String fuel,
-            String color, int seat, String year, String img, int pricePerDay, int pricePerHour,String status,String description) {
+            String color, int seat, String year, String img, int pricePerDay, int pricePerHour, String status, String description) {
         int hangSanxuat = 1, loaixe = 1;
         if (manufacturer.equalsIgnoreCase("Toyota")) {
             hangSanxuat = 1;
@@ -632,12 +632,12 @@ public class DAO {
             ps.setInt(3, loaixe);
             ps.setInt(4, hangSanxuat);
             ps.setInt(5, seat);
-            ps.setString(6,fuel);
-            ps.setString(7,color);
-            ps.setString(8,status);
-            ps.setString(9,description);
-            ps.setString(10,year);
-            ps.setString(11,img);
+            ps.setString(6, fuel);
+            ps.setString(7, color);
+            ps.setString(8, status);
+            ps.setString(9, description);
+            ps.setString(10, year);
+            ps.setString(11, img);
             ps.setInt(12, pricePerDay);
             ps.setInt(13, pricePerHour);
             ps.setString(14, id);
@@ -661,13 +661,31 @@ public class DAO {
         }
     }
 
+    public void updateAccount1(int id, String name, String email, String phone, String address, String imgCCCD, String imgLicense) {
+        String query = "UPDATE NguoiDung\n"
+                + "SET Ten = ?,email =?,sodienthoai=?,diachi=?,imgbanglai = ?,imgcccd=?\n"
+                + "WHERE ID = ?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, phone);
+            ps.setString(4, address);
+            ps.setString(5, imgCCCD);
+            ps.setString(6, imgLicense);
+            ps.setInt(7, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<Staff> list = dao.getAllStaff();
 //        for (Staff o : list) {
 //            System.out.println(o);
 //        }
-        dao.updateCar("AAAA", "Honda", "suv", "honda", "", "", 0, "", "", 0, 0, "", "");
-//        dao.updateCar(id, name, type, manufacturer, fuel, color, 0, year, img, 0, 0, status, description);
+        dao.updateAccount1(4, "Quốc Nam", "nhat123@gmail.com", "123012313", "77 Đào Trí/Hòa Cường Nam/Hải Châu/Đà Nẵng", "abc.png", "asd.png");
     }
 }
