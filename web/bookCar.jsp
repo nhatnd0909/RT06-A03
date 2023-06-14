@@ -78,168 +78,188 @@
                 <h2>Checkout Information</h2>
             </div>
             <div class="row g-5 d-flex justify-content-center">
-                <!--                <div class="row g-5">
-                                    <div class="col-md-5 col-lg-4 order-md-last">
-                                        <h4 class="d-flex justify-content-between align-items-center mb-3">
-                                            <span class="text-primary">Your cart</span>
-                                        </h4>
-                                        <ul class="list-group mb-3">
-                                            <div class="card" style="width: 20rem;">
-                                                <img class="card-img-top" src="images/${car.img}" alt="Card image cap">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">${car.carName}</h5>
-                                                    <div class="form-check">
-                                                        
-                                                        <input class="form-check-input" type="radio" name="radios" id="exampleRadios1" value="option1" checked>
-                                                        
-                                                        <label class="form-check-label" for="exampleRadios1">
-                                                            Day rent
-                                                        </label>
-                                                        
-                                                    </div>
-                
-                                                </div>
-                
-                                            </div>
-                                        </ul>
-                
-                                        <form action="" method="" class="card p-2">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="discount code">
-                                                <button type="submit" class="btn btn-danger">Redeem</button>
-                                            </div>
-                                        </form>
-                                    </div>-->
-                <div class="col-md-8 col-lg-8">
-                    <form action="bookcar" method="POST">
-                        <div class="row g-3">
-                            <div class="col-sm-12">
-                                <label class="form-label">Full name</label>
-                                <input name="name" type="text" class="form-control"value="${account.name}">
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                <input name="email" type="email" class="form-control" value="${account.email}">
-                            </div>
-                            <div class="col-sm-12">
-                                <label class="form-label">Phone number</label>
-                                <input name="phone" type="text" class="form-control"value="${account.phone}">
-                            </div>
-                            <div class="col-12">
-                                <label for="address" class="form-label">Address</label>
-                                <input name="address" type="text" class="form-control">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="country" class="form-label">Province/ City</label>
-                                <input name="city" type="text" class="form-control" id="address">    
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="state" class="form-label">District</label>
-                                <input name="district" type="text" class="form-control">   
-                            </div><div class="col-md-4 form-group">
-                                <label class="form-label">Wards</label>
-                                <input name="wards" type="text" class="form-control">   
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Citizen Identification</label>
-                                <div class="custom-file">
-                                    <input name="ci" type="file" class="custom-file-input">
-                                    <label class="custom-file-label">Choose file...</label>
+                <div class="row g-5">
+                    <div class="col-md-5 col-lg-4 order-md-last">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-primary">Rental Details</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            <div class="card" style="width: 20rem;">
+                                <img class="card-img-top" src="images/${car.img}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">${car.carName}</h4>
+                                    <div class="clearfix" style="">
+                                        <p class="float-left" style="color: black">Type</p>
+                                        <p class="float-right" style="color: black"><span>${car.carType}</p>
+                                    </div>
+                                    <div class="clearfix" style="">
+                                        <p class="float-left" style="color: black">Day rent:</p>
+                                        <p class="float-right" style="color: black"><span>${car.pricePerDay}K</span>/ Day</p>
+                                    </div>
+                                    <div class="clearfix" style="">
+                                        <p class="float-left" style="color: black">Hour rent:</p>
+                                        <p class="float-right" style="color: black;"><span>${car.pricePerHour}K</span>/ Hour</p>
+                                    </div>
+                                    <div class="card clearfix" style="margin-top: 10px">
+                                        <div class="" style="color: black;margin: 5px;font-size: 15px">
+                                            <p class="float-left">Rented Day:</p>
+                                            <div class="wrap-date float-right">
+                                                <span class="value"">06/06/2023</span>
+                                            </div>                                        
+                                        </div>
+                                    </div>
+                                    <p class="note text-danger" style="font-size: 11px"><i class="fa-light fa-triangle-exclamation" style="color: #ce5f5f;"></i>Car was busy during the above time. Please book another car or choose a suitable time</p>
+                                </div>
 
+                            </div>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-8 col-lg-8">
+                        <form action="bookcar" method="POST">
+                            <div class="row g-3">
+                                <div class="col-sm-12">
+                                    <label class="form-label">Full name</label>
+                                    <input name="name" type="text" class="form-control"value="${account.name}">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                                    <input name="email" type="email" class="form-control" value="${account.email}">
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="form-label">Phone number</label>
+                                    <input name="phone" type="text" class="form-control"value="${account.phone}">
+                                </div>
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input name="address" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label for="country" class="form-label">Province/ City</label>
+                                    <input name="city" type="text" class="form-control" id="address">    
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label for="state" class="form-label">District</label>
+                                    <input name="district" type="text" class="form-control">   
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label class="form-label">Wards</label>
+                                    <input name="wards" type="text" class="form-control">   
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Rental type</label>
+                                    <select name="typeRent" class="form-control form-control-lg">
+                                        <option value="day">Rent by day</option>
+                                        <option value="hour">Rent by hour</option>
+                                    </select> 
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Pick up location</label>
+                                    <select name="position" class="form-control form-control-lg">
+                                        <option value="elective">Elective position</option>
+                                        <option value="fixed">Fixed position</option>
+                                    </select> 
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Citizen Identification</label>
+                                    <div class="custom-file">
+                                        <input name="ci" type="file" class="custom-file-input">
+                                        <label class="custom-file-label">Choose file...</label>
+
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Driving License</label>
+                                    <div class="custom-file">
+                                        <input name="dl" type="file" class="custom-file-input">
+                                        <label class="custom-file-label">Choose file...</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <label for="address" class="form-label">Driving License</label>
-                                <div class="custom-file">
-                                    <input name="dl" type="file" class="custom-file-input" id="validatedCustomFile">
-                                    <label class="custom-file-label">Choose file...</label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="my-4">
-                        <!--                            <h4 class="mb-3">Payment</h4>
-                        
-                                                    <div class="my-3">
-                                                        <div class="form-check">
-                                                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                                                            <label class="form-check-label" for="credit">Credit card</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                                                            <label class="form-check-label" for="debit">Debit card</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                                                            <label class="form-check-label" for="paypal">Paytm</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                                                            <label class="form-check-label" for="paypal">Phonepe</label>
-                                                        </div>
-                                                    </div>
-                        
-                                                    <div class="row gy-3">
-                                                        <div class="col-md-6">
-                                                            <label for="cc-name" class="form-label">Name on card</label>
-                                                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                                                            <small class="text-muted">Full name as displayed on card</small>
-                                                            <div class="invalid-feedback">
-                                                                Name on card is required
+                            <hr class="my-4">
+                            <!--                            <h4 class="mb-3">Payment</h4>
+                            
+                                                        <div class="my-3">
+                                                            <div class="form-check">
+                                                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                                                                <label class="form-check-label" for="credit">Credit card</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                                                                <label class="form-check-label" for="debit">Debit card</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                                                                <label class="form-check-label" for="paypal">Paytm</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                                                                <label class="form-check-label" for="paypal">Phonepe</label>
                                                             </div>
                                                         </div>
-                        
-                                                        <div class="col-md-6">
-                                                            <label for="cc-number" class="form-label">Credit card number</label>
-                                                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                                                            <div class="invalid-feedback">
-                                                                Credit card number is required
+                            
+                                                        <div class="row gy-3">
+                                                            <div class="col-md-6">
+                                                                <label for="cc-name" class="form-label">Name on card</label>
+                                                                <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                                                                <small class="text-muted">Full name as displayed on card</small>
+                                                                <div class="invalid-feedback">
+                                                                    Name on card is required
+                                                                </div>
+                                                            </div>
+                            
+                                                            <div class="col-md-6">
+                                                                <label for="cc-number" class="form-label">Credit card number</label>
+                                                                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                                                <div class="invalid-feedback">
+                                                                    Credit card number is required
+                                                                </div>
+                                                            </div>
+                            
+                                                            <div class="col-md-3">
+                                                                <label for="cc-expiration" class="form-label">Expiration</label>
+                                                                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                                                <div class="invalid-feedback">
+                                                                    Expiration date required
+                                                                </div>
+                                                            </div>
+                            
+                                                            <div class="col-md-3">
+                                                                <label for="cc-cvv" class="form-label">CVV</label>
+                                                                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                                                <div class="invalid-feedback">
+                                                                    Security code required
+                                                                </div>
                                                             </div>
                                                         </div>
-                        
-                                                        <div class="col-md-3">
-                                                            <label for="cc-expiration" class="form-label">Expiration</label>
-                                                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                                                            <div class="invalid-feedback">
-                                                                Expiration date required
-                                                            </div>
-                                                        </div>
-                        
-                                                        <div class="col-md-3">
-                                                            <label for="cc-cvv" class="form-label">CVV</label>
-                                                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                                                            <div class="invalid-feedback">
-                                                                Security code required
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr class="my-4">-->
-                        <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Continue to checkout</button>
-                    </form>
+                                                        <hr class="my-4">-->
+                            <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Continue to checkout</button>
+                        </form>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
 
 
-        <!-- loader -->
-        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/aos.js"></script>
-        <script src="js/jquery.animateNumber.min.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
-        <script src="js/jquery.timepicker.min.js"></script>
-        <script src="js/scrollax.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="js/google-map.js"></script>
-        <script src="js/main.js"></script>
+            <!-- loader -->
+            <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+            <script src="js/jquery.min.js"></script>
+            <script src="js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="js/popper.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/jquery.easing.1.3.js"></script>
+            <script src="js/jquery.waypoints.min.js"></script>
+            <script src="js/jquery.stellar.min.js"></script>
+            <script src="js/owl.carousel.min.js"></script>
+            <script src="js/jquery.magnific-popup.min.js"></script>
+            <script src="js/aos.js"></script>
+            <script src="js/jquery.animateNumber.min.js"></script>
+            <script src="js/bootstrap-datepicker.js"></script>
+            <script src="js/jquery.timepicker.min.js"></script>
+            <script src="js/scrollax.min.js"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+            <script src="js/google-map.js"></script>
+            <script src="js/main.js"></script>
     </body>
 </html>
 

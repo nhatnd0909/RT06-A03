@@ -680,12 +680,27 @@ public class DAO {
         }
     }
 
+    public void insertRentCar(int idUser, String idCar, String typeRent, String position) {
+        String query = "INSERT INTO ThueXe(MaNguoiDung, MaXe,KieuThue,KieuNhanXe)\n"
+                + "VALUES (?,?,?,?);";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, idUser);
+            ps.setString(2, idCar);
+            ps.setString(3, typeRent);
+            ps.setString(4, position);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<Staff> list = dao.getAllStaff();
 //        for (Staff o : list) {
 //            System.out.println(o);
 //        }
-        dao.updateAccount1(4, "Quốc Nam", "nhat123@gmail.com", "123012313", "77 Đào Trí/Hòa Cường Nam/Hải Châu/Đà Nẵng", "abc.png", "asd.png");
+        dao.insertRentCar(4, "HDCRV01", "day", "fixed");
     }
 }

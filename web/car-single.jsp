@@ -370,7 +370,7 @@
                                             <p class="float-right" style="color: black;"><span>${list.pricePerHour}K</span>/ Hour</p>
                                         </div>
                                     </div>  
-                                    <a href="#"><button type="button" class="btn btn-primary btn-lg btn-block">Book Car</button></a>
+                                    <a href="bookcar?cid=${list.idCar}&uid=${sessionScope.id}"><button type="button" class="btn btn-primary btn-lg btn-block">Book Car</button></a>
                                 </div>        
                             </div>
                         </c:forEach>

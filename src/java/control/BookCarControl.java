@@ -56,6 +56,8 @@ public class BookCarControl extends HttpServlet {
         DAO dao = new DAO();
         HttpSession session = request.getSession();
         
+        String cid = session.getAttribute("cid").toString();
+        
         int uid = Integer.parseInt(session.getAttribute("uid").toString());
         String name = request.getParameter("name");
         String email = request.getParameter("email");
@@ -67,7 +69,11 @@ public class BookCarControl extends HttpServlet {
         String addressUser = address+"/"+wards+"/"+district+"/"+city;
         String ci = request.getParameter("ci");
         String dl = request.getParameter("dl");
-        System.out.println(name+email+phone+addressUser+ci+dl);
+        String typeRent = request.getParameter("typeRent");
+        String position = request.getParameter("position");
+        System.out.println(typeRent+position+cid);
+        
+        dao.insertRentCar(uid, cid, typeRent, position);
         
         dao.updateAccount1(uid, name, email, phone, addressUser, ci, dl);
         response.sendRedirect("home");
