@@ -104,6 +104,14 @@
         <servlet-name>BookCarControl</servlet-name>
         <servlet-class>control.BookCarControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailBokingControl</servlet-name>
+        <servlet-class>control.DetailBokingControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentControl</servlet-name>
+        <servlet-class>control.PaymentControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -207,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>BookCarControl</servlet-name>
         <url-pattern>/bookcar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailBokingControl</servlet-name>
+        <url-pattern>/detailbooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentControl</servlet-name>
+        <url-pattern>/payment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

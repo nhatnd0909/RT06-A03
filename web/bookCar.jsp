@@ -116,7 +116,7 @@
                         </ul>
                     </div>
                     <div class="col-md-8 col-lg-8">
-                        <form action="bookcar" method="POST">
+                        <form action="bookcar?cid=${car.idCar}" method="POST">
                             <div class="row g-3">
                                 <div class="col-sm-12">
                                     <label class="form-label">Full name</label>
@@ -132,19 +132,19 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="address" class="form-label">Address</label>
-                                    <input name="address" type="text" class="form-control">
+                                    <input name="address" type="text" class="form-control" value="${add}">
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label for="country" class="form-label">Province/ City</label>
-                                    <input name="city" type="text" class="form-control" id="address">    
+                                    <input name="city" type="text" class="form-control" value="${city}">    
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label for="state" class="form-label">District</label>
-                                    <input name="district" type="text" class="form-control">   
+                                    <input name="district" type="text" class="form-control" value="${district}">   
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label class="form-label">Wards</label>
-                                    <input name="wards" type="text" class="form-control">   
+                                    <input name="wards" type="text" class="form-control" value="${wards}">  
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Rental type</label>
@@ -177,89 +177,33 @@
                                 </div>
                             </div>
                             <hr class="my-4">
-                            <!--                            <h4 class="mb-3">Payment</h4>
-                            
-                                                        <div class="my-3">
-                                                            <div class="form-check">
-                                                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                                                                <label class="form-check-label" for="credit">Credit card</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                                                                <label class="form-check-label" for="debit">Debit card</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                                                                <label class="form-check-label" for="paypal">Paytm</label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                                                                <label class="form-check-label" for="paypal">Phonepe</label>
-                                                            </div>
-                                                        </div>
-                            
-                                                        <div class="row gy-3">
-                                                            <div class="col-md-6">
-                                                                <label for="cc-name" class="form-label">Name on card</label>
-                                                                <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                                                                <small class="text-muted">Full name as displayed on card</small>
-                                                                <div class="invalid-feedback">
-                                                                    Name on card is required
-                                                                </div>
-                                                            </div>
-                            
-                                                            <div class="col-md-6">
-                                                                <label for="cc-number" class="form-label">Credit card number</label>
-                                                                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                                                                <div class="invalid-feedback">
-                                                                    Credit card number is required
-                                                                </div>
-                                                            </div>
-                            
-                                                            <div class="col-md-3">
-                                                                <label for="cc-expiration" class="form-label">Expiration</label>
-                                                                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                                                                <div class="invalid-feedback">
-                                                                    Expiration date required
-                                                                </div>
-                                                            </div>
-                            
-                                                            <div class="col-md-3">
-                                                                <label for="cc-cvv" class="form-label">CVV</label>
-                                                                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                                                                <div class="invalid-feedback">
-                                                                    Security code required
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <hr class="my-4">-->
                             <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Continue to checkout</button>
                         </form>
                     </div>
 
                 </div>
             </div>
+        </div>
 
-
-            <!-- loader -->
-            <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-            <script src="js/jquery.min.js"></script>
-            <script src="js/jquery-migrate-3.0.1.min.js"></script>
-            <script src="js/popper.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.easing.1.3.js"></script>
-            <script src="js/jquery.waypoints.min.js"></script>
-            <script src="js/jquery.stellar.min.js"></script>
-            <script src="js/owl.carousel.min.js"></script>
-            <script src="js/jquery.magnific-popup.min.js"></script>
-            <script src="js/aos.js"></script>
-            <script src="js/jquery.animateNumber.min.js"></script>
-            <script src="js/bootstrap-datepicker.js"></script>
-            <script src="js/jquery.timepicker.min.js"></script>
-            <script src="js/scrollax.min.js"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-            <script src="js/google-map.js"></script>
-            <script src="js/main.js"></script>
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/jquery.timepicker.min.js"></script>
+        <script src="js/scrollax.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="js/google-map.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
 

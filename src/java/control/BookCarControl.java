@@ -27,18 +27,36 @@ public class BookCarControl extends HttpServlet {
             throws ServletException, IOException {
 
         DAO dao = new DAO();
-        int uid = Integer.parseInt(request.getParameter("uid"));
-        String cid = request.getParameter("cid");
-        Account account = dao.getAccountByID(uid);
-        List<Car> Listcar = dao.getCarByID(cid);
-        Car car = Listcar.get(0);
-        
         HttpSession session = request.getSession();
-        session.setAttribute("uid", account.getID());
-        session.setAttribute("cid", car.getIdCar());
+        try {
+            int uid = Integer.parseInt(session.getAttribute("id").toString());
+            String cid = request.getParameter("cid");
+            Account account = dao.getAccountByID(uid);
+            List<Car> listCar = dao.getCarByID(cid);
+            Car car = listCar.get(0);
+            
+            String address = account.getAddress();
+            String[] adds = address.split("/");
+            String add = adds[0];
+            String city = adds[3];
+            String district = adds[2];
+            String wards = adds[1];
+                
+            
+            request.setAttribute("account", account);
+            request.setAttribute("car", car);
+            
+            request.setAttribute("add", add);
+            request.setAttribute("city", city);
+            request.setAttribute("district", district);
+            request.setAttribute("wards", wards);
+            
+            System.out.println(district+wards);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
         
-        request.setAttribute("account", account);
-        request.setAttribute("car", car);
         request.getRequestDispatcher("bookCar.jsp").forward(request, response);
     }
 
@@ -56,27 +74,32 @@ public class BookCarControl extends HttpServlet {
         DAO dao = new DAO();
         HttpSession session = request.getSession();
         
-        String cid = session.getAttribute("cid").toString();
+        try {
+            int idUser = Integer.parseInt(session.getAttribute("id").toString());
+            String cid = request.getParameter("cid");
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            String city = request.getParameter("city");
+            String district = request.getParameter("district");
+            String wards = request.getParameter("wards");
+            String typeRent = request.getParameter("typeRent");
+            String position = request.getParameter("position");
+            String ci = request.getParameter("ci");
+            String dl = request.getParameter("dl");
+            
+            String add = address+"/"+wards+"/"+district+"/"+city;
+            dao.updateAccount1(idUser, name, email, phone, add, ci, dl);
+            dao.insertRentCar(idUser, cid, typeRent, position);
+            System.out.println(add);
+            
+        } catch (Exception e) {
+            
+        }
         
-        int uid = Integer.parseInt(session.getAttribute("uid").toString());
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
-        String city = request.getParameter("city");
-        String district = request.getParameter("district");
-        String wards = request.getParameter("wards");
-        String addressUser = address+"/"+wards+"/"+district+"/"+city;
-        String ci = request.getParameter("ci");
-        String dl = request.getParameter("dl");
-        String typeRent = request.getParameter("typeRent");
-        String position = request.getParameter("position");
-        System.out.println(typeRent+position+cid);
-        
-        dao.insertRentCar(uid, cid, typeRent, position);
-        
-        dao.updateAccount1(uid, name, email, phone, addressUser, ci, dl);
-        response.sendRedirect("home");
+
+        response.sendRedirect("detailbooking");
     }
 
 }
