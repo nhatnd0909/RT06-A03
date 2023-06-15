@@ -82,97 +82,95 @@
                 <div class="col-md-8 col-lg-8">
                     <form action="detailbooking" method="POST">
                         <div class="row g-3">
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">Rent date</label> <br>
-                                <input name="fromDay" class="form-control form-control-lg" type="date" >
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">Number of days rent</label>
-                                <select name="numberDay" class="form-control">
-                                    <option value="1">1 day</option>
-                                    <c:forEach begin="2" end="31" step="1" var="i">
-                                        <option value="${i}">${i} days</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">Rent hour</label>
-                                <input name="fromHour" class="form-control" type="datetime-local">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="form-label">Number of days rent</label>
-                                <select name="numberHour" class="form-control">
-                                    <option value="1">1 hour</option>
-                                    <c:forEach begin="2" end="24" step="1" var="i">
-                                        <option value="${i}">${i} hours</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label class="form-label text-dark">Car pick up location</label> <br>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Address</label>
-                                <input name="address" type="text" class="form-control">
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="country" class="form-label">Province/ City</label>
-                                <input name="city" type="text" class="form-control" id="address">    
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="state" class="form-label">District</label>
-                                <input name="district" type="text" class="form-control">   
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label class="form-label">Wards</label>
-                                <input name="wards" type="text" class="form-control">   
-                            </div>
-
-                            <div class="col-md-12 form-group">
-                                <label class="form-label text-dark">Car pick up location</label> <br>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <div class="card">
-                                    <div style="margin: 5px">
-                                        <p class="" style="font-size: 13px">Pick-up location</p>
-                                        <p class="" style="color: black">Hải Châu - Đà Nẵng</p>
-                                        <p style="font-size: 11px">Car owners are supported to deliver the car to the place. Specific address will be displayed after deposit</p>
+                            <c:if test="${typeRentCar == 0}">
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Rent date</label> <br>
+                                    <input name="fromDay" class="form-control form-control-lg" type="date" >
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Number of days rent</label>
+                                    <select name="numberDay" class="form-control">
+                                        <option value="1">1 day</option>
+                                        <c:forEach begin="2" end="31" step="1" var="i">
+                                            <option value="${i}">${i} days</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </c:if>
+                            <c:if test="${typeRentCar == 1}">
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Rent hour</label>
+                                    <input name="fromHour" class="form-control" type="datetime-local">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label">Number of days rent</label>
+                                    <select name="numberHour" class="form-control">
+                                        <option value="1">1 hour</option>
+                                        <c:forEach begin="2" end="24" step="1" var="i">
+                                            <option value="${i}">${i} hours</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </c:if>
+                            <!--                            <div class="col-md-6 form-group">
+                                                            <label class="form-label">Rent hour</label>
+                                                            <input name="fromHour" class="form-control" type="datetime-local">
+                                                        </div>
+                                                        <div class="col-md-6 form-group">
+                                                            <label class="form-label">Number of days rent</label>
+                                                            <select name="numberHour" class="form-control">
+                                                                <option value="1">1 hour</option>
+                            <c:forEach begin="2" end="24" step="1" var="i">
+                                <option value="${i}">${i} hours</option>
+                            </c:forEach>
+                        </select>
+                    </div>-->
+                            <c:if test="${typeReceiveCar == 0}">
+                                <div class="col-md-12 form-group">
+                                    <label class="form-label text-dark">Car pick up location</label> <br>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <div class="card">
+                                        <div style="margin: 5px">
+                                            <p class="" style="font-size: 13px">Pick-up location</p>
+                                            <p class="" style="color: black">Hải Châu - Đà Nẵng</p>
+                                            <p style="font-size: 11px">Car owners are supported to deliver the car to the place. Specific address will be displayed after deposit</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--                            <div class="col-12">
-                                                            <div class="card" style="width: 100%;">
-                                                                <div class="card-body">
-                                                                    <h5 class="card-title">Rent cost</h5>
-                                                                    <div class="clearfix" style="">
-                                                                        <p class="float-left" style="color: black">Day rent:</p>
-                                                                        <p class="float-right" style="color: black"><span>${car.pricePerDay}K</span>/ Day</p>
-                                                                    </div>
-                                                                    <div class="clearfix" style="">
-                                                                        <p class="float-left" style="color: black">Hour rent:</p>
-                                                                        <p class="float-right" style="color: black;"><span>${car.pricePerHour}K</span>/ Hour</p>
-                                                                    </div>
-                                                                    <div class="clearfix" style="">
-                                                                        <p class="float-left" style="color: black">Maintenance fee</p>
-                                                                        <p class="float-right" style="color: black;"><span>50K</span></p>
-                                                                    </div>
-                                                                    <div class="clearfix" style="">
-                                                                        <h4 class="float-left" style="color: black">Total</h4>
-                                                                        <h4 class="float-right" style="color: black;"><span>50K</span></h4>
-                                                                    </div>
-                                                                </div>
-                                                            </div>   
-                                                        </div>                       -->
+
+                            </c:if>
+                            <c:if test="${typeReceiveCar == 1}">
+                                <div class="col-md-12 form-group">
+                                    <label class="form-label text-dark">Car pick up location</label> <br>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Address</label>
+                                    <input name="address" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label for="country" class="form-label">Province/ City</label>
+                                    <input name="city" type="text" class="form-control" id="address">    
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label for="state" class="form-label">District</label>
+                                    <input name="district" type="text" class="form-control">   
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label class="form-label">Wards</label>
+                                    <input name="wards" type="text" class="form-control">   
+                                </div>
+                            </c:if>
                         </div>
                         <hr class="my-4">
                         <h4 class="mb-3">Payment</h4>
                         <div class="my-3">
                             <div class="form-check">
-                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" value="credit" checked required>
                                 <label class="form-check-label" for="credit">Credit card</label>
                             </div>
                             <div class="form-check">
-                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" value="direct" required>
                                 <label class="form-check-label" for="debit">Direct payment</label>
                             </div>
                         </div>

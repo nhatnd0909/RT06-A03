@@ -6,6 +6,7 @@ package dao;
 
 import entity.Account;
 import entity.Car;
+import entity.Order;
 import entity.Staff;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -15,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -680,18 +682,110 @@ public class DAO {
         }
     }
 
-    public void insertRentCar(int idUser, String idCar, String typeRent, String position) {
-        String query = "INSERT INTO ThueXe(MaNguoiDung, MaXe,KieuThue,KieuNhanXe)\n"
-                + "VALUES (?,?,?,?);";
+    public static String createCode() {
+        Random generator = new Random();
+        int value = generator.nextInt(900000) + 1;
+        String result = "#" + value;
+        return result;
+    }
+
+    public void insertRentCar(String id, int idUser, String idCar, String typeRent, String position) {
+        String query = "INSERT INTO ThueXe(MaThue,MaNguoiDung, MaXe,KieuThue,KieuNhanXe)\n"
+                + "VALUES (?,?,?,?,?);";
         try {
             conn = new dbcontext.DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1, idUser);
-            ps.setString(2, idCar);
-            ps.setString(3, typeRent);
-            ps.setString(4, position);
+            ps.setString(1, id);
+            ps.setInt(2, idUser);
+            ps.setString(3, idCar);
+            ps.setString(4, typeRent);
+            ps.setString(5, position);
             ps.executeUpdate();
         } catch (Exception e) {
+        }
+    }
+
+    public Order getOrderById(String idOrder) {
+        Order order = new Order();
+        String query = "select * from ThueXe\n"
+                + "where MaThue = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                order = new Order(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+            }
+        } catch (Exception e) {
+        }
+        return order;
+    }
+
+    public void insertDetailRentCarDay(String idOrder, String dayRent, int numberDayRent, String positionRecieve, String typePay, String status, String typePosition) {
+        String query = "";
+        if (typePosition.equalsIgnoreCase("fixed")) {
+            query = "INSERT INTO ChiTietThueXe(MaThue, NgayDat, SoNgayDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai)\n"
+                    + "VALUES (?,?,?,N'Hải Châu - Đà Nẵng',?,?);";
+            try {
+                conn = new dbcontext.DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setString(1, idOrder);
+                ps.setString(2, dayRent);
+                ps.setInt(3, numberDayRent);
+                ps.setString(4, typePay);
+                ps.setString(5, status);
+                ps.executeUpdate();
+            } catch (Exception e) {
+            }
+        } else {
+            query = "INSERT INTO ChiTietThueXe(MaThue, NgayDat, SoNgayDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai)\n"
+                    + "VALUES (?,?,?,?,?,?);";
+            try {
+                conn = new dbcontext.DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setString(1, idOrder);
+                ps.setString(2, dayRent);
+                ps.setInt(3, numberDayRent);
+                ps.setString(4, positionRecieve);
+                ps.setString(5, typePay);
+                ps.setString(6, status);
+                ps.executeUpdate();
+            } catch (Exception e) {
+            }
+        }
+    }
+    public void insertDetailRentCarHour(String idOrder, String hourRent, int numberHourRent, String positionRecieve, String typePay, String status, String typePosition) {
+        String query = "";
+        if (typePosition.equalsIgnoreCase("fixed")) {
+            query = "INSERT INTO ChiTietThueXe(MaThue, GioDat, SoGioDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai)\n"
+                    + "VALUES (?,?,?,N'Hải Châu - Đà Nẵng',?,?);";
+            try {
+                conn = new dbcontext.DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setString(1, idOrder);
+                ps.setString(2, hourRent);
+                ps.setInt(3, numberHourRent);
+                ps.setString(4, typePay);
+                ps.setString(5, status);
+                ps.executeUpdate();
+            } catch (Exception e) {
+            }
+        } else {
+            query = "INSERT INTO ChiTietThueXe(MaThue, GioDat, SoGioDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai)\n"
+                    + "VALUES (?,?,?,?,?,?);";
+            try {
+                conn = new dbcontext.DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setString(1, idOrder);
+                ps.setString(2, hourRent);
+                ps.setInt(3, numberHourRent);
+                ps.setString(4, positionRecieve);
+                ps.setString(5, typePay);
+                ps.setString(6, status);
+                ps.executeUpdate();
+            } catch (Exception e) {
+            }
         }
     }
 
@@ -701,6 +795,6 @@ public class DAO {
 //        for (Staff o : list) {
 //            System.out.println(o);
 //        }
-        dao.insertRentCar(4, "HDCRV01", "day", "fixed");
+        dao.insertDetailRentCarHour("#474404", "12-12-2021 12:50", 12, "77 Đào Trí/ Hòa Cường Nam", "credit", "availble", "");
     }
 }

@@ -51,7 +51,7 @@ public class BookCarControl extends HttpServlet {
             request.setAttribute("district", district);
             request.setAttribute("wards", wards);
             
-            System.out.println(district+wards);
+            
         } catch (Exception e) {
             e.printStackTrace();
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -88,11 +88,11 @@ public class BookCarControl extends HttpServlet {
             String position = request.getParameter("position");
             String ci = request.getParameter("ci");
             String dl = request.getParameter("dl");
-            
+            String idOrder = dao.createCode();
             String add = address+"/"+wards+"/"+district+"/"+city;
             dao.updateAccount1(idUser, name, email, phone, add, ci, dl);
-            dao.insertRentCar(idUser, cid, typeRent, position);
-            System.out.println(add);
+            dao.insertRentCar(idOrder,idUser, cid, typeRent, position);
+            session.setAttribute("idOrder", idOrder);
             
         } catch (Exception e) {
             
