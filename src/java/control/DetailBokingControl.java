@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  *
@@ -42,7 +44,14 @@ public class DetailBokingControl extends HttpServlet {
             } else {
                 typeReceiveCar = 1;
             }
-            System.out.println(typeRentCar);
+            String[] day = dao.getCurentDay().split("T");
+            String maxDay = dao.getMaxDay();
+            String curentDay = day[0];
+            request.setAttribute("curentDay", curentDay);
+            request.setAttribute("maxDay", maxDay);
+            String minHour = dao.getMinHour();
+            request.setAttribute("minHour", minHour);
+            
             request.setAttribute("typeRent", typeRent);
             request.setAttribute("typeReceive", typeReceive);
             request.setAttribute("typeRentCar", typeRentCar);
@@ -75,14 +84,13 @@ public class DetailBokingControl extends HttpServlet {
             if (typeRent.equalsIgnoreCase("day")) {
                 String fromDay = request.getParameter("fromDay");
                 numberDay = Integer.parseInt(request.getParameter("numberDay"));
-                dao.insertDetailRentCarDay(idOrder, fromDay, numberDay, addressRecieve, paymentMethod, "test4", typeRecieve);
+                dao.insertDetailRentCarDay(idOrder, fromDay, numberDay, addressRecieve, paymentMethod, "Order processing", typeRecieve);
             } else {
                 String fromHour = request.getParameter("fromHour");
                 numberHour = Integer.parseInt(request.getParameter("numberHour"));
                 String[] fromHour1 = fromHour.split("T");
                 String hour = fromHour.replace("T", " ");
-                System.out.println(hour);
-                dao.insertDetailRentCarHour(idOrder, hour, numberHour, addressRecieve, paymentMethod, "test4", typeRecieve);
+                dao.insertDetailRentCarHour(idOrder, hour, numberHour, addressRecieve, paymentMethod, "Order processing", typeRecieve);
             }
 
         } catch (Exception e) {

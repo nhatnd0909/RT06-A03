@@ -14,7 +14,10 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -755,6 +758,7 @@ public class DAO {
             }
         }
     }
+
     public void insertDetailRentCarHour(String idOrder, String hourRent, int numberHourRent, String positionRecieve, String typePay, String status, String typePosition) {
         String query = "";
         if (typePosition.equalsIgnoreCase("fixed")) {
@@ -789,12 +793,51 @@ public class DAO {
         }
     }
 
+    public static String getCurentDay() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        String now = LocalDateTime.now().toString();
+        return now;
+    }
+    public static String getMaxDay() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        String now = LocalDateTime.now().toString().split("T")[0];
+        String year = now.split("-")[0];
+        String month = now.split("-")[1];
+        String day = now.split("-")[2];
+        int monthInt = Integer.parseInt(month);
+        int maxMonth = monthInt+1;
+        String Maxday ="";
+        if(maxMonth<10){
+            Maxday =year+"-"+"0"+maxMonth+"-"+day ;
+        }else{
+            Maxday =year+"-"+maxMonth+"-"+day ;
+        }
+        
+        return Maxday;
+    }
+    public static String getMinHour() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        String now = LocalDateTime.now().toString().split("T")[0];
+        String year = now.split("-")[0];
+        String month = now.split("-")[1];
+        String day = now.split("-")[2];
+        int dayInt = Integer.parseInt(day);
+        int maxDay = dayInt+1;
+        String minHour="";
+        if(maxDay<10){
+            minHour =year+"-"+"0"+month+"-"+maxDay ;
+        }else{
+            minHour =year+"-"+month+"-"+maxDay ;
+        }
+        return minHour;
+    }
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<Staff> list = dao.getAllStaff();
 //        for (Staff o : list) {
 //            System.out.println(o);
 //        }
-        dao.insertDetailRentCarHour("#474404", "12-12-2021 12:50", 12, "77 Đào Trí/ Hòa Cường Nam", "credit", "availble", "");
+        System.out.println(getMinHour());
+        
     }
 }

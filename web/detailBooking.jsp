@@ -85,7 +85,7 @@
                             <c:if test="${typeRentCar == 0}">
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Rent date</label> <br>
-                                    <input name="fromDay" class="form-control form-control-lg" type="date" >
+                                    <input name="fromDay" min="${curentDay}" max="${maxDay}" class="form-control form-control-lg" type="date" >
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Number of days rent</label>
@@ -100,7 +100,7 @@
                             <c:if test="${typeRentCar == 1}">
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Rent hour</label>
-                                    <input name="fromHour" class="form-control" type="datetime-local">
+                                    <input name="fromHour" min="${minHour}T00:00" max="${maxDay}T00:00" class="form-control" type="datetime-local">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Number of days rent</label>
@@ -112,19 +112,6 @@
                                     </select>
                                 </div>
                             </c:if>
-                            <!--                            <div class="col-md-6 form-group">
-                                                            <label class="form-label">Rent hour</label>
-                                                            <input name="fromHour" class="form-control" type="datetime-local">
-                                                        </div>
-                                                        <div class="col-md-6 form-group">
-                                                            <label class="form-label">Number of days rent</label>
-                                                            <select name="numberHour" class="form-control">
-                                                                <option value="1">1 hour</option>
-                            <c:forEach begin="2" end="24" step="1" var="i">
-                                <option value="${i}">${i} hours</option>
-                            </c:forEach>
-                        </select>
-                    </div>-->
                             <c:if test="${typeReceiveCar == 0}">
                                 <div class="col-md-12 form-group">
                                     <label class="form-label text-dark">Car pick up location</label> <br>

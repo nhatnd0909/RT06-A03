@@ -100,7 +100,7 @@
                                             </td>
 
                                             <td class="price">
-                                                <p class="btn-custom"><a href="#">Rent a car</a></p>
+                                                <p class="btn-custom"><a href="bookcar?cid=${list.idCar}">Rent a car</a></p>
                                                 <div class="price-rate">
                                                     <h3>
                                                         <span class="num"><small class="currency"></small>${list.pricePerHour}K</span>
@@ -111,7 +111,7 @@
                                             </td>
 
                                             <td class="price">
-                                                <p class="btn-custom"><a href="#">Rent a car</a></p>
+                                                <p class="btn-custom"><a href="bookcar?cid=${list.idCar}">Rent a car</a></p>
                                                 <div class="price-rate">
                                                     <h3>
                                                         <span class="num"><small class="currency"></small>${list.pricePerDay}K</span>
