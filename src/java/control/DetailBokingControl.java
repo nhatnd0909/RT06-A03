@@ -6,6 +6,8 @@ package control;
 
 import dao.DAO;
 import entity.Order;
+import entity.ScheduleDay;
+import entity.ScheduleHour;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -56,6 +59,12 @@ public class DetailBokingControl extends HttpServlet {
             request.setAttribute("typeReceive", typeReceive);
             request.setAttribute("typeRentCar", typeRentCar);
             request.setAttribute("typeReceiveCar", typeReceiveCar);
+            
+            String cid = order.getIdCar();
+            List<ScheduleDay> scheduleDay = dao.getScheduleDay(cid);
+            request.setAttribute("scheduleDay", scheduleDay);
+            List<ScheduleHour> scheduleHour = dao.getScheduleHour(cid);
+            request.setAttribute("scheduleHour", scheduleHour);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,7 +104,7 @@ public class DetailBokingControl extends HttpServlet {
 
         } catch (Exception e) {
         }
-
+        
         response.sendRedirect("payment");
 
     }

@@ -78,7 +78,8 @@
             <div class="py-5 text-center">
                 <h2>Detail Booking</h2>
             </div>
-            <div class="row g-5 d-flex justify-content-center">     
+            <div class="row g-5 d-flex justify-content-center">   
+
                 <div class="col-md-8 col-lg-8">
                     <form action="detailbooking" method="POST">
                         <div class="row g-3">
@@ -164,6 +165,49 @@
                         <hr class="my-4">
                         <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Continue to checkout</button>
                     </form>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="card" style="margin-top: 10px">
+                        <div class="card-body">
+                            <p style="color: black;font-weight: bold">Rented Day</p>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <p style="color: black">From:</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p style="color: black">To:</p>
+                                </div>
+                                <c:forEach items="${scheduleDay}" var="scheduleDay">
+                                    <div class="col-md-5">
+                                        <p style="color: black">${scheduleDay.fromDay}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p style="color: black">${scheduleDay.toDay}</p>
+                                    </div>
+                                </c:forEach>
+
+                            </div>
+                            <p style="color: black ;font-weight: bold">Rented Hour:</p>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <p style="color: black">From:</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p style="color: black">To:</p>
+                                </div>
+                                <c:forEach items="${scheduleHour}" var="scheduleHour">
+                                    <div class="col-md-5">
+                                        <p style="color: black">${scheduleHour.fromHour}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p style="color: black">${scheduleHour.toHour}</p>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <p class="note text-danger" style="font-size: 11px"><i class="fa-light fa-triangle-exclamation" style="color: #ce5f5f;"></i>Car was busy during the above time. Please book another car or choose a suitable time</p>
+
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
