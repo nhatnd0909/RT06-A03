@@ -866,7 +866,7 @@ public class DAO {
             ps.setString(1, idCar);
             rs = ps.executeQuery();
             while (rs.next()) {
-                int index = rs.getString(1).lastIndexOf(":") ;
+                int index = rs.getString(1).lastIndexOf(":");
                 String fromHour = rs.getString(1).substring(0, index);
                 String toHour = rs.getString(2).substring(0, index);
                 list.add(new ScheduleHour(fromHour, toHour));
@@ -875,17 +875,65 @@ public class DAO {
         }
         return list;
     }
-    
+
+    public String getIdCarByOrder(String idOrder) {
+        String result = "";
+        String query = "select MaXe from ThueXe\n"
+                + "where MaThue =?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
+    public int getNumberDayOrder(String idOrder) {
+        int result = 0;
+        String query = "select SoNgayDat from ChiTietThueXe\n"
+                + "where MaThue =?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
+    public int getNumberHourOrder(String idOrder) {
+        int result = 0;
+        String query = "select SoGioDat from ChiTietThueXe\n"
+                + "where MaThue =?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
         //        List<Staff> list = dao.getAllStaff();
         //        for (Staff o : list) {
         //            System.out.println(o);
         //        }
-        List<ScheduleHour> ScheduleHour = dao.getScheduleHour("MCS450");
-        for (ScheduleHour s : ScheduleHour) {
-            System.out.println(s);
-        }
 
+        System.out.println(dao.getNumberHourOrder("#388502"));
     }
 }

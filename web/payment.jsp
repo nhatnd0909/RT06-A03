@@ -90,35 +90,57 @@
                                     <div class="card-body">
                                         <h3 class="card-title">Order Detail</h3>
                                         <hr class="my-4">
-                                        <h4 class="card-title">Car name</h4>
+
                                         <div class="clearfix" style="">
-                                            <p class="float-left" style="color: black">Price per Day</p>
-                                            <p class="float-right" style="color: black"><span>${car.pricePerDay}K</span>/ Day</p>
+                                            <h4 class="card-title float-left">Car name</h4>
+                                            <p class="float-right" style="color: black">${car.carName}</p>
                                         </div>
-                                        <div class="clearfix" style="">
-                                            <p class="float-left" style="color: black">Price per Hour</p>
-                                            <p class="float-right" style="color: black;"><span>${car.pricePerHour}K</span>/ Hour</p>
-                                        </div>
-                                        <div class="clearfix" style="">
-                                            <p class="float-left" style="color: black">Number of rental days</p>
-                                            <p class="float-right" style="color: black;">5 Days</p>
-                                        </div>
-                                        <div class="clearfix" style="">
-                                            <p class="float-left" style="color: black">Number of rental hours</p>
-                                            <p class="float-right" style="color: black;">5 hours</p>
-                                        </div>
+                                        <c:if test="${typeRentCar == 0}">
+                                            <div class="clearfix" style="">
+                                                <p class="float-left" style="color: black">Price per Day</p>
+                                                <p class="float-right" style="color: black"><span>${car.pricePerDay}K</span>/ Day</p>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${typeRentCar == 1}">
+                                            <div class="clearfix" style="">
+                                                <p class="float-left" style="color: black">Price per Hour</p>
+                                                <p class="float-right" style="color: black;"><span>${car.pricePerHour}K</span>/ Hour</p>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${typeRentCar == 0}">
+                                            <div class="clearfix" style="">
+                                                <p class="float-left" style="color: black">Number of rental days</p>
+                                                <p class="float-right" style="color: black;">${NumberDayOrder} Days</p>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${typeRentCar == 1}">
+                                            <div class="clearfix" style="">
+                                                <p class="float-left" style="color: black">Number of rental hours</p>
+                                                <p class="float-right" style="color: black;">${NumberHourOrder} hours</p>
+                                            </div>
+                                        </c:if>
+
                                         <div class="clearfix" style="">
                                             <p class="float-left" style="color: black">Mortgage fee</p>
                                             <p class="float-right" style="color: black;"><span>10.000K</span></p>
                                         </div>
-                                        <div class="clearfix" style="">
-                                            <p class="float-left" style="color: black">Car shipping fee</p>
-                                            <p class="float-right" style="color: black;"><span>50K</span></p>
-                                        </div>
+                                        <c:if test="${typeReceiveCar == 0}">
+                                            <div class="clearfix" style="">
+                                                <p class="float-left" style="color: black">Car shipping fee</p>
+                                                <p class="float-right" style="color: black;"><span>0K</span></p>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${typeReceiveCar == 1}">
+                                            <div class="clearfix" style="">
+                                                <p class="float-left" style="color: black">Car shipping fee</p>
+                                                <p class="float-right" style="color: black;"><span>50K</span></p>
+                                            </div>
+                                        </c:if>
+
                                         <hr class="my-4">
                                         <div class="clearfix" style="">
                                             <h4 class="float-left" style="color: black">Total</h4>
-                                            <h4 class="float-right" style="color: black;"><span>50K</span></h4>  
+                                            <h4 class="float-right" style="color: black;"><span>${total}K</span></h4>  
                                         </div>
                                     </div>
                                 </div>   
