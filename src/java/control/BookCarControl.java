@@ -7,6 +7,8 @@ package control;
 import dao.DAO;
 import entity.Account;
 import entity.Car;
+import entity.ScheduleDay;
+import entity.ScheduleHour;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -50,7 +52,10 @@ public class BookCarControl extends HttpServlet {
             request.setAttribute("city", city);
             request.setAttribute("district", district);
             request.setAttribute("wards", wards);
-            
+            List<ScheduleDay> scheduleDay = dao.getScheduleDay(cid);
+            request.setAttribute("scheduleDay", scheduleDay);
+            List<ScheduleHour> scheduleHour = dao.getScheduleHour(cid);
+            request.setAttribute("scheduleHour", scheduleHour);
             
         } catch (Exception e) {
             e.printStackTrace();

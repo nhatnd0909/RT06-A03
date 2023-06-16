@@ -7,6 +7,8 @@ package dao;
 import entity.Account;
 import entity.Car;
 import entity.Order;
+import entity.ScheduleDay;
+import entity.ScheduleHour;
 import entity.Staff;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -798,6 +800,7 @@ public class DAO {
         String now = LocalDateTime.now().toString();
         return now;
     }
+
     public static String getMaxDay() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         String now = LocalDateTime.now().toString().split("T")[0];
@@ -805,16 +808,17 @@ public class DAO {
         String month = now.split("-")[1];
         String day = now.split("-")[2];
         int monthInt = Integer.parseInt(month);
-        int maxMonth = monthInt+1;
-        String Maxday ="";
-        if(maxMonth<10){
-            Maxday =year+"-"+"0"+maxMonth+"-"+day ;
-        }else{
-            Maxday =year+"-"+maxMonth+"-"+day ;
+        int maxMonth = monthInt + 1;
+        String Maxday = "";
+        if (maxMonth < 10) {
+            Maxday = year + "-" + "0" + maxMonth + "-" + day;
+        } else {
+            Maxday = year + "-" + maxMonth + "-" + day;
         }
-        
+
         return Maxday;
     }
+
     public static String getMinHour() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         String now = LocalDateTime.now().toString().split("T")[0];
@@ -822,22 +826,66 @@ public class DAO {
         String month = now.split("-")[1];
         String day = now.split("-")[2];
         int dayInt = Integer.parseInt(day);
-        int maxDay = dayInt+1;
-        String minHour="";
-        if(maxDay<10){
-            minHour =year+"-"+"0"+month+"-"+maxDay ;
-        }else{
-            minHour =year+"-"+month+"-"+maxDay ;
+        int maxDay = dayInt + 1;
+        String minHour = "";
+        if (maxDay < 10) {
+            minHour = year + "-" + "0" + month + "-" + maxDay;
+        } else {
+            minHour = year + "-" + month + "-" + maxDay;
         }
         return minHour;
     }
+
+    public List<ScheduleDay> getScheduleDay(String idCar) {
+        List<ScheduleDay> list = new ArrayList<>();
+        String query = "select NgayDat, DATEADD(day, SoNgayDat, NgayDat) as DenNgay\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where MaXe = ? and NgayDat between '1900-01-01' and '2050-01-01'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idCar);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+//                list.add(new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
+                list.add(new ScheduleDay(rs.getString(1), rs.getString(2)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<ScheduleHour> getScheduleHour(String idCar) {
+        List<ScheduleHour> list = new ArrayList<>();
+        String query = "select GioDat, DATEADD(hour, SoGioDat, GioDat) as DenGio\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where MaXe = ? and GioDat between '1900-01-01' and '2050-01-01'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idCar);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int index = rs.getString(1).lastIndexOf(":") ;
+                String fromHour = rs.getString(1).substring(0, index);
+                String toHour = rs.getString(2).substring(0, index);
+                list.add(new ScheduleHour(fromHour, toHour));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-//        List<Staff> list = dao.getAllStaff();
-//        for (Staff o : list) {
-//            System.out.println(o);
-//        }
-        System.out.println(getMinHour());
-        
+        //        List<Staff> list = dao.getAllStaff();
+        //        for (Staff o : list) {
+        //            System.out.println(o);
+        //        }
+        List<ScheduleHour> ScheduleHour = dao.getScheduleHour("MCS450");
+        for (ScheduleHour s : ScheduleHour) {
+            System.out.println(s);
+        }
+
     }
 }

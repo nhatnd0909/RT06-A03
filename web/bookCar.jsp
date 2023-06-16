@@ -100,19 +100,46 @@
                                         <p class="float-left" style="color: black">Hour rent:</p>
                                         <p class="float-right" style="color: black;"><span>${car.pricePerHour}K</span>/ Hour</p>
                                     </div>
-                                    <div class="card clearfix" style="margin-top: 10px">
-                                        <div class="" style="color: black;margin: 5px;font-size: 15px">
-                                            <p class="float-left">Rented Day:</p>
-                                            <div class="wrap-date float-right">
-                                                <span class="value"">06/06/2023</span>
-                                            </div>                                        
+                                    <div class="" style="margin-top: 10px">
+                                        <p style="color: black;font-weight: bold">Rented Day</p>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p style="color: black">From:</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p style="color: black">To:</p>
+                                            </div>
+                                            <c:forEach items="${scheduleDay}" var="scheduleDay">
+                                                <div class="col-md-5">
+                                                    <p style="color: black">${scheduleDay.fromDay}</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p style="color: black">${scheduleDay.toDay}</p>
+                                                </div>
+                                            </c:forEach>
+
                                         </div>
-                                    </div>
-                                    <p class="note text-danger" style="font-size: 11px"><i class="fa-light fa-triangle-exclamation" style="color: #ce5f5f;"></i>Car was busy during the above time. Please book another car or choose a suitable time</p>
+                                        <p style="color: black ;font-weight: bold">Rented Hour:</p>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p style="color: black">From:</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p style="color: black">To:</p>
+                                            </div>
+                                            <c:forEach items="${scheduleHour}" var="scheduleHour">
+                                                <div class="col-md-5">
+                                                    <p style="color: black">${scheduleHour.fromHour}</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p style="color: black">${scheduleHour.toHour}</p>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                        <p class="note text-danger" style="font-size: 11px"><i class="fa-light fa-triangle-exclamation" style="color: #ce5f5f;"></i>Car was busy during the above time. Please book another car or choose a suitable time</p>
+                                    </div> 
                                 </div>
-
                             </div>
-
                         </ul>
                     </div>
                     <div class="col-md-8 col-lg-8">
