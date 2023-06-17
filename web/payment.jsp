@@ -83,7 +83,7 @@
             </div>
             <div class="row g-5 d-flex justify-content-center">
                 <div class="col-md-7 col-lg-7">
-                    <form action="" method="">
+                    <form action="payment" method="POST">
                         <div class="row g-3">
                             <div class="col-12">
                                 <div class="card" style="width: 100%;">
@@ -119,11 +119,6 @@
                                                 <p class="float-right" style="color: black;">${NumberHourOrder} hours</p>
                                             </div>
                                         </c:if>
-
-                                        <div class="clearfix" style="">
-                                            <p class="float-left" style="color: black">Mortgage fee</p>
-                                            <p class="float-right" style="color: black;"><span>10.000K</span></p>
-                                        </div>
                                         <c:if test="${typeReceiveCar == 0}">
                                             <div class="clearfix" style="">
                                                 <p class="float-left" style="color: black">Car shipping fee</p>
@@ -134,6 +129,26 @@
                                             <div class="clearfix" style="">
                                                 <p class="float-left" style="color: black">Car shipping fee</p>
                                                 <p class="float-right" style="color: black;"><span>50K</span></p>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${typePayCar == 0}">
+                                            <div class="clearfix" style="">
+                                                <p class="float-left" style="color: black">Payment Methods</p>
+                                                <p class="float-right" style="color: black;"><span>Pay when receiving the car</span></p>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${typePayCar == 1}">
+                                            <div class="clearfix" style="">
+                                                <p class="float-left" style="color: black">Payment Methods</p>
+                                                <p class="float-right" style="color: black;"><span>Bank transfer</span></p>
+                                            </div>
+                                            <hr>
+                                            <div class="card">
+                                                <div class="card-body text-dark">
+                                                    <p>MB Bank (Military Bank) - 123456789</p>
+                                                    <p>Account holder: Car Book</p>
+                                                    <p>Please write the transfer content: Web-Phone number to order</p>
+                                                </div>
                                             </div>
                                         </c:if>
 
@@ -149,6 +164,15 @@
                         <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Purchase orders</button>
                     </form>
                 </div>
+<!--                <div>
+                    <c:if test="${typePayCar == 1}">
+                        <div class="col-md-5 col-lg-5">
+
+                        </div>
+                    </c:if>
+                </div>-->
+
+
             </div>
         </div>
 

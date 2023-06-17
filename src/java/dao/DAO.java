@@ -730,8 +730,8 @@ public class DAO {
     public void insertDetailRentCarDay(String idOrder, String dayRent, int numberDayRent, String positionRecieve, String typePay, String status, String typePosition) {
         String query = "";
         if (typePosition.equalsIgnoreCase("fixed")) {
-            query = "INSERT INTO ChiTietThueXe(MaThue, NgayDat, SoNgayDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai)\n"
-                    + "VALUES (?,?,?,N'Hải Châu - Đà Nẵng',?,?);";
+            query = "INSERT INTO ChiTietThueXe(MaThue, NgayDat, SoNgayDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai,DaTra)\n"
+                    + "VALUES (?,?,?,N'Hải Châu - Đà Nẵng',?,?,'0');";
             try {
                 conn = new dbcontext.DBContext().getConnection();
                 ps = conn.prepareStatement(query);
@@ -744,8 +744,8 @@ public class DAO {
             } catch (Exception e) {
             }
         } else {
-            query = "INSERT INTO ChiTietThueXe(MaThue, NgayDat, SoNgayDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai)\n"
-                    + "VALUES (?,?,?,?,?,?);";
+            query = "INSERT INTO ChiTietThueXe(MaThue, NgayDat, SoNgayDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai,DaTra)\n"
+                    + "VALUES (?,?,?,?,?,?,'0');";
             try {
                 conn = new dbcontext.DBContext().getConnection();
                 ps = conn.prepareStatement(query);
@@ -764,8 +764,8 @@ public class DAO {
     public void insertDetailRentCarHour(String idOrder, String hourRent, int numberHourRent, String positionRecieve, String typePay, String status, String typePosition) {
         String query = "";
         if (typePosition.equalsIgnoreCase("fixed")) {
-            query = "INSERT INTO ChiTietThueXe(MaThue, GioDat, SoGioDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai)\n"
-                    + "VALUES (?,?,?,N'Hải Châu - Đà Nẵng',?,?);";
+            query = "INSERT INTO ChiTietThueXe(MaThue, GioDat, SoGioDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai,DaTra)\n"
+                    + "VALUES (?,?,?,N'Hải Châu - Đà Nẵng',?,?,0);";
             try {
                 conn = new dbcontext.DBContext().getConnection();
                 ps = conn.prepareStatement(query);
@@ -778,8 +778,8 @@ public class DAO {
             } catch (Exception e) {
             }
         } else {
-            query = "INSERT INTO ChiTietThueXe(MaThue, GioDat, SoGioDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai)\n"
-                    + "VALUES (?,?,?,?,?,?);";
+            query = "INSERT INTO ChiTietThueXe(MaThue, GioDat, SoGioDat,ViTriNhanXe,PhuongThucThanhToan,TrangThai,DaTra)\n"
+                    + "VALUES (?,?,?,?,?,?,0);";
             try {
                 conn = new dbcontext.DBContext().getConnection();
                 ps = conn.prepareStatement(query);
@@ -927,13 +927,43 @@ public class DAO {
         return result;
     }
 
+    public void insertTotalPrice(String idOrder, int total) {
+        String query = "UPDATE ChiTietThueXe\n"
+                + "SET TongGiaThue = ?\n"
+                + "WHERE MaThue = ?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, total);
+            ps.setString(2, idOrder);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public String getTypePayByIdOrder(String idOrder) {
+        String result = "";
+        String query = "select PhuongThucThanhToan\n"
+                + "from ChiTietThueXe where MaThue =?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
         //        List<Staff> list = dao.getAllStaff();
         //        for (Staff o : list) {
         //            System.out.println(o);
         //        }
-
-        System.out.println(dao.getNumberHourOrder("#388502"));
+        System.out.println(dao.getTypePayByIdOrder("#200794"));
     }
 }

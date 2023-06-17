@@ -26,7 +26,7 @@ public class PaymentControl extends HttpServlet {
             throws ServletException, IOException {
         DAO dao = new DAO();
         HttpSession session = request.getSession();
-        int typeRentCar = 0, typeReceiveCar = 0, total = 0;
+        int typeRentCar = 0, typeReceiveCar = 0, total = 0,typePayCar=0;
         try {
             String idOrder = session.getAttribute("idOrder").toString();
             Order order = dao.getOrderById(idOrder);
@@ -34,6 +34,12 @@ public class PaymentControl extends HttpServlet {
             Car car = dao.getCarByID(idCar).get(0);
             String typeRent = order.getTypeRent();
             String typeReceive = order.getTypeReceive();
+            String typePay = dao.getTypePayByIdOrder(idOrder);
+            if (typePay.equalsIgnoreCase("direct")) {
+                typePayCar = 0;
+            } else {
+                typePayCar = 1;
+            }
             if (typeReceive.equalsIgnoreCase("fixed")) {
                 typeReceiveCar = 0;
             } else {
@@ -43,30 +49,32 @@ public class PaymentControl extends HttpServlet {
                 typeRentCar = 0;
                 int NumberDayOrder = dao.getNumberDayOrder(idOrder);
                 if (typeReceive.equalsIgnoreCase("fixed")) {
-                    total = NumberDayOrder * car.getPricePerDay() + 10000;
+                    total = NumberDayOrder * car.getPricePerDay() ;
                 } else {
-                    total = NumberDayOrder * car.getPricePerDay() + 10000 + 50;
+                    total = NumberDayOrder * car.getPricePerDay() + 50;
                 }
                 request.setAttribute("NumberDayOrder", NumberDayOrder);
                 request.setAttribute("car", car);
                 request.setAttribute("typeRentCar", typeRentCar);
                 request.setAttribute("typeReceiveCar", typeReceiveCar);
                 request.setAttribute("total", total);
+                dao.insertTotalPrice(idOrder, total);
             } else {
                 typeRentCar = 1;
                 int NumberHourOrder = dao.getNumberHourOrder(idOrder);
                 if (typeReceive.equalsIgnoreCase("fixed")) {
-                    total = NumberHourOrder * car.getPricePerHour() + 10000;
+                    total = NumberHourOrder * car.getPricePerHour();
                 } else {
-                    total = NumberHourOrder * car.getPricePerHour() + 10000 + 50;
+                    total = NumberHourOrder * car.getPricePerHour() + 50;
                 }
                 request.setAttribute("NumberHourOrder", NumberHourOrder);
                 request.setAttribute("car", car);
                 request.setAttribute("typeRentCar", typeRentCar);
                 request.setAttribute("typeReceiveCar", typeReceiveCar);
                 request.setAttribute("total", total);
+                dao.insertTotalPrice(idOrder, total);
             }
-
+            request.setAttribute("typePayCar", typePayCar);
         } catch (Exception e) {
         }
         request.getRequestDispatcher("payment.jsp").forward(request, response);
@@ -83,6 +91,13 @@ public class PaymentControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        DAO dao = new DAO();
+        HttpSession session = request.getSession();
+        try {
+            String idOrder = session.getAttribute("idOrder").toString();
+            
+        } catch (Exception e) {
+        }
+        response.sendRedirect("home");
     }
 }
