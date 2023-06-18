@@ -124,6 +124,14 @@
         <servlet-name>infomationOrder</servlet-name>
         <servlet-class>control.infomationOrder</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HistoryBookingControl</servlet-name>
+        <servlet-class>control.HistoryBookingControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InfomationHistoryBookingControl</servlet-name>
+        <servlet-class>control.InfomationHistoryBookingControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -247,6 +255,14 @@
     <servlet-mapping>
         <servlet-name>infomationOrder</servlet-name>
         <url-pattern>/informationorder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoryBookingControl</servlet-name>
+        <url-pattern>/historybooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InfomationHistoryBookingControl</servlet-name>
+        <url-pattern>/infomationhistorybooking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
