@@ -7,6 +7,7 @@ package dao;
 import entity.Account;
 import entity.Car;
 import entity.Order;
+import entity.OrderDetail;
 import entity.ScheduleDay;
 import entity.ScheduleHour;
 import entity.Staff;
@@ -690,7 +691,7 @@ public class DAO {
     public static String createCode() {
         Random generator = new Random();
         int value = generator.nextInt(900000) + 1;
-        String result = "#" + value;
+        String result = "" + value;
         return result;
     }
 
@@ -958,12 +959,86 @@ public class DAO {
         return result;
     }
 
+    public List<OrderDetail> getAllOrderDetail() {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+                //   String idOrder, int idUser, String idStaff,3 String idCar,4 String typeRent,5 String typeRecieve,6 String fromDay,7 String numDay, String fromHour, String numHour, String location, int totalPrice, String methodPay, String status, String isReturn, String returnDay) 
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public OrderDetail getOrderDetailById(String idOrder) {
+        OrderDetail order = null;
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where ThueXe.MaThue=?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                order = new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16));
+                // list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return order;
+    }
+
+    public String getDayReturnCarByIdOrder(String idOrder) {
+        String result = "";
+        String query = "SELECT DATEADD(day, SoNgayDat, NgayDat) AS NgayTra\n"
+                + "from ChiTietThueXe where MaThue =?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
+    public String getHourReturnCarByIdOrder(String idOrder) {
+        String result = "";
+        String query = "SELECT DATEADD(HOUR, SoGioDat, GioDat) AS giotra\n"
+                + "from ChiTietThueXe where MaThue =?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        //        List<Staff> list = dao.getAllStaff();
-        //        for (Staff o : list) {
-        //            System.out.println(o);
-        //        }
-        System.out.println(dao.getTypePayByIdOrder("#200794"));
+//        List<OrderDetail> list = dao.getAllOrderDetail();
+//        for (OrderDetail o : list) {
+//            System.out.println(o);
+//        }
+        System.out.println(dao.getHourReturnCarByIdOrder("469872"));
+        String time = "2023-07-01 13:46:00.0";
+        int p = time.lastIndexOf(":");
+        String t = time.substring(0, time.lastIndexOf(":"));
+        System.out.println(t);
     }
 }

@@ -112,6 +112,18 @@
         <servlet-name>PaymentControl</servlet-name>
         <servlet-class>control.PaymentControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ScheduleDashBoardControl</servlet-name>
+        <servlet-class>ScheduleDashBoardControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>detailOderControl</servlet-name>
+        <servlet-class>control.detailOderControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>infomationOrder</servlet-name>
+        <servlet-class>control.infomationOrder</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -223,6 +235,18 @@
     <servlet-mapping>
         <servlet-name>PaymentControl</servlet-name>
         <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ScheduleDashBoardControl</servlet-name>
+        <url-pattern>/scheduledashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>detailOderControl</servlet-name>
+        <url-pattern>/detailorder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>infomationOrder</servlet-name>
+        <url-pattern>/informationorder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

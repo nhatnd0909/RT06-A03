@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="scheduledashboard">
                         <i class="fa-solid fa-calendar-days fa-xs"></i>
                         <span class="text">Rental Schedule Management</span>
                     </a>

@@ -17,9 +17,9 @@ public class OrderDetail {
     private String typeRent;
     private String typeRecieve;
     private String fromDay;
-    private String numDay;
+    private int numDay;
     private String fromHour;
-    private String numHour;
+    private int numHour;
     private String location;
     private int totalPrice;
     private String methodPay;
@@ -30,7 +30,7 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(String idOrder, int idUser, String idStaff, String idCar, String typeRent, String typeRecieve, String fromDay, String numDay, String fromHour, String numHour, String location, int totalPrice, String methodPay, String status, String isReturn, String returnDay) {
+    public OrderDetail(String idOrder, int idUser, String idStaff, String idCar, String typeRent, String typeRecieve, String fromDay, int numDay, String fromHour, int numHour, String location, int totalPrice, String methodPay, String status, String isReturn, String returnDay) {
         this.idOrder = idOrder;
         this.idUser = idUser;
         this.idStaff = idStaff;
@@ -105,11 +105,11 @@ public class OrderDetail {
         this.fromDay = fromDay;
     }
 
-    public String getNumDay() {
+    public int getNumDay() {
         return numDay;
     }
 
-    public void setNumDay(String numDay) {
+    public void setNumDay(int numDay) {
         this.numDay = numDay;
     }
 
@@ -121,11 +121,11 @@ public class OrderDetail {
         this.fromHour = fromHour;
     }
 
-    public String getNumHour() {
+    public int getNumHour() {
         return numHour;
     }
 
-    public void setNumHour(String numHour) {
+    public void setNumHour(int numHour) {
         this.numHour = numHour;
     }
 
@@ -182,5 +182,6 @@ public class OrderDetail {
         return "OrderDetail{" + "idOrder=" + idOrder + ", idUser=" + idUser + ", idStaff=" + idStaff + ", idCar=" + idCar + ", typeRent=" + typeRent + ", typeRecieve=" + typeRecieve + ", fromDay=" + fromDay + ", numDay=" + numDay + ", fromHour=" + fromHour + ", numHour=" + numHour + ", location=" + location + ", totalPrice=" + totalPrice + ", methodPay=" + methodPay + ", status=" + status + ", isReturn=" + isReturn + ", returnDay=" + returnDay + '}';
     }
     
+   
 
 }

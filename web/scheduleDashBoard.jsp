@@ -1,14 +1,13 @@
 <%-- 
-    Document   : UserDashBoard
-    Created on : May 30, 2023, 12:36:36 AM
+    Document   : scheduleDashBoard
+    Created on : Jun 17, 2023, 8:22:40 PM
     Author     : ACER
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +22,7 @@
         <title>Admin Dashboard</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
-
     <body>
-
-
         <!-- SIDEBAR -->
         <section id="sidebar">
             <a href="#" class="brand">
@@ -46,8 +42,8 @@
                         <span class="text">Car Management</span>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="userdashboard">
                         <i class='bx bxs-group'></i>
                         <span class="text">User Management</span>
                     </a>
@@ -64,8 +60,8 @@
                         <span class="text">Income Management</span>
                     </a>
                 </li>
-                <li>
-                    <a href="scheduledashboard">
+                <li class="active">
+                    <a href="#">
                         <i class="fa-solid fa-calendar-days fa-xs"></i>
                         <span class="text">Rental Schedule Management</span>
                     </a>
@@ -80,11 +76,6 @@
                 </li>
             </ul>
         </section>
-        <!-- SIDEBAR -->
-
-
-
-        <!-- CONTENT -->
         <section id="content">
             <!-- NAVBAR -->
             <nav>
@@ -107,7 +98,6 @@
                 </a>
             </nav>
             <!-- NAVBAR -->
-
             <!-- MAIN -->
             <main>
                 <div class="head-title">
@@ -119,7 +109,7 @@
                             </li>
                             <li><i class='bx bx-chevron-right'></i></li>
                             <li>
-                                <a class="active" href="#">User Management</a>
+                                <a class="active" href="#">Schedule Management</a>
                             </li>
                         </ul>
                     </div>
@@ -127,48 +117,48 @@
 
                 <ul class="box-info">
                     <li>
-                        <i class="fa-solid fa-user fa-2xl"></i>
+                        <i class="fa-solid fa-calendar-days fa-2xl" style="color: #1e5cc8;"></i>
                         <span class="text">
-                            <h3>${totalUser}</h3>
-                            <p>Total User</p>
+                            <h3>${totalSchedule}</h3>
+                            <p>Total Schedule</p>
                         </span>
                     </li>
                 </ul>
+                <h3>
+                    ${mess}
+                </h3>
                 <div class="table-data">
                     <div class="order">
                         <div class="head">
-                            <h3>User Infomation</h3>
-                            <a href="#"><i class="fa-solid fa-plus fa-xl"></i></a>
+                            <h3>Schedule Information</h3>
+                            <a href="#"><i class="fa-solid fa-plus fa-xl" data-toggle="modal" data-target="#"></i></a>
                         </div>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>UserName</th>
-                                    <th>Citizen Identification</th>
-                                    <th>Day Of Birth</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>License</th>
-                                    <th>Address</th>
-                                    <th></th>
+                                    <th>IdOrder</th>
+                                    <th>Customer id</th>
+                                    <th>Car id</th>
+                                    <th>Type rent</th>
+                                    <th>Total price</th>
+                                    <th>Method pay</th>
+                                    <th>Status</th>
+                                    <th>Type recieve car</th>
                                 </tr>
                             </thead>
-                            <c:forEach items="${listUser}" var="list">
+                            <c:forEach items="${pageSchedule}" var="list">
                                 <tbody>
                                     <tr>
-                                        <td>${list.name}</td>
-                                        <td>${list.userName}</td>
-                                        <td>${list.CCCD}</td>
-                                        <td>${list.DOB}</td>
-                                        <td>${list.gender}</td>
-                                        <td>${list.phone}</td>
-                                        <td>${list.email}</td>
-                                        <td>${list.license}</td>
-                                        <td>${list.address}</td>
+                                        <td>${list.idOrder}</td>
+                                        <td>${list.idUser}</td>
+                                        <td>${list.idCar}</td>
+                                        <td>${list.typeRent}</td>
+                                        <td>${list.totalPrice}</td>
+                                        <td>${list.methodPay}</td>
+                                        <td>${list.status}</td>
+                                        <td>${list.typeRecieve}</td>
                                         <td>
-                                            <a href="viewUser?uid=${list.ID}">
+                                            <a href="informationorder?oid=${list.idOrder}">
                                                 <i class="fa-solid fa-circle-info fa-xl"></i>
                                             </a>
                                         </td>
@@ -209,20 +199,12 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+
             </main>
-
-            <!-- MAIN -->
         </section>
-        <!-- CONTENT -->
-
-
         <script src="js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
-
 </html>
-
-
