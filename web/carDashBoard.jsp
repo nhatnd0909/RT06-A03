@@ -146,7 +146,6 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Type</th>
                                     <th>Manufactor</th>
@@ -165,7 +164,6 @@
                             <c:forEach items="${listCar}" var="list">
                                 <tbody>
                                     <tr>
-                                        <td>${list.idCar}</td>
                                         <td>${list.carName}</td>
                                         <td>${list.carType}</td>
                                         <td>${list.manufacturer}</td>

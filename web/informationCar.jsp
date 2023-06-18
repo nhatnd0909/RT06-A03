@@ -125,10 +125,102 @@
                     </div>
                 </div>
 
+                <div class="container">
+                    <div class="py-5 text-center">
+                        <h2>Information Car</h2>
+                    </div>
+                    <div class="row g-5 d-flex justify-content-center">
+                        <div class="col-md-8 col-lg-8">
+                            <c:forEach items="${car}" var="car">
+                                <form class="border rounded" action="informationcar" method="POST" style="padding: 10px">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Car ID</label>
+                                            <input class="form-control" type="text" name="id" value="${car.idCar}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Car Name</label>
+                                            <input class="form-control" type="text" name="name" value="${car.carName}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Type Car</label>
+                                            <select class="form-control" name="type">
+                                                <option value="${car.carType}">${car.carType}</option>
+                                                <c:forEach items="${listType}" var="listType">
+                                                    <option value="${listType}">${listType}</option>
+                                                </c:forEach> 
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Manufacturer</label>
+                                            <select class="form-control" name="manufactory">
+                                                <option value="${car.manufacturer}">${car.manufacturer}</option>
+                                                <c:forEach items="${listManufactory}" var="listManufactory">
+                                                    <option value="${listManufactory}">${listManufactory}</option>
+                                                </c:forEach> 
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Type Fuel</label>
+                                            <select class="form-control" name="fuel">
+                                                <option value="${car.typeFuel}">${car.typeFuel}</option>
+                                                <option value="Petrol">Petrol</option>
+                                                <option value="Gasoline">Gasoline</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Car Color</label>
+                                            <input class="form-control" type="text" name="color"color" value="${car.color}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Number of Seat</label>
+                                            <input class="form-control" type="text" name="seat" value="${car.numberOfSeat}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Car Status</label>
+                                            <select class="form-control" name="status">
+                                                <option value="${car.status}">${car.status}</option>
+                                                <option value="Free">Free</option>
+                                                <option value="Rented">Rented</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Car Description</label>
+                                            <input class="form-control" type="text" name="description" value="${car.description}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Year of manufacture</label>
+                                            <input class="form-control" type="text" name="year" value="${car.yearOfManufacture}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Img Car</label>
+                                            <input class="form-control" type="text" name="img" value="${car.img}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Price per Day</label>
+                                            <input class="form-control" type="text" name="pricePerDay" value="${car.pricePerDay}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label">Price per Hour</label>
+                                            <input class="form-control" type="text" name="pricePerHour" value="${car.pricePerHour}">
+                                        </div>
+                                    </div>
+                                    
+                                        <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
+                                </form>
+                            </c:forEach>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
 
                 <div class="container">
                     <c:forEach items="${car}" var="car">
-                        <form action="informationcar" method="POST">
+<!--                        <form action="informationcar" method="POST">
                             <div>
                                 <div class="">
                                     <div class="">
@@ -265,7 +357,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </form>-->
                     </c:forEach>
 
                     <div>

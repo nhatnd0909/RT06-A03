@@ -144,13 +144,9 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>UserName</th>
-                                    <th>Citizen Identification</th>
                                     <th>Day Of Birth</th>
                                     <th>Gender</th>
                                     <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>License</th>
                                     <th>Address</th>
                                     <th></th>
                                 </tr>
@@ -159,13 +155,9 @@
                                 <tbody>
                                     <tr>
                                         <td>${list.name}</td>
-                                        <td>${list.userName}</td>
-                                        <td>${list.CCCD}</td>
                                         <td>${list.DOB}</td>
                                         <td>${list.gender}</td>
                                         <td>${list.phone}</td>
-                                        <td>${list.email}</td>
-                                        <td>${list.license}</td>
                                         <td>${list.address}</td>
                                         <td>
                                             <a href="viewUser?uid=${list.ID}">

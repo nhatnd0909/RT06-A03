@@ -124,8 +124,61 @@
                     </div>
                 </div>   
             </main>
+
+
             <div class="container">
-                <form action="informationStaff" method="Post">
+                <div class="py-5 text-center">
+                    <h2>Information Staff</h2>
+                </div>
+                <div class="row g-5 d-flex justify-content-center">
+                    <div class="col-md-8 col-lg-8">
+                        <form class="border rounded" action="informationStaff" method="Post" style="padding: 10px">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label">Staff ID</label>
+                                    <input class="form-control" type="text" name="id" value="${staff.id}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Staff Name</label>
+                                    <input class="form-control" type="text" name="name" value="${staff.name}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Staff Name</label>
+                                    <input class="form-control" type="date" name="dob" value="${staff.dob}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Gender</label>
+                                    <select class="form-control" name="gender">
+                                        <c:if test="${test == 1}">
+                                            <option value="Male" selected="">Male</option>
+                                            <option value="Female">Female</option>
+                                        </c:if>
+                                        <c:if test="${test == 0}">
+                                            <option value="Male" >Male</option>
+                                            <option value="Female" selected="">Female</option>
+                                        </c:if>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Phone Number</label>
+                                    <input class="form-control" type="text" name="phone" value="${staff.phone}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Address</label>
+                                    <input class="form-control" type="text" name="address" value="${staff.address}">
+                                </div>
+
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container">
+<!--                <form action="informationStaff" method="Post">
                     <div>
                         <div class="">
                             <div class="">
@@ -198,9 +251,9 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                </form>-->
                 <div>
-                    <div class="d-flex justify-content-center" style="margin-top: 50px">
+                    <div class="d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px">
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                             Delete Staff
                         </button>

@@ -123,7 +123,7 @@
                 </div>
                 <div class="row g-5 d-flex justify-content-center">
                     <div class="col-md-8 col-lg-8">
-                        <form action="" method="">
+                        <form class="border rounded" action="" method="" style="padding: 10px">
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <label class="form-label">Id order</label>

@@ -158,7 +158,6 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Citizen Identification</th>
                                     <th>Day Of Birth</th>
                                     <th>Gender</th>
                                     <th>Phone</th>
@@ -171,7 +170,6 @@
                                 <tbody>
                                     <tr>
                                         <td>${list.name}</td>
-                                        <td>${list.CCCD}</td>
                                         <td>${list.DOB}</td>
                                         <td>${list.gender}</td>
                                         <td>${list.phone}</td>

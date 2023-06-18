@@ -124,8 +124,63 @@
                     </div>
                 </div>   
             </main>
+
             <div class="container">
-                <form action="" method="">
+                <div class="py-5 text-center">
+                    <h2>Information User</h2>
+                </div>
+                <div class="row g-5 d-flex justify-content-center">
+                    <div class="col-md-8 col-lg-8">
+                        <form class="border rounded" action="" method="" style="padding: 10px">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label">Name user</label>
+                                    <input class="form-control" type="text" name="name" value="${account.name}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Citizen Identification</label>
+                                    <input class="form-control" type="text" name="name" value="${account.CCCD}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Day of Birth</label>
+                                    <input class="form-control" type="date" name="dob" value="${account.DOB}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Gender</label>
+                                    <select class="form-control" name="gender">
+                                        <c:if test="${test == 0}">
+                                            <option value="Male" selected="">Male</option>
+                                            <option value="Female">Female</option>
+                                        </c:if>
+                                        <c:if test="${test == 1}">
+                                            <option value="Male" >Male</option>
+                                            <option value="Female" selected="">Female</option>
+                                        </c:if>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Phone number</label>
+                                    <input class="form-control" type="text" name="phone" value="${account.phone}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Address</label>
+                                    <input class="form-control" type="text" name="address" value="${account.address}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Email</label>
+                                    <input class="form-control" type="text" name="address" value="${account.email}">
+                                </div>
+                            </div>
+                                <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container">
+<!--                <form action="" method="">
                     <div>
                         <div class="">
                             <div class="">
@@ -201,14 +256,14 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <!--                                <input type="submit" class="btn btn-primary" value="Save changes">-->
+                                                                <input type="submit" class="btn btn-primary" value="Save changes">
 
                             </div>
                         </div>
                     </div>
-                </form>
+                </form>-->
                 <div>
-                    <div class="d-flex justify-content-center" style="margin-top: 50px">
+                    <div class="d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px">
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                             Delete User
                         </button>
