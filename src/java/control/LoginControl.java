@@ -37,7 +37,6 @@ public class LoginControl extends HttpServlet {
             Account account = dao.login(user, pass);
             if (account != null) {
                 session.setAttribute("id", account.getID());
-                System.out.println(session.getAttribute("id"));
                 if (account.isRole()) {
                     response.sendRedirect("home");
                 } else if (!account.isRole()) {

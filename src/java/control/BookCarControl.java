@@ -36,32 +36,43 @@ public class BookCarControl extends HttpServlet {
             Account account = dao.getAccountByID(uid);
             List<Car> listCar = dao.getCarByID(cid);
             Car car = listCar.get(0);
-            
-            String address = account.getAddress();
-            String[] adds = address.split("/");
-            String add = adds[0];
-            String city = adds[3];
-            String district = adds[2];
-            String wards = adds[1];
-                
-            
+            if (account.getAddress()==null) {
+            } else {
+                String address = account.getAddress();
+                String[] adds = address.split("/");
+                String add = adds[0];
+                String city = adds[3];
+                String district = adds[2];
+                String wards = adds[1];
+                request.setAttribute("add", add);
+                request.setAttribute("city", city);
+                request.setAttribute("district", district);
+                request.setAttribute("wards", wards);
+            }
+//            String address = account.getAddress();
+//            String[] adds = address.split("/");
+//            String add = adds[0];
+//            String city = adds[3];
+//            String district = adds[2];
+//            String wards = adds[1];
+
             request.setAttribute("account", account);
             request.setAttribute("car", car);
-            
-            request.setAttribute("add", add);
-            request.setAttribute("city", city);
-            request.setAttribute("district", district);
-            request.setAttribute("wards", wards);
+
+//            request.setAttribute("add", add);
+//            request.setAttribute("city", city);
+//            request.setAttribute("district", district);
+//            request.setAttribute("wards", wards);
             List<ScheduleDay> scheduleDay = dao.getScheduleDay(cid);
             request.setAttribute("scheduleDay", scheduleDay);
             List<ScheduleHour> scheduleHour = dao.getScheduleHour(cid);
             request.setAttribute("scheduleHour", scheduleHour);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-        
+
         request.getRequestDispatcher("bookCar.jsp").forward(request, response);
     }
 
@@ -78,7 +89,7 @@ public class BookCarControl extends HttpServlet {
             throws ServletException, IOException {
         DAO dao = new DAO();
         HttpSession session = request.getSession();
-        
+
         try {
             int idUser = Integer.parseInt(session.getAttribute("id").toString());
             String cid = request.getParameter("cid");
@@ -94,15 +105,14 @@ public class BookCarControl extends HttpServlet {
             String ci = request.getParameter("ci");
             String dl = request.getParameter("dl");
             String idOrder = dao.createCode();
-            String add = address+"/"+wards+"/"+district+"/"+city;
+            String add = address + "/" + wards + "/" + district + "/" + city;
             dao.updateAccount1(idUser, name, email, phone, add, ci, dl);
-            dao.insertRentCar(idOrder,idUser, cid, typeRent, position);
+            dao.insertRentCar(idOrder, idUser, cid, typeRent, position);
             session.setAttribute("idOrder", idOrder);
-            
+
         } catch (Exception e) {
-            
+
         }
-        
 
         response.sendRedirect("detailbooking");
     }

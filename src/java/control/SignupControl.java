@@ -14,6 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -25,6 +26,7 @@ public class SignupControl extends HttpServlet {
     throws ServletException, IOException {
         try {
             DAO dao = new DAO();
+            HttpSession session = request.getSession();
             String user = request.getParameter("username");
             String pass = dao.MD5(request.getParameter("password"));
             String repass = dao.MD5(request.getParameter("repassword"));       
