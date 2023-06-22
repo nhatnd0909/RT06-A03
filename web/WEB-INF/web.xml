@@ -144,6 +144,10 @@
         <servlet-name>DeleteUserControl</servlet-name>
         <servlet-class>control.DeleteUserControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserChangeBookingControl</servlet-name>
+        <servlet-class>control.UserChangeBookingControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeControl</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -287,6 +291,10 @@
     <servlet-mapping>
         <servlet-name>DeleteUserControl</servlet-name>
         <url-pattern>/deleteuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserChangeBookingControl</servlet-name>
+        <url-pattern>/userchangebooking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -38,7 +38,6 @@ public class InfomationHistoryBookingControl extends HttpServlet {
             String returnDay = dao.getDayReturnCarByIdOrder(idOrder);
             String returnHour = dao.getHourReturnCarByIdOrder(idOrder);
             String idCar = orderDetail.getIdCar();
-            System.out.println(idCar);
             if (methodPay.equalsIgnoreCase("credit")) {
                 methodPayCar = 0;
             } else {
@@ -58,7 +57,7 @@ public class InfomationHistoryBookingControl extends HttpServlet {
             } else {
                 typeReceiveCar = 1;
             }
-            
+
             request.setAttribute("returnDay", returnDay);
             request.setAttribute("idCar", idCar);
             request.setAttribute("returnHour", returnHour);
@@ -75,7 +74,7 @@ public class InfomationHistoryBookingControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+       
     }
 
 }

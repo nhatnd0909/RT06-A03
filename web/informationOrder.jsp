@@ -218,9 +218,23 @@
                                     <label class="form-label">Total Price</label>
                                     <input name="totalPrice" type="text" class="form-control"value="${orderDetail.totalPrice}"disabled>
                                 </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Citizen identification</label>
+                                    <div class="text-center">
+                                        <img src="images/${account.imgCCCD}" 
+                                             alt="img" height="160px" width="350px">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Car driving license</label>
+                                    <div class="text-center">
+                                        <img src="images/${account.imgLicense}" 
+                                             alt="img" height="160px" width="350px">
+                                    </div>
+                                </div>
                                 <div class="col-sm-4">
                                     <label class="form-label">Car return date</label>
-                                    <input name="dayReturn" type="datetime-local" class="form-control"value="">
+                                    <input name="dayReturn" type="datetime-local" class="form-control"value="" disabled>
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label">Status return car</label>
@@ -230,7 +244,7 @@
                                             <option value="hour">Paid car</option>
                                         </c:if>
                                         <c:if test="${orderDetail.isReturn == 1}">
-                                             <option value="day">Unpaid car</option>
+                                            <option value="day">Unpaid car</option>
                                             <option value="hour" selected>Paid car</option>
                                         </c:if>
                                     </select> 
@@ -240,8 +254,10 @@
                                     <select name="status" class="form-control form-control">
                                         <option value="day">${orderDetail.status}</option>
                                         <option value="hour">Order successful</option>
+                                        <option value="hour">Order rejected</option>
                                     </select> 
                                 </div>
+
                             </div>
                             <hr>
                             <input type="submit" class="btn btn-primary" value="Save changes">

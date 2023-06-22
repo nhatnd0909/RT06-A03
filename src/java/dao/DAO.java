@@ -1063,7 +1063,7 @@ public class DAO {
         }
     }
 
-    public void updateAccount2(String imgCI, String imgLd,int id) {
+    public void updateAccount2(String imgCI, String imgLd, int id) {
         String query = "UPDATE NguoiDung\n"
                 + "SET ImgCCCD =?,ImgBangLai=?\n"
                 + "WHERE ID = ?";
@@ -1077,7 +1077,8 @@ public class DAO {
         } catch (Exception e) {
         }
     }
-        public void deleteUser(int id) {
+
+    public void deleteUser(int id) {
         String query = "DELETE FROM NguoiDung WHERE ID=?;";
         try {
             conn = new dbcontext.DBContext().getConnection();
@@ -1089,12 +1090,103 @@ public class DAO {
             e.printStackTrace();
         }
     }
+
+    public void updateBookingDay(String oid, String fromDay, int numday, String location, String paymentMethod, int totalPrice) {
+        String query = "UPDATE ChiTietThueXe\n"
+                + "SET NgayDat =?,SoNgayDat= ?,ViTriNhanXe=?,PhuongThucThanhToan=?,TongGiaThue=?\n"
+                + "WHERE MaThue = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, fromDay);
+            ps.setInt(2, numday);
+            ps.setString(3, location);
+            ps.setString(4, paymentMethod);
+            ps.setInt(5, totalPrice);
+            ps.setString(6, oid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void updateBookingHour(String oid, String fromHour, int numHour, String location, String paymentMethod, int totalPrice) {
+        String query = "UPDATE ChiTietThueXe\n"
+                + "SET GioDat =?,SoGioDat= ?,ViTriNhanXe=?,PhuongThucThanhToan=?,TongGiaThue=?\n"
+                + "WHERE MaThue = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, fromHour);
+            ps.setInt(2, numHour);
+            ps.setString(3, location);
+            ps.setString(4, paymentMethod);
+            ps.setInt(5, totalPrice);
+            ps.setString(6, oid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public int getPricePerdayByIdOrder(String idOrder) {
+        int result = 0;
+        String query = "select GiaThueNgay\n"
+                + "from ThueXe inner join xe on ThueXe.MaXe = xe.MaXe \n"
+                + "where MaThue= ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
+    public int getPricePerhourByIdOrder(String idOrder) {
+        int result = 0;
+        String query = "select GiaThueGio\n"
+                + "from ThueXe inner join xe on ThueXe.MaXe = xe.MaXe \n"
+                + "where MaThue= ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
+    public void updateTypeRecieveCar(String oid,String typeRecieve) {
+        String query = "UPDATE ThueXe\n"
+                + "SET KieuNhanXe = ?\n"
+                + "WHERE MaThue = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, typeRecieve);
+            ps.setString(2, oid);
+//            ps.setString(3, location);
+//            ps.setString(4, paymentMethod);
+//            ps.setInt(5, totalPrice);
+//            ps.setString(6, oid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        dao.deleteUser(25);
+            dao.updateTypeRecieveCar("4639331", "fixed");
     }
 }

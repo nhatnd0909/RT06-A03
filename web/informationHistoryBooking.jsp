@@ -79,11 +79,11 @@
             </div>
             <div class="row g-5 d-flex justify-content-center">
                 <div class="col-md-10 col-lg-10">
-                    <form class="border rounded" action="" method="" style="padding: 10px">
+                    <form class="border rounded" action="userchangebooking" method="GET" style="padding: 10px">
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label class="form-label">Id order</label>
-                                <input class="form-control" type="text" name="idOrder" value="${orderDetail.idOrder}" disabled>
+                                <input class="form-control" type="text" name="idOrder" value="${orderDetail.idOrder}">
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label">Car Name</label>
@@ -91,7 +91,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label">Type rent</label>
-                                <select class="form-control" name="typeRent">
+                                <select class="form-control" name="typeRent" disabled>
                                     <c:if test="${typeRentCar == 0}">
                                         <option value="day" selected>Day</option>
                                         <option value="hour">Hour</option>
@@ -122,7 +122,7 @@
                                 </c:if>
                                 <c:if test="${typeRentCar == 1}">
                                     <label class="form-label">Rent hour</label>
-                                    <input class="form-control" type="datetime-local" name="fromday"color" value="${orderDetail.fromHour}">
+                                    <input class="form-control" type="datetime-local" name="fromHour"color" value="${orderDetail.fromHour}">
                                 </c:if>
                             </div>
                             <div class="col-sm-4">
@@ -132,17 +132,17 @@
                                 </c:if>
                                 <c:if test="${typeRentCar == 1}">
                                     <label class="form-label">Number hour rent</label>
-                                    <input class="form-control" type="text" name="numDay" value="${orderDetail.numHour}">
+                                    <input class="form-control" type="text" name="numHour" value="${orderDetail.numHour}">
                                 </c:if> 
                             </div>
                             <div class="col-sm-4">
                                 <c:if test="${typeRentCar == 0}">
                                     <label class="form-label">Return day</label>
-                                    <input class="form-control" type="date" name="toDay" value="${returnDay}">
+                                    <input class="form-control" type="date" name="toDay" value="${returnDay}" disabled>
                                 </c:if>
                                 <c:if test="${typeRentCar == 1}">
                                     <label class="form-label">Return hour</label>
-                                    <input class="form-control" type="datetime-local" name="toDay" value="${returnHour}">
+                                    <input class="form-control" type="datetime-local" name="toDay" value="${returnHour}" disabled>
                                 </c:if>
                             </div>
                             <div class="col-sm-12">
