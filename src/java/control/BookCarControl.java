@@ -109,7 +109,8 @@ public class BookCarControl extends HttpServlet {
             dao.updateAccount1(idUser, name, email, phone, add, ci, dl);
             dao.insertRentCar(idOrder, idUser, cid, typeRent, position);
             session.setAttribute("idOrder", idOrder);
-
+            System.out.println(ci);
+            System.out.println(dl);
         } catch (Exception e) {
 
         }

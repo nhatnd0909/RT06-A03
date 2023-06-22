@@ -25,12 +25,219 @@
         <link rel="stylesheet" href="css/flaticon.css">
         <link rel="stylesheet" href="css/icomoon.css">
         <link rel="stylesheet" href="css/style.css">
-        <style >
+        <style>
             h2 {
                 font-size: 40px;
                 background: linear-gradient(to left, #660066 0%, #ff3300 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
+            }
+        </style>
+        <style>
+            .file-upload{
+                display:block;
+                text-align:center;
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 12px;
+            }
+            .file-upload .file-select{
+                display:block;
+                border: 2px solid #dce4ec;
+                color: #34495e;
+                cursor:pointer;
+                height:40px;
+                line-height:40px;
+                text-align:left;
+                background:#FFFFFF;
+                overflow:hidden;
+                position:relative;
+            }
+            .file-upload .file-select .file-select-button{
+                background:#dce4ec;
+                padding:0 10px;
+                display:inline-block;
+                height:40px;
+                line-height:40px;
+            }
+            .file-upload .file-select .file-select-name{
+                line-height:40px;
+                display:inline-block;
+                padding:0 10px;
+            }
+            .file-upload .file-select:hover{
+                border-color:#34495e;
+                transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -webkit-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+            }
+            .file-upload .file-select:hover .file-select-button{
+                background:#34495e;
+                color:#FFFFFF;
+                transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -webkit-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+            }
+            .file-upload.active .file-select{
+                border-color:#3fa46a;
+                transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -webkit-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+            }
+            .file-upload.active .file-select .file-select-button{
+                background:#3fa46a;
+                color:#FFFFFF;
+                transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -webkit-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+            }
+            .file-upload .file-select input[type=file]{
+                z-index:100;
+                cursor:pointer;
+                position:absolute;
+                height:100%;
+                width:100%;
+                top:0;
+                left:0;
+                opacity:0;
+                filter:alpha(opacity=0);
+            }
+            .file-upload .file-select.file-select-disabled{
+                opacity:0.65;
+            }
+            .file-upload .file-select.file-select-disabled:hover{
+                cursor:default;
+                display:block;
+                border: 2px solid #dce4ec;
+                color: #34495e;
+                cursor:pointer;
+                height:40px;
+                line-height:40px;
+                margin-top:5px;
+                text-align:left;
+                background:#FFFFFF;
+                overflow:hidden;
+                position:relative;
+            }
+            .file-upload .file-select.file-select-disabled:hover .file-select-button{
+                background:#dce4ec;
+                color:#666666;
+                padding:0 10px;
+                display:inline-block;
+                height:40px;
+                line-height:40px;
+            }
+            .file-upload .file-select.file-select-disabled:hover .file-select-name{
+                line-height:40px;
+                display:inline-block;
+                padding:0 10px;
+            }
+
+
+
+            .file-upload-2{
+                display:block;
+                text-align:center;
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 12px;
+            }
+            .file-upload-2 .file-select{
+                display:block;
+                border: 2px solid #dce4ec;
+                color: #34495e;
+                cursor:pointer;
+                height:40px;
+                line-height:40px;
+                text-align:left;
+                background:#FFFFFF;
+                overflow:hidden;
+                position:relative;
+            }
+            .file-upload-2 .file-select .file-select-button{
+                background:#dce4ec;
+                padding:0 10px;
+                display:inline-block;
+                height:40px;
+                line-height:40px;
+            }
+            .file-upload-2 .file-select .file-select-name{
+                line-height:40px;
+                display:inline-block;
+                padding:0 10px;
+            }
+            .file-upload-2 .file-select:hover{
+                border-color:#34495e;
+                transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -webkit-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+            }
+            .file-upload-2 .file-select:hover .file-select-button{
+                background:#34495e;
+                color:#FFFFFF;
+                transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -webkit-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+            }
+            .file-upload-2.active .file-select{
+                border-color:#3fa46a;
+                transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -webkit-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+            }
+            .file-upload-2.active .file-select .file-select-button{
+                background:#3fa46a;
+                color:#FFFFFF;
+                transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -webkit-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+            }
+            .file-upload-2 .file-select input[type=file]{
+                z-index:100;
+                cursor:pointer;
+                position:absolute;
+                height:100%;
+                width:100%;
+                top:0;
+                left:0;
+                opacity:0;
+                filter:alpha(opacity=0);
+            }
+            .file-upload-2 .file-select.file-select-disabled{
+                opacity:0.65;
+            }
+            .file-upload-2 .file-select.file-select-disabled:hover{
+                cursor:default;
+                display:block;
+                border: 2px solid #dce4ec;
+                color: #34495e;
+                cursor:pointer;
+                height:40px;
+                line-height:40px;
+                margin-top:5px;
+                text-align:left;
+                background:#FFFFFF;
+                overflow:hidden;
+                position:relative;
+            }
+            .file-upload-2 .file-select.file-select-disabled:hover .file-select-button{
+                background:#dce4ec;
+                color:#666666;
+                padding:0 10px;
+                display:inline-block;
+                height:40px;
+                line-height:40px;
+            }
+            .file-upload-2 .file-select.file-select-disabled:hover .file-select-name{
+                line-height:40px;
+                display:inline-block;
+                padding:0 10px;
             }
         </style>
     </head>
@@ -189,17 +396,30 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Citizen Identification</label>
-                                    <div class="custom-file">
-                                        <input name="ci" type="file" class="custom-file-input">
-                                        <label class="custom-file-label">Choose file...</label>
-
+                                    <!--                                    <div class="custom-file">
+                                                                            <input name="ci" type="file" class="custom-file-input">
+                                                                            <label class="custom-file-label">Choose file...</label>
+                                                                        </div>-->
+                                    <div class="file-upload">
+                                        <div class="file-select">
+                                            <div class="file-select-button" id="fileName">Choose File</div>
+                                            <div class="file-select-name" id="noFile">No file chosen...</div> 
+                                            <input type="file" name="ci" id="chooseFile">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <label for="address" class="form-label">Driving License</label>
-                                    <div class="custom-file">
-                                        <input name="dl" type="file" class="custom-file-input">
-                                        <label class="custom-file-label">Choose file...</label>
+                                    <!--                                    <div class="custom-file">
+                                                                            <input name="dl" type="file" class="custom-file-input">
+                                                                            <label class="custom-file-label">Choose file...</label>
+                                                                        </div>-->
+                                    <div class="file-upload-2">
+                                        <div class="file-select">
+                                            <div class="file-select-button" id="fileName2">Choose File</div>
+                                            <div class="file-select-name" id="noFile2">No file chosen...</div> 
+                                            <input type="file" name="dl" id="chooseFile2">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -231,6 +451,29 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
+        <script>
+            $('#chooseFile').bind('change', function () {
+                var filename = $("#chooseFile").val();
+                if (/^\s*$/.test(filename)) {
+                    $(".file-upload").removeClass('active');
+                    $("#noFile").text("No file chosen...");
+                } else {
+                    $(".file-upload").addClass('active');
+                    $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+                }
+            });
+
+            $('#chooseFile2').bind('change', function () {
+                var filename = $("#chooseFile2").val();
+                if (/^\s*$/.test(filename)) {
+                    $(".file-upload-2").removeClass('active');
+                    $("#noFile2").text("No file chosen...");
+                } else {
+                    $(".file-upload-2").addClass('active');
+                    $("#noFile2").text(filename.replace("C:\\fakepath\\", ""));
+                }
+            });
+        </script>
     </body>
 </html>
 
