@@ -1063,12 +1063,27 @@ public class DAO {
         }
     }
 
+    public void updateAccount2(String imgCI, String imgLd,int id) {
+        String query = "UPDATE NguoiDung\n"
+                + "SET ImgCCCD =?,ImgBangLai=?\n"
+                + "WHERE ID = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, imgCI);
+            ps.setString(2, imgLd);
+            ps.setInt(3, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        dao.insertFeedBack("Nguyên Đình Nhật", "asdasd@gmail.com", "hello", "ádasds");
+        dao.updateAccount2("ádasdsad", "Ádsasdsd", 23);
     }
 }

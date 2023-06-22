@@ -49,6 +49,12 @@ public class ProfileControl extends HttpServlet {
         String gender = request.getParameter("gender");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
+        
+        String ci = request.getParameter("ci");
+        String dl = request.getParameter("dl");
+        dao.updateAccount2(ci, dl, ID);
+        
+        
         dao.updateAccount(ID, name, phone, citizenIdentification, dob, gender, email, address);
         Account account = dao.getAccountByID(ID);
         request.setAttribute("account", account);
