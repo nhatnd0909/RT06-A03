@@ -391,7 +391,7 @@
                                         </label>
                                         <div class="text-center">
                                             <img src="images/${account.imgCCCD}" 
-                                                 alt="avatar" height="160px" width="350px">
+                                                 alt="img" height="160px" width="350px">
                                         </div>
                                         <div class="file-upload">
                                             <div class="file-select">
@@ -410,7 +410,7 @@
                                         </label>
                                         <div class="text-center">
                                             <img src="images/${account.imgLicense}" 
-                                                 alt="avatar" height="160px" width="350px">
+                                                 alt="img" height="160px" width="350px">
                                         </div>
                                         <div class="file-upload-2">
                                             <div class="file-select">

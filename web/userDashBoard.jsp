@@ -143,6 +143,7 @@
                         <table>
                             <thead>
                                 <tr>
+                                    <th>Username</th>
                                     <th>Name</th>
                                     <th>Day Of Birth</th>
                                     <th>Gender</th>
@@ -154,6 +155,7 @@
                             <c:forEach items="${listUser}" var="list">
                                 <tbody>
                                     <tr>
+                                        <td>${list.userName}</td>
                                         <td>${list.name}</td>
                                         <td>${list.DOB}</td>
                                         <td>${list.gender}</td>

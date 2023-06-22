@@ -1077,13 +1077,24 @@ public class DAO {
         } catch (Exception e) {
         }
     }
+        public void deleteUser(int id) {
+        String query = "DELETE FROM NguoiDung WHERE ID=?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        dao.updateAccount2("ádasdsad", "Ádsasdsd", 23);
+        dao.deleteUser(25);
     }
 }

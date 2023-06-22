@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package control;
 
 import dao.DAO;
@@ -22,25 +21,36 @@ public class ViewUserControl extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-         DAO dao = new DAO();
-         int uid =Integer.parseInt(request.getParameter("uid"));
-         Account account = dao.getAccountByID(uid);
-         
-         int test =0;
-         if(account.getGender().equals("Male")){
-             test = 0;
-         } else{
-             test = 1;
-         }
-         
-         request.setAttribute("test", test);
-         request.setAttribute("account", account);
-         request.getRequestDispatcher("viewUser.jsp").forward(request, response);
-    } 
+            throws ServletException, IOException {
+        DAO dao = new DAO();
+        try {
+            int uid = Integer.parseInt(request.getParameter("uid"));
+            Account account = dao.getAccountByID(uid);
+
+            if (account.getGender() == null) {
+
+            } else {
+                int test = 0;
+                if (account.getGender().equals("Male")) {
+                    test = 0;
+                } else {
+                    test = 1;
+                }
+                request.setAttribute("test", test);
+            }
+
+            request.setAttribute("uid", uid);
+            request.setAttribute("account", account);
+            request.getRequestDispatcher("viewUser.jsp").forward(request, response);
+        } catch (Exception e) {
+
+        }
+
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        
+            throws ServletException, IOException {
+
     }
 }

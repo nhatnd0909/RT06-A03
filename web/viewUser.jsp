@@ -170,8 +170,24 @@
                                     <label class="form-label">Email</label>
                                     <input class="form-control" type="text" name="address" value="${account.email}">
                                 </div>
+                                <div class="col-sm-6">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Citizen Identification</label>
+                                    <div class="text-center">
+                                        <img src="images/${account.imgLicense}" 
+                                             alt="img" height="160px" width="340px">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label">Car driving license</label>
+                                    <div class="text-center">
+                                        <img src="images/${account.imgLicense}" 
+                                             alt="img" height="160px" width="340px">
+                                    </div>
+                                </div>
                             </div>
-                                <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
+                            <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
                         </form>
                     </div>
                 </div>
@@ -180,96 +196,95 @@
 
 
             <div class="container">
-<!--                <form action="" method="">
-                    <div>
-                        <div class="">
-                            <div class="">
-                                <div class="">
-                                    <h5 class="modal-title" id="">Information User</h5>
-                                </div>
-                                <div class="">
-                                    <table class="table">
-                                        <tr>
-                                            <td>
-                                                Name
-                                            </td>
-                                            <td>
-                                                <input type="text" name="name" value="${account.name}">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Citizen Identification
-                                            </td>
-                                            <td>
-                                                <input type="text" name="name" value="${account.CCCD}">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Day of Birth
-                                            </td>
-                                            <td>
-                                                <input type="date" name="dob" value="${account.DOB}" value="Enter Day of birth">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Gender
-                                            </td>
-                                            <td>
-                                                <select name="gender">
-                                                    <c:if test="${test == 0}">
-                                                        <option value="Male" selected="">Male</option>
-                                                        <option value="Female">Female</option>
-                                                    </c:if>
-                                                    <c:if test="${test == 1}">
-                                                        <option value="Male" >Male</option>
-                                                        <option value="Female" selected="">Female</option>
-                                                    </c:if>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Phone Number
-                                            </td>
-                                            <td>
-                                                <input type="text" name="phone" value="${account.phone}">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Address
-                                            </td>
-                                            <td>
-                                                <input type="text" name="address" value="${account.address}">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Email
-                                            </td>
-                                            <td>
-                                                <input type="text" name="address" value="${account.email}">
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                                                <input type="submit" class="btn btn-primary" value="Save changes">
+                <!--                <form action="" method="">
+                                    <div>
+                                        <div class="">
+                                            <div class="">
+                                                <div class="">
+                                                    <h5 class="modal-title" id="">Information User</h5>
+                                                </div>
+                                                <div class="">
+                                                    <table class="table">
+                                                        <tr>
+                                                            <td>
+                                                                Name
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="name" value="${account.name}">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Citizen Identification
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="name" value="${account.CCCD}">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Day of Birth
+                                                            </td>
+                                                            <td>
+                                                                <input type="date" name="dob" value="${account.DOB}" value="Enter Day of birth">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Gender
+                                                            </td>
+                                                            <td>
+                                                                <select name="gender">
+                <c:if test="${test == 0}">
+                    <option value="Male" selected="">Male</option>
+                    <option value="Female">Female</option>
+                </c:if>
+                <c:if test="${test == 1}">
+                    <option value="Male" >Male</option>
+                    <option value="Female" selected="">Female</option>
+                </c:if>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Phone Number
+        </td>
+        <td>
+            <input type="text" name="phone" value="${account.phone}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Address
+        </td>
+        <td>
+            <input type="text" name="address" value="${account.address}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email
+        </td>
+        <td>
+            <input type="text" name="address" value="${account.email}">
+        </td>
+    </tr>
+</table>
+</div>
+                            <input type="submit" class="btn btn-primary" value="Save changes">
 
-                            </div>
-                        </div>
-                    </div>
-                </form>-->
+</div>
+</div>
+</div>
+</form>-->
                 <div>
                     <div class="d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px">
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                             Delete User
                         </button>
                     </div>
-
-                    <form action="" method="">
+                    <form action="deleteuser?uid=${uid}" method="POST">
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
