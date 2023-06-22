@@ -97,15 +97,15 @@
                         </div>
                     </div>
                     <div class="col-md-8 block-9 mb-md-5">
-                        <form action="contact" method="POST" class="bg-light p-5 contact-form">
+                        <form action="feedback" method="POST" class="bg-light p-5 contact-form">
                             <div>
-                                <h3 class="text-warning">${messRe}</h3>
+                                <h3 class="text-warning">${mess}</h3>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" value="${account.name}">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="gmail" class="form-control" placeholder="Your Email">
+                                <input type="text" name="gmail" class="form-control" placeholder="Your Email" value="${account.email}">
                             </div>
                             <div class="form-group">
                                 <input type="text" name="subject" class="form-control" placeholder="Subject">

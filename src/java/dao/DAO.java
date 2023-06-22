@@ -1048,15 +1048,27 @@ public class DAO {
         return list;
     }
 
+    public void insertFeedBack(String name, String email, String subject, String message) {
+        String query = "INSERT INTO FeedBack( name, email,subject,message)\n"
+                + "VALUES (?, ?, ?,?);";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, subject);
+            ps.setString(4, message);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        List<OrderDetail> list = dao.getOrderDetailByIdUser("3");
-        for(OrderDetail o:list){
-            System.out.println(o);
-        }
+        dao.insertFeedBack("Nguyên Đình Nhật", "asdasd@gmail.com", "hello", "ádasds");
     }
 }

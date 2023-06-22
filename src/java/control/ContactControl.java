@@ -4,12 +4,15 @@
  */
 package control;
 
+import dao.DAO;
+import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
@@ -27,6 +30,16 @@ public class ContactControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        DAO dao = new DAO();
+        HttpSession session = request.getSession();
+        try {
+            int idUser = Integer.parseInt(session.getAttribute("id").toString());
+            Account account = dao.getAccountByID(idUser);
+            request.setAttribute("account", account);
+        } catch (Exception e) {
+            
+        }
         request.getRequestDispatcher("contact.jsp").forward(request, response);
     }
 

@@ -99,7 +99,7 @@
                 <label for="switch-mode" class="switch-mode"></label>
                 <a href="#" class="notification">
                     <i class='bx bxs-bell'></i>
-                    <span class="num">8</span>
+                    <span class="num">!</span>
                 </a>
                 <a href="#" class="profile">
                     <i class="fa-solid fa-user"></i>
