@@ -395,11 +395,9 @@
                                     </select> 
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Citizen Identification</label>
-                                    <!--                                    <div class="custom-file">
-                                                                            <input name="ci" type="file" class="custom-file-input">
-                                                                            <label class="custom-file-label">Choose file...</label>
-                                                                        </div>-->
+                                    <label class="form-label">Citizen Identification</label><br>
+                                    <img src="images/${account.imgCCCD}" 
+                                         alt="avatar" height="160px" width="350px">
                                     <div class="file-upload">
                                         <div class="file-select">
                                             <div class="file-select-button" id="fileName">Choose File</div>
@@ -409,11 +407,9 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="address" class="form-label">Driving License</label>
-                                    <!--                                    <div class="custom-file">
-                                                                            <input name="dl" type="file" class="custom-file-input">
-                                                                            <label class="custom-file-label">Choose file...</label>
-                                                                        </div>-->
+                                    <label for="address" class="form-label">Driving License</label><br>
+                                    <img src="images/${account.imgLicense}" 
+                                         alt="avatar" height="160px" width="350px">
                                     <div class="file-upload-2">
                                         <div class="file-select">
                                             <div class="file-select-button" id="fileName2">Choose File</div>
