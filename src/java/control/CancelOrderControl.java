@@ -5,6 +5,7 @@
 
 package control;
 
+import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -21,7 +22,13 @@ public class CancelOrderControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
+        DAO dao = new DAO();
+        try {
+            String idOrder = request.getParameter("idOrder");
+            dao.deleteOrder(idOrder);
+        } catch (Exception e) {
+        }
+        request.getRequestDispatcher("historybooking").forward(request, response);
     } 
 
     @Override

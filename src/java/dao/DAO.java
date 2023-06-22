@@ -1163,7 +1163,7 @@ public class DAO {
         return result;
     }
 
-    public void updateTypeRecieveCar(String oid,String typeRecieve) {
+    public void updateTypeRecieveCar(String oid, String typeRecieve) {
         String query = "UPDATE ThueXe\n"
                 + "SET KieuNhanXe = ?\n"
                 + "WHERE MaThue = ?";
@@ -1181,12 +1181,25 @@ public class DAO {
         }
     }
 
+    public void deleteOrder(String oid) {
+        String query = "UPDATE ChiTietThueXe\n"
+                + "SET TrangThai = 'Canceled order'\n"
+                + "WHERE MaThue = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, oid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-            dao.updateTypeRecieveCar("4639331", "fixed");
+        dao.deleteOrder("4639331");
     }
 }

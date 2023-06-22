@@ -183,7 +183,7 @@
                         Cancer Order
                     </button>
                 </div>
-                <form action="cancelorder?oid=" method="GET">
+                <form action="cancelorder" method="GET">
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -195,6 +195,9 @@
                                 </div>
                                 <div class="modal-body">
                                     Are you sure you want to cancer this order?
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="hidden" name="idOrder" value="${orderDetail.idOrder}">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
