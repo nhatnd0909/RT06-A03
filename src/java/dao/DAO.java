@@ -1194,12 +1194,27 @@ public class DAO {
         }
     }
 
+    public void updateStatusOrder(String idOrder, String status, int isReturn) {
+        String query = "UPDATE chitietthuexe\n"
+                + "SET trangthai=?, datra = ?\n"
+                + "WHERE mathue = ?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, status);
+            ps.setInt(2, isReturn);
+            ps.setString(3, idOrder);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        dao.deleteOrder("4639331");
+        dao.updateStatusOrder("15452028", "Order processing", 0);
     }
 }

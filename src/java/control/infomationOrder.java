@@ -75,7 +75,32 @@ public class infomationOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        DAO dao = new DAO();
+        try {
+            String idOrder = request.getParameter("idOrder");
+            OrderDetail orderDetail = dao.getOrderDetailById(idOrder);
+            int statusRe = Integer.parseInt(request.getParameter("status"));
+            String status = "";
+            if (statusRe == 1) {
+                status = "Order processing";
+            } else if (statusRe == 2) {
+                status = "Order successful";
+            } else if (statusRe == 3) {
+                status = "Order rejected";
+            } else if (statusRe == 4) {
+                status = "Order completion";
+            }
+            String statusReturn = "";
+            int isReturn = Integer.parseInt(request.getParameter("isReturn"));
+            if (isReturn == 0) {
+                statusReturn = "Unpaid car";
+            } else {
+                statusReturn = "Paid car";
+            }
+            dao.updateStatusOrder(idOrder, status, isReturn);
+        } catch (Exception e) {
+        }
+        response.sendRedirect("scheduledashboard");
     }
 
 }

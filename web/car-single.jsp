@@ -346,11 +346,24 @@
                                     <div>
                                         <div class="card clearfix" style="">
                                             <div class="" style="color: black;margin: 5px;font-size: 15px">
-                                                <p class="float-left">Rented Day:</p>
-                                                <div class="wrap-date float-right">
-                                                    <span class="value"">06/06/2023</span>
+                                                <p class="float-left text-danger">Car rental schedule:</p>
+                                            </div>
+                                            <div class="" style="color: black;margin: 5px;font-size: 15px">
+                                                    <p class="float-left">From:</p>
+                                                    <p class="float-left" style="margin-left: 105px">To:</p>
                                                 </div>
-                                            </div>   
+                                            <c:forEach items="${scheduleDay}" var="scheduleDay">
+                                                <div class="" style="color: black;margin: 5px;font-size: 13px">
+                                                    <p class="float-left">${scheduleDay.fromDay}</p>
+                                                    <p class="float-right">${scheduleDay.toDay}</p>
+                                                </div>
+                                            </c:forEach>
+                                            <c:forEach items="${scheduleHour}" var="scheduleHour">
+                                                <div class="" style="color: black;margin: 5px;font-size: 13px">
+                                                    <p class="float-left">${scheduleHour.fromHour}</p>
+                                                    <p class="float-right">${scheduleHour.toHour}</p>
+                                                </div>
+                                            </c:forEach>
                                         </div>
                                         <p class="note text-danger" style="font-size: 11px"><i class="fa-light fa-triangle-exclamation" style="color: #ce5f5f;"></i>Car was busy during the above time. Please book another car or choose a suitable time</p>
                                         <div class="card">

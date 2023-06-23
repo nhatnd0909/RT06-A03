@@ -123,11 +123,11 @@
                 </div>
                 <div class="row g-5 d-flex justify-content-center">
                     <div class="col-md-8 col-lg-8">
-                        <form class="border rounded" action="" method="" style="padding: 10px">
+                        <form class="border rounded" action="informationorder" method="POST" style="padding: 10px">
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <label class="form-label">Id order</label>
-                                    <input name="idOrder" type="text" class="form-control"value="${orderDetail.idOrder}" disabled>
+                                    <input name="idOrder" type="text" class="form-control"value="${orderDetail.idOrder}">
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Customer Name</label>
@@ -238,23 +238,24 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label">Status return car</label>
-                                    <select name="status" class="form-control form-control">
+                                    <select name="isReturn" class="form-control form-control">
                                         <c:if test="${orderDetail.isReturn == 0}">
-                                            <option value="day" selected>Unpaid car</option>
-                                            <option value="hour">Paid car</option>
+                                            <option value="0" selected>Unpaid car</option>
+                                            <option value="1">Paid car</option>
                                         </c:if>
                                         <c:if test="${orderDetail.isReturn == 1}">
-                                            <option value="day">Unpaid car</option>
-                                            <option value="hour" selected>Paid car</option>
+                                            <option value="0">Unpaid car</option>
+                                            <option value="1" selected>Paid car</option>
                                         </c:if>
                                     </select> 
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label">Status order</label>
                                     <select name="status" class="form-control form-control">
-                                        <option value="day">${orderDetail.status}</option>
-                                        <option value="hour">Order successful</option>
-                                        <option value="hour">Order rejected</option>
+                                        <option value="1">${orderDetail.status}</option>
+                                        <option value="2">Order successful</option>
+                                        <option value="3">Order rejected</option>
+                                        <option value="4">Order completion</option>
                                     </select> 
                                 </div>
 
