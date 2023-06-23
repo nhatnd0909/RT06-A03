@@ -252,7 +252,8 @@
                                 <div class="col-sm-4">
                                     <label class="form-label">Status order</label>
                                     <select name="status" class="form-control form-control">
-                                        <option value="1">${orderDetail.status}</option>
+                                        <option value="0">${orderDetail.status}</option>
+                                        <option value="1">Order processing</option>
                                         <option value="2">Order successful</option>
                                         <option value="3">Order rejected</option>
                                         <option value="4">Order completion</option>

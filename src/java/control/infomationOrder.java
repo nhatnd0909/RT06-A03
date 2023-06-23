@@ -89,6 +89,8 @@ public class infomationOrder extends HttpServlet {
                 status = "Order rejected";
             } else if (statusRe == 4) {
                 status = "Order completion";
+            } else if (statusRe == 0) {
+                status = orderDetail.getStatus();
             }
             String statusReturn = "";
             int isReturn = Integer.parseInt(request.getParameter("isReturn"));
@@ -98,6 +100,9 @@ public class infomationOrder extends HttpServlet {
                 statusReturn = "Paid car";
             }
             dao.updateStatusOrder(idOrder, status, isReturn);
+            if(statusRe==3||statusRe==4){
+                dao.updateSchedule(idOrder);
+            }
         } catch (Exception e) {
         }
         response.sendRedirect("scheduledashboard");

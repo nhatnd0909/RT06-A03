@@ -1209,12 +1209,25 @@ public class DAO {
         }
     }
 
+    public void updateSchedule(String idOrder) {
+        String query = "UPDATE chitietthuexe\n"
+                + "SET NgayDat = null , SoNgayDat = null,SoGioDat=null,GioDat=null\n"
+                + "WHERE mathue = ?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        dao.updateStatusOrder("15452028", "Order processing", 0);
+        dao.updateSchedule("8855203");
     }
 }
