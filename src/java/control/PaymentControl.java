@@ -7,6 +7,7 @@ package control;
 import dao.DAO;
 import entity.Car;
 import entity.Order;
+import entity.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -95,9 +96,14 @@ public class PaymentControl extends HttpServlet {
         HttpSession session = request.getSession();
         try {
             String idOrder = session.getAttribute("idOrder").toString();
-            
+            System.out.println(idOrder);
+            OrderDetail orderDetail = dao.getOrderDetailById(idOrder);
+            int price = orderDetail.getTotalPrice();
+            request.setAttribute("price", price);
+            System.out.println(price);
         } catch (Exception e) {
         }
-        response.sendRedirect("home");
+        request.getRequestDispatcher("vnpay_pay.jsp").forward(request, response);
+//        response.sendRedirect("vnpay_pay.jsp");
     }
 }

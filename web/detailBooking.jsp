@@ -134,19 +134,19 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Address</label>
-                                    <input name="address" type="text" class="form-control" required>
+                                    <input name="address" type="text" class="form-control" >
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label for="country" class="form-label">Province/ City</label>
-                                    <input name="city" type="text" class="form-control" id="address" required>    
+                                    <input name="city" type="text" class="form-control" id="address" >    
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label for="state" class="form-label">District</label>
-                                    <input name="district" type="text" class="form-control" required>   
+                                    <input name="district" type="text" class="form-control" >   
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label class="form-label">Wards</label>
-                                    <input name="wards" type="text" class="form-control" required>   
+                                    <input name="wards" type="text" class="form-control" >   
                                 </div>
                             </c:if>
                         </div>
@@ -154,11 +154,11 @@
                         <h4 class="mb-3">Payment</h4>
                         <div class="my-3">
                             <div class="form-check">
-                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" value="credit" checked required>
+                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" value="credit" checked >
                                 <label class="form-check-label" for="credit">Credit card</label>
                             </div>
                             <div class="form-check">
-                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" value="direct" required>
+                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" value="direct" >
                                 <label class="form-check-label" for="debit">Direct payment</label>
                             </div>
                         </div>
