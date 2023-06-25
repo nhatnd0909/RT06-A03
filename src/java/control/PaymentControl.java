@@ -27,7 +27,7 @@ public class PaymentControl extends HttpServlet {
             throws ServletException, IOException {
         DAO dao = new DAO();
         HttpSession session = request.getSession();
-        int typeRentCar = 0, typeReceiveCar = 0, total = 0,typePayCar=0;
+        int typeRentCar = 0, typeReceiveCar = 0, total = 0, typePayCar = 0;
         try {
             String idOrder = session.getAttribute("idOrder").toString();
             Order order = dao.getOrderById(idOrder);
@@ -50,7 +50,7 @@ public class PaymentControl extends HttpServlet {
                 typeRentCar = 0;
                 int NumberDayOrder = dao.getNumberDayOrder(idOrder);
                 if (typeReceive.equalsIgnoreCase("fixed")) {
-                    total = NumberDayOrder * car.getPricePerDay() ;
+                    total = NumberDayOrder * car.getPricePerDay();
                 } else {
                     total = NumberDayOrder * car.getPricePerDay() + 50;
                 }
@@ -99,11 +99,16 @@ public class PaymentControl extends HttpServlet {
             System.out.println(idOrder);
             OrderDetail orderDetail = dao.getOrderDetailById(idOrder);
             int price = orderDetail.getTotalPrice();
-            request.setAttribute("price", price);
-            System.out.println(price);
+
+            if (orderDetail.getMethodPay().equalsIgnoreCase("direct")) {
+                String mess = "";
+                request.setAttribute("mess", mess);
+                request.getRequestDispatcher("home.jsp").forward(request, response);
+            } else {
+                request.setAttribute("price", price);
+                request.getRequestDispatcher("vnpay_pay.jsp").forward(request, response);
+            }
         } catch (Exception e) {
         }
-        request.getRequestDispatcher("vnpay_pay.jsp").forward(request, response);
-//        response.sendRedirect("vnpay_pay.jsp");
     }
 }

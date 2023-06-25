@@ -1222,12 +1222,37 @@ public class DAO {
         }
     }
 
+    public Account checkEmailExit(String email) {
+        List<Account> list = getAllAccount();
+        for (Account a : list) {
+            if (a.getEmail().equals(email)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public void createUser(String username, String password,String email,String name) {
+        String query = "INSERT INTO NguoiDung(TaiKhoan, MatKhau,Ten,Email,role)\n"
+                + "VALUES (?,?,?,?,1);";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, name);
+            ps.setString(4, email);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        dao.updateSchedule("8855203");
+        dao.createUser("dinhnhat1", "Ad123456", "Nuasdsad@.gmail.com", "Nguyễn Đình ");
     }
 }

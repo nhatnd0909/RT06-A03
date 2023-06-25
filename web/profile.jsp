@@ -312,7 +312,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="profile">
                             <form class="form" action="profile?id=${sessionScope.id}" method="post" id="profile">
-                                <div class="form-group">
+                                            <div class="form-group">
                                     <div class="col-xs-6">
                                         <label>
                                             <h4>Name</h4>

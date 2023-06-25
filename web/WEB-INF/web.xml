@@ -12,6 +12,14 @@
         <servlet-name>vnpayRefund</servlet-name>
         <servlet-class>com.vnpay.common.vnpayRefund</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterControl</servlet-name>
+        <servlet-class>control.RegisterControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginFormControl</servlet-name>
+        <servlet-class>control.LoginFormControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>
         <url-pattern>/vnpayajax/*</url-pattern>
@@ -319,6 +327,14 @@
     <servlet-mapping>
         <servlet-name>UserChangeBookingControl</servlet-name>
         <url-pattern>/userchangebooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterControl</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginFormControl</servlet-name>
+        <url-pattern>/loginform</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

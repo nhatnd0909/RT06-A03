@@ -142,14 +142,6 @@
                                                 <p class="float-left" style="color: black">Payment Methods</p>
                                                 <p class="float-right" style="color: black;"><span>Bank transfer</span></p>
                                             </div>
-                                            <hr>
-                                            <div class="card">
-                                                <div class="card-body text-dark">
-                                                    <p>MB Bank (Military Bank) - 123456789</p>
-                                                    <p>Account holder: Car Book</p>
-                                                    <p>Please write the transfer content: Web-Phone number to order</p>
-                                                </div>
-                                            </div>
                                         </c:if>
 
                                         <hr class="my-4">
@@ -161,16 +153,22 @@
                                 </div>   
                             </div>                       
                         </div>
-                        <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Purchase orders</button>
+                        <c:if test="${typePayCar == 0}">
+                            <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Order confirmation</button>
+                        </c:if>  
+                        <c:if test="${typePayCar == 1}">
+                            <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Purchase orders</button>
+
+                        </c:if>
                     </form>
                 </div>
-<!--                <div>
-                    <c:if test="${typePayCar == 1}">
-                        <div class="col-md-5 col-lg-5">
+                <!--                <div>
+                <c:if test="${typePayCar == 1}">
+                    <div class="col-md-5 col-lg-5">
 
-                        </div>
-                    </c:if>
-                </div>-->
+                    </div>
+                </c:if>
+            </div>-->
 
 
             </div>

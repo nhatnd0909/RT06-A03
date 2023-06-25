@@ -28,7 +28,7 @@
                 <form action="/vnpay_jsp/vnpayajax" id="frmCreateOrder" method="post">        
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
-                        <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amount field is required." id="amount" max="100000000" min="1" name="amount" type="number" value="${price}" />
+                        <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amount field is required." id="amount" max="100000000" min="1" name="amount" type="number" value="${price}000" />
                     </div>
                      <h4>Chọn phương thức thanh toán</h4>
                     <div class="form-group">
