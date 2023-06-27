@@ -24,7 +24,15 @@ public class ProfileControl extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         DAO dao = new DAO();
+
         Account account = dao.getAccountByID(id);
+        int test = 0;
+        if ((account.getGender()).equals("Male")) {
+            test = 1;
+        } else {
+            test = 0;
+        }
+        request.setAttribute("test", test);
         request.setAttribute("account", account);
         request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
@@ -49,14 +57,19 @@ public class ProfileControl extends HttpServlet {
         String gender = request.getParameter("gender");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        
+
         String ci = request.getParameter("ci");
         String dl = request.getParameter("dl");
         dao.updateAccount2(ci, dl, ID);
-        
-        
         dao.updateAccount(ID, name, phone, citizenIdentification, dob, gender, email, address);
         Account account = dao.getAccountByID(ID);
+        int test = 0;
+        if ((account.getGender()).equals("Male")) {
+            test = 1;
+        } else {
+            test = 0;
+        }
+        request.setAttribute("test", test);
         request.setAttribute("account", account);
         request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
