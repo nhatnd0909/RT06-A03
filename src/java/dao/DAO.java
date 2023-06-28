@@ -1232,7 +1232,7 @@ public class DAO {
         return null;
     }
 
-    public void createUser(String username, String password,String email,String name) {
+    public void createUser(String username, String password, String email, String name) {
         String query = "INSERT INTO NguoiDung(TaiKhoan, MatKhau,Ten,Email,role)\n"
                 + "VALUES (?,?,?,?,1);";
         try {
@@ -1247,12 +1247,23 @@ public class DAO {
         }
     }
 
+    public Account findEmailExit(String email) {
+        List<Account> list = getAllAccount();
+        for (Account a : list) {
+            if (a.getEmail().equals(email)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
 //        List<OrderDetail> list = dao.getAllOrderDetail();
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        dao.createUser("dinhnhat1", "Ad123456", "Nuasdsad@.gmail.com", "Nguyễn Đình ");
+        Account acc = dao.findEmailExit("nguyendinhnhat0909@gmail.com");
+        System.out.println(acc);
     }
 }

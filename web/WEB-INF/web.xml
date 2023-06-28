@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>ajaxServlet</servlet-name>
         <servlet-class>com.vnpay.common.ajaxServlet</servlet-class>
@@ -19,6 +22,18 @@
     <servlet>
         <servlet-name>LoginFormControl</servlet-name>
         <servlet-class>control.LoginFormControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgotPasswordControl</servlet-name>
+        <servlet-class>control.ForgotPasswordControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerificationControl</servlet-name>
+        <servlet-class>control.VerificationControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewPasswordControl</servlet-name>
+        <servlet-class>control.NewPasswordControl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>
@@ -335,6 +350,18 @@
     <servlet-mapping>
         <servlet-name>LoginFormControl</servlet-name>
         <url-pattern>/loginform</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordControl</servlet-name>
+        <url-pattern>/forgotpassord</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerificationControl</servlet-name>
+        <url-pattern>/verification</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPasswordControl</servlet-name>
+        <url-pattern>/newpassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

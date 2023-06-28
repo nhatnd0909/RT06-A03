@@ -1,9 +1,8 @@
 <%-- 
-    Document   : loginForm
-    Created on : Jun 26, 2023, 12:42:29 AM
+    Document   : newPassword
+    Created on : Jun 28, 2023, 8:12:10 PM
     Author     : ACER
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -131,55 +130,84 @@
         .button input:hover {
             background-color: #0e4bf1;
         }
+        .last{
+            display: flex;
+        }
     </style>
     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <header>Login</header>
-        <form action="loginform" method="POST">
+        <header>New Password</header>
+        <form action="newpassword" method="POST">
             <p class="" style="color: red ;margin-bottom: 20px">${mess}</p>
-            <div class="field email-field">
-                <div class="input-field">
-                    <input type="text" name="username" placeholder="Enter username" class="" value="${username}" required/>
-                </div>
-            </div>
             <div class="field create-password">
-                <div class="input-field">
-                    <input id="id_password" name="password" type="password" placeholder="Enter password" 
-                           class="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-                           title="Please enter atleast 8 charatcer with number, symbol, small and capital letter." value="${password}" required/>
-                    <i id="togglePassword" class="bx bx-hide show-hide"></i>
+                <div class="field create-password">
+                    <div class="input-field">
+                        <input name="username" type="text" placeholder="Create password" 
+                               class="password"
+                               value="${sessionScope.account.userName}" required disabled/>
+                    </div>
                 </div>
-                <span class="error password-error">
-                    <i class="bx bx-error-circle error-icon"></i>
-                    <p class="error-text">
-                        Please enter atleast 8 charatcer with number, symbol, small and
-                        capital letter.
-                    </p>
-                </span>
-            </div>
-            <a href="forgotpassord" style="text-decoration: none;">Forgot password?</a>
-            <div class="input-field button">
-                <input type="submit" value="Login" />
-            </div>
+                <div class="field create-password">
+                    <div class="input-field">
+                        <input name="password" type="password" placeholder="Create password" 
+                               class="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                               title="Please enter atleast 8 charatcer with number, symbol, small and capital letter." value="${password}" required/>
+                        <i class="bx bx-hide show-hide"></i>
+                    </div>
+                    <span class="error password-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        <p class="error-text">
+                            Please enter atleast 8 charatcer with number, symbol, small and
+                            capital letter.
+                        </p>
+                    </span>
+                </div>
+                <div class="field confirm-password">
+                    <div class="input-field">
+                        <input name="confirmPass" type="password" placeholder="Create password" 
+                               class="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                               title="Please enter atleast 8 charatcer with number, symbol, small and capital letter." value="${confirmPass}" required/>
+                        <i class="bx bx-hide show-hide"></i>
+                    </div>
+                    <span class="error cPassword-error">
+                        <i class="bx bx-error-circle error-icon"></i>
+                        <p class="error-text">Password don't match</p>
+                    </span>
+                </div>
+                <div class="input-field button">
+                    <input type="submit" value="Submit" />
+                </div>
         </form>
-        <div style="padding: 10px 0">
-            <a href="register" style="text-decoration: none;">Create new account</a>
+        <div class="last">
+            <div style="padding: 10px 0">
+                <a class="btn-back" href="loginform" style="text-decoration: none;">Back to sign in</a>
+            </div>
+            <div style="padding: 10px 0; margin-left: 120px">
+                <a href="register" style="text-decoration: none;">Create new account</a>
+            </div>
         </div>
-        <div id="my-signin2"></div>
     </div>
     <!-- JavaScript -->
     <script>
-        const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#id_password');
-
-        togglePassword.addEventListener('click', function (e) {
-            // toggle the type attribute
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            this.classList.toggle('bx-show');
+        const form = document.querySelector("form"),
+                passField = form.querySelector(".create-password"),
+                passInput = passField.querySelector(".password"),
+                cPassField = form.querySelector(".confirm-password"),
+                cPassInput = cPassField.querySelector(".cPassword");
+        const eyeIcons = document.querySelectorAll(".show-hide");
+        eyeIcons.forEach((eyeIcon) => {
+            eyeIcon.addEventListener("click", () => {
+                const pInput = eyeIcon.parentElement.querySelector("input"); //getting parent element of eye icon and selecting the password input
+                if (pInput.type === "password") {
+                    eyeIcon.classList.replace("bx-hide", "bx-show");
+                    return (pInput.type = "text");
+                }
+                eyeIcon.classList.replace("bx-show", "bx-hide");
+                pInput.type = "password";
+            });
         });
     </script>
     <script>
@@ -205,3 +233,4 @@
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 </html>
+
