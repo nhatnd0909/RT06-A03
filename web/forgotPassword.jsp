@@ -46,9 +46,10 @@
             .container header {
                 font-size: 30px;
                 font-weight: 700;
-                color: #333;
+                color: #337ab7;
                 margin-top: 20px;
-
+                display: flex;
+                justify-content: center;
             }
 
             .container form {

@@ -35,6 +35,10 @@
         <servlet-name>NewPasswordControl</servlet-name>
         <servlet-class>control.NewPasswordControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReSendVerificationControl</servlet-name>
+        <servlet-class>control.ReSendVerificationControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>
         <url-pattern>/vnpayajax/*</url-pattern>
@@ -362,6 +366,10 @@
     <servlet-mapping>
         <servlet-name>NewPasswordControl</servlet-name>
         <url-pattern>/newpassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReSendVerificationControl</servlet-name>
+        <url-pattern>/resendverification</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

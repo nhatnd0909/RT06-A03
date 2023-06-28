@@ -43,10 +43,12 @@
         }
 
         .container header {
-            font-size: 30px;
+            font-size: 50px;
             font-weight: 700;
-            color: #333;
+            color: #337ab7;
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
 
         }
 
@@ -131,6 +133,10 @@
         .button input:hover {
             background-color: #0e4bf1;
         }
+        .last{
+            display: flex;
+            justify-content: center;
+        }
     </style>
     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -160,13 +166,17 @@
                     </p>
                 </span>
             </div>
-            <a href="forgotpassord" style="text-decoration: none;">Forgot password?</a>
+            <div style="padding: 10px 0;">
+                <a href="forgotpassord" style="text-decoration: none;">Forgot password?</a>
+            </div>
             <div class="input-field button">
                 <input type="submit" value="Login" />
             </div>
         </form>
-        <div style="padding: 10px 0">
-            <a href="register" style="text-decoration: none;">Create new account</a>
+        <div class="last">
+            <div style="padding: 10px 0">
+                <p>Not a member ? <a href="register" style="text-decoration: none;color: #337ab7">Register</a></p>
+            </div>
         </div>
         <div id="my-signin2"></div>
     </div>

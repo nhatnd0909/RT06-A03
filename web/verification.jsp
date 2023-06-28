@@ -44,11 +44,12 @@
             }
 
             .container header {
-                font-size: 30px;
+                font-size: 50px;
                 font-weight: 700;
-                color: #333;
+                color: #337ab7;
                 margin-top: 20px;
-
+                display: flex;
+                justify-content: center;
             }
 
             .container form {
@@ -153,7 +154,7 @@
                         <input name="code" type="text" placeholder="Enter verification code" class="email" required/>
                     </div>
                 </div>
-                <p>If you didn't receive a code, <a href="" style="text-decoration: none">Resent</a></p>
+                <!--<p>If you didn't receive a code, <a href="resendverification" style="text-decoration: none;color: #337ab7">Resent</a></p>-->
                 <div class="input-field button">
                     <input type="submit" value="Send" />
                 </div>
