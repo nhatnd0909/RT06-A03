@@ -4,7 +4,8 @@
     Author     : ACER
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%@page contentType="text/html" pageEncoding="UTF-8"%>--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -302,7 +303,7 @@
                         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
                              alt="avatar">
                     </div>
-                    </hr><br>
+                    </hr><br>   
                 </div><!--/col-3-->
                 <div class="col-sm-9">
                     <ul class="nav nav-tabs">
@@ -336,15 +337,6 @@
                                         </label>
                                         <input type="text" value="${account.phone}" class="form-control" name="phone"
                                                placeholder="enter phone" pattern="(84|0[3|5|7|8|9])+([0-9]{8})">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-xs-6">
-                                        <label>
-                                            <h4>Citizen Identification</h4>
-                                        </label>
-                                        <input type="text" value="${account.CCCD}" class="form-control" name="citizenIdentification"
-                                               placeholder="Citizen Identification">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -386,14 +378,31 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-xs-6">
-                                        <label for="address">
+                                    <div class="col-xs-12">
+                                        <label for="email">
                                             <h4>Address</h4>
                                         </label>
-                                        <input type="text" value="${account.address}" class="form-control" name="address" placeholder="Address">
+                                        <input name="address" type="text" class="form-control" value="${add}" >
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label for="email">
+                                            <h4>Province/ City</h4>
+                                        </label>
+                                        <input name="city" type="text" class="form-control" value="${city}" > 
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label for="email">
+                                            <h4>District</h4>
+                                        </label>
+                                        <input name="district" type="text" class="form-control" value="${district}" >   
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label for="email">
+                                            <h4>Wards</h4>
+                                        </label>
+                                        <input name="wards" type="text" class="form-control" value="${wards}" >  
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="col-xs-6">
                                         <label for="address">
@@ -449,14 +458,12 @@
                                 </div>
                             </form>
                             <div class="tab-pane" id="changePass1">
-                                <hr> 
                                 <form class="form" action="changePass?id=${sessionScope.id}" method="post" id="changePass" style="display: none;">
 
                                     <div class="form-group" style="width: 50%;">
                                         <div class="col-xs-12">
 
                                             <label for="odd-pass">
-                                                <!--                                                <h4>Odd Password</h4>-->
                                             </label>
                                             <input type="password" class="form-control" name="oddPass" id="oddPass"
                                                    placeholder="Ente your odd password" required>
@@ -475,7 +482,7 @@
                                             <label for="re-pass">
                                             </label>
                                             <input type="password" class="form-control" name="rePass" id="rePass"
-                                                   placeholder="Re enter new password" required>
+                                                   placeholder="Confirm new password" required>
                                             <lable style="color: #000">*Password must contains 3-32 characters, at least 1 uppercase 1 lowercase</lable>
                                         </div>
                                     </div>                        
@@ -545,6 +552,6 @@
                 }
             });
         </script>
-        </body>
+    </body>
 </html>
 

@@ -27,11 +27,31 @@ public class ProfileControl extends HttpServlet {
 
         Account account = dao.getAccountByID(id);
         int test = 0;
-        if ((account.getGender()).equals("Male")) {
-            test = 1;
+        if (account.getGender() == null) {
+            account.setGender("Female");
+            if ((account.getGender()).equals("Male")) {
+                test = 1;
+            } else {
+                test = 0;
+            }
         } else {
-            test = 0;
+            if ((account.getGender()).equals("Male")) {
+                test = 1;
+            } else {
+                test = 0;
+            }
         }
+        String address = account.getAddress();
+        String[] adds = address.split("/");
+        String add = adds[0];
+        String city = adds[3];
+        String district = adds[2];
+        String wards = adds[1];
+        request.setAttribute("add", add);
+        request.setAttribute("city", city);
+        request.setAttribute("district", district);
+        request.setAttribute("wards", wards);
+
         request.setAttribute("test", test);
         request.setAttribute("account", account);
         request.getRequestDispatcher("profile.jsp").forward(request, response);
@@ -56,12 +76,18 @@ public class ProfileControl extends HttpServlet {
         String dob = request.getParameter("dob");
         String gender = request.getParameter("gender");
         String email = request.getParameter("email");
+
+//        String address = "";
         String address = request.getParameter("address");
+        String city = request.getParameter("city");
+        String district = request.getParameter("district");
+        String wards = request.getParameter("wards");
+        String add = address + "/" + wards + "/" + district + "/" + city;
 
         String ci = request.getParameter("ci");
         String dl = request.getParameter("dl");
         dao.updateAccount2(ci, dl, ID);
-        dao.updateAccount(ID, name, phone, citizenIdentification, dob, gender, email, address);
+        dao.updateAccount(ID, name, phone, citizenIdentification, dob, gender, email, add);
         Account account = dao.getAccountByID(ID);
         int test = 0;
         if ((account.getGender()).equals("Male")) {
@@ -69,8 +95,15 @@ public class ProfileControl extends HttpServlet {
         } else {
             test = 0;
         }
+
         request.setAttribute("test", test);
         request.setAttribute("account", account);
+        
+        request.setAttribute("add", address);
+        request.setAttribute("city", city);
+        request.setAttribute("district", district);
+        request.setAttribute("wards", wards);
+        System.out.println(add + city + district + wards);
         request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 }

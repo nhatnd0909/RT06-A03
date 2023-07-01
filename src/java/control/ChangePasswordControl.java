@@ -48,6 +48,34 @@ public class ChangePasswordControl extends HttpServlet {
             request.setAttribute("oddPass", oddPass);
             request.setAttribute("newPass", newPass);
             request.setAttribute("rePass", rePass);
+            int id = Integer.parseInt(request.getParameter("id"));
+            int test = 0;
+            if (account.getGender() == null) {
+                account.setGender("Female");
+                if ((account.getGender()).equals("Male")) {
+                    test = 1;
+                } else {
+                    test = 0;
+                }
+            } else {
+                if ((account.getGender()).equals("Male")) {
+                    test = 1;
+                } else {
+                    test = 0;
+                }
+            }
+            String address = account.getAddress();
+            String[] adds = address.split("/");
+            String add = adds[0];
+            String city = adds[3];
+            String district = adds[2];
+            String wards = adds[1];
+            request.setAttribute("add", add);
+            request.setAttribute("city", city);
+            request.setAttribute("district", district);
+            request.setAttribute("wards", wards);
+            request.setAttribute("test", test);
+            request.setAttribute("account", account);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
         } else if (!newPass.equals(rePass)) {
             String mess = "Re password does not match!";
@@ -55,11 +83,67 @@ public class ChangePasswordControl extends HttpServlet {
             request.setAttribute("oddPass", oddPass);
             request.setAttribute("newPass", newPass);
             request.setAttribute("rePass", rePass);
+            int id = Integer.parseInt(request.getParameter("id"));
+            int test = 0;
+            if (account.getGender() == null) {
+                account.setGender("Female");
+                if ((account.getGender()).equals("Male")) {
+                    test = 1;
+                } else {
+                    test = 0;
+                }
+            } else {
+                if ((account.getGender()).equals("Male")) {
+                    test = 1;
+                } else {
+                    test = 0;
+                }
+            }
+            String address = account.getAddress();
+            String[] adds = address.split("/");
+            String add = adds[0];
+            String city = adds[3];
+            String district = adds[2];
+            String wards = adds[1];
+            request.setAttribute("add", add);
+            request.setAttribute("city", city);
+            request.setAttribute("district", district);
+            request.setAttribute("wards", wards);
+            request.setAttribute("test", test);
+            request.setAttribute("account", account);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
         } else {
             dao.updatePassword(ID, newPass);
             String mess = "Change password success!";
             request.setAttribute("mess", mess);
+            int id = Integer.parseInt(request.getParameter("id"));
+            int test = 0;
+            if (account.getGender() == null) {
+                account.setGender("Female");
+                if ((account.getGender()).equals("Male")) {
+                    test = 1;
+                } else {
+                    test = 0;
+                }
+            } else {
+                if ((account.getGender()).equals("Male")) {
+                    test = 1;
+                } else {
+                    test = 0;
+                }
+            }
+            String address = account.getAddress();
+            String[] adds = address.split("/");
+            String add = adds[0];
+            String city = adds[3];
+            String district = adds[2];
+            String wards = adds[1];
+            request.setAttribute("add", add);
+            request.setAttribute("city", city);
+            request.setAttribute("district", district);
+            request.setAttribute("wards", wards);
+            request.setAttribute("test", test);
+            request.setAttribute("account", account);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
         }
     }

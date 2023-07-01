@@ -97,6 +97,7 @@
                         <h3>History Booking</h3>
                     </div>
                 </div>
+                <h4 style="color: #337ab7">${mess}</h4>
                 <table class="table">
                     <thead>
                         <tr>

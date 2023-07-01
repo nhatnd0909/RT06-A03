@@ -101,9 +101,7 @@ public class PaymentControl extends HttpServlet {
             int price = orderDetail.getTotalPrice();
 
             if (orderDetail.getMethodPay().equalsIgnoreCase("direct")) {
-                String mess = "";
-                request.setAttribute("mess", mess);
-                request.getRequestDispatcher("home.jsp").forward(request, response);
+                response.sendRedirect("historybooking");
             } else {
                 request.setAttribute("price", price);
                 request.getRequestDispatcher("vnpay_pay.jsp").forward(request, response);

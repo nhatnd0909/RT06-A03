@@ -1033,7 +1033,7 @@ public class DAO {
         List<OrderDetail> list = new ArrayList<>();
         String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
                 + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
-                + "where ThueXe.MaNguoiDung =?";
+                + "where ThueXe.MaNguoiDung =? order by trangthai desc";
         try {
             conn = new dbcontext.DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -1263,7 +1263,13 @@ public class DAO {
 //        for (OrderDetail o : list) {
 //            System.out.println(o);
 //        }
-        Account acc = dao.findEmailExit("nguyendinhnhat0909@gmail.com");
-        System.out.println(acc);
+        String address = "77 Đào trí/Hòa Cường Nam/Hải Châu/Đà Nẵng";
+        String address1[] = address.split("/");
+        String add,city,district,ward;
+        add = address1[0];
+        city = address1[3];
+        district = address1[2];
+        ward = address1[1];
+        System.out.println(ward);
     }
 }
