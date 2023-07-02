@@ -17,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -1091,37 +1092,69 @@ public class DAO {
         }
     }
 
-    public void updateBookingDay(String oid, String fromDay, int numday, String location, String paymentMethod, int totalPrice) {
+//    public void updateBookingDay(String oid, String fromDay, int numday, String location, String paymentMethod, int totalPrice) {
+//        String query = "UPDATE ChiTietThueXe\n"
+//                + "SET NgayDat =?,SoNgayDat= ?,ViTriNhanXe=?,PhuongThucThanhToan=?,TongGiaThue=?\n"
+//                + "WHERE MaThue = ?";
+//        try {
+//            conn = new dbcontext.DBContext().getConnection();
+//            ps = conn.prepareStatement(query);
+//            ps.setString(1, fromDay);
+//            ps.setInt(2, numday);
+//            ps.setString(3, location);
+//            ps.setString(4, paymentMethod);
+//            ps.setInt(5, totalPrice);
+//            ps.setString(6, oid);
+//            ps.executeUpdate();
+//        } catch (Exception e) {
+//        }
+//    }
+    public void updateBookingDay(String oid, int numday, String location, String paymentMethod, int totalPrice) {
         String query = "UPDATE ChiTietThueXe\n"
-                + "SET NgayDat =?,SoNgayDat= ?,ViTriNhanXe=?,PhuongThucThanhToan=?,TongGiaThue=?\n"
+                + "SET SoNgayDat= ?,ViTriNhanXe=?,PhuongThucThanhToan=?,TongGiaThue=?\n"
                 + "WHERE MaThue = ?";
         try {
             conn = new dbcontext.DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, fromDay);
-            ps.setInt(2, numday);
-            ps.setString(3, location);
-            ps.setString(4, paymentMethod);
-            ps.setInt(5, totalPrice);
-            ps.setString(6, oid);
+            ps.setInt(1, numday);
+            ps.setString(2, location);
+            ps.setString(3, paymentMethod);
+            ps.setInt(4, totalPrice);
+            ps.setString(5, oid);
             ps.executeUpdate();
         } catch (Exception e) {
         }
     }
+//    public void updateBookingHour(String oid, String fromHour, int numHour, String location, String paymentMethod, int totalPrice) {
+//        String query = "UPDATE ChiTietThueXe\n"
+//                + "SET GioDat =?,SoGioDat= ?,ViTriNhanXe=?,PhuongThucThanhToan=?,TongGiaThue=?\n"
+//                + "WHERE MaThue = ?";
+//        try {
+//            conn = new dbcontext.DBContext().getConnection();
+//            ps = conn.prepareStatement(query);
+//            ps.setString(1, fromHour);
+//            ps.setInt(2, numHour);
+//            ps.setString(3, location);
+//            ps.setString(4, paymentMethod);
+//            ps.setInt(5, totalPrice);
+//            ps.setString(6, oid);
+//            ps.executeUpdate();
+//        } catch (Exception e) {
+//        }
+//    }
 
-    public void updateBookingHour(String oid, String fromHour, int numHour, String location, String paymentMethod, int totalPrice) {
+    public void updateBookingHour(String oid, int numHour, String location, String paymentMethod, int totalPrice) {
         String query = "UPDATE ChiTietThueXe\n"
-                + "SET GioDat =?,SoGioDat= ?,ViTriNhanXe=?,PhuongThucThanhToan=?,TongGiaThue=?\n"
+                + "SET SoGioDat= ?,ViTriNhanXe=?,PhuongThucThanhToan=?,TongGiaThue=?\n"
                 + "WHERE MaThue = ?";
         try {
             conn = new dbcontext.DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, fromHour);
-            ps.setInt(2, numHour);
-            ps.setString(3, location);
-            ps.setString(4, paymentMethod);
-            ps.setInt(5, totalPrice);
-            ps.setString(6, oid);
+            ps.setInt(1, numHour);
+            ps.setString(2, location);
+            ps.setString(3, paymentMethod);
+            ps.setInt(4, totalPrice);
+            ps.setString(5, oid);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -1257,19 +1290,43 @@ public class DAO {
         return null;
     }
 
+    public int compareDate(String date) {
+        int result = 0;
+        String day = java.time.LocalDate.now().toString();
+        String query = "select DATEDIFF ( day , ? , ? )  ";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, day);
+            ps.setString(2, date);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
+    public static List<String> listDayRent(String startDateStr, String endDateStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate startDate = LocalDate.parse(startDateStr, formatter);
+        LocalDate endDate = LocalDate.parse(endDateStr, formatter);
+
+        List<String> dateList = new ArrayList<>();
+        LocalDate currentDate = startDate;
+        while (!currentDate.isAfter(endDate)) {
+            dateList.add(currentDate.toString());
+            currentDate = currentDate.plusDays(1);
+        }
+        return dateList;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-//        List<OrderDetail> list = dao.getAllOrderDetail();
-//        for (OrderDetail o : list) {
-//            System.out.println(o);
-//        }
-        String address = "77 Đào trí/Hòa Cường Nam/Hải Châu/Đà Nẵng";
-        String address1[] = address.split("/");
-        String add,city,district,ward;
-        add = address1[0];
-        city = address1[3];
-        district = address1[2];
-        ward = address1[1];
-        System.out.println(ward);
+        List<String> day = dao.listDayRent("09/09/2023", "12/09/2023");
+        for(String o: day){
+            System.out.println(o);
+        }
     }
 }

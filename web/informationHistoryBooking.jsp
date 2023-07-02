@@ -81,11 +81,11 @@
                 <div class="col-md-10 col-lg-10">
                     <form class="border rounded" action="userchangebooking" method="GET" style="padding: 10px">
                         <div class="row g-3">
-                            <div class="col-sm-6">
+                            <div class="col-sm-6" hidden="">
                                 <label class="form-label">Id order</label>
                                 <input class="form-control" type="text" name="idOrder" value="${orderDetail.idOrder}">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <label class="form-label">Car Name</label>
                                 <input class="form-control" type="text" name="carName" value="${car.carName}" disabled>
                             </div>
@@ -115,14 +115,15 @@
                                     </c:if>
                                 </select>
                             </div>
+
                             <div class="col-sm-4">
                                 <c:if test="${typeRentCar == 0}">
                                     <label class="form-label">Rent day</label>
-                                    <input class="form-control" type="date" name="fromday"color" value="${orderDetail.fromDay}">
+                                    <input class="form-control" type="date" name="fromday"color" value="${orderDetail.fromDay}" disabled="">
                                 </c:if>
                                 <c:if test="${typeRentCar == 1}">
                                     <label class="form-label">Rent hour</label>
-                                    <input class="form-control" type="datetime-local" name="fromHour"color" value="${orderDetail.fromHour}">
+                                    <input class="form-control" type="datetime-local" name="fromHour"color" value="${orderDetail.fromHour}" disabled="">
                                 </c:if>
                             </div>
                             <div class="col-sm-4">
@@ -147,8 +148,45 @@
                             </div>
                             <div class="col-sm-12">
                                 <label class="form-label">Car pick up location</label>
-                                <input class="form-control" type="text" name="location" value="${orderDetail.location}">
+                                <!--<input class="form-control" type="text" name="location" value="${orderDetail.location}">-->
                             </div>
+                            <c:if test="${typeReceiveCar == 0}">
+                                <div class="col-sm-12">
+                                    <label class="form-label">Address</label>
+                                    <input name="address" type="text" class="form-control" value="${add}" >
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">Province/ City</label>
+                                    <input name="city" type="text" class="form-control" value="${city}" >
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">District</label>
+                                    <input name="district" type="text" class="form-control" value="${district}">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">Wards</label>
+                                    <input name="wards" type="text" class="form-control" value="${wards}"> 
+                                </div>
+                            </c:if>
+                            <c:if test="${typeReceiveCar == 1}">
+                                <div class="col-sm-12">
+                                    <label class="form-label">Address</label>
+                                    <input name="address" type="text" class="form-control" value="${add}" >
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">Province/ City</label>
+                                    <input name="city" type="text" class="form-control" value="${city}" >
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">District</label>
+                                    <input name="district" type="text" class="form-control" value="${district}" >
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">Wards</label>
+                                    <input name="wards" type="text" class="form-control" value="${wards}" > 
+                                </div>
+                            </c:if>
+
                             <div class="col-sm-6">
                                 <label class="form-label">Method payment</label>
                                 <select class="form-control" name="methodPay">
@@ -170,18 +208,40 @@
                                 <label class="form-label">Status</label>
                                 <input class="form-control" type="text" name="status" value="${orderDetail.status}" disabled>
                             </div>
+                            <c:if test="${flag == 0}">
+                                <div class="col-sm-12" style="margin-top: 20px">
+                                    <h6 class="text-danger">${notification}</h6>
+                                </div>
+                            </c:if>
+
                         </div>
 
-                        <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
+                        <c:if test="${flag == 1}">
+                            <c:if test="${flag2 == 1}">
+                                <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
+                            </c:if>
+                        </c:if> 
+                        <c:if test="${flag == 0}">
+                            <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px" disabled>
+                        </c:if>       
                     </form>
                 </div>
 
             </div>
             <div>
                 <div class="d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px">
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-                        Cancer Order
-                    </button>
+                    <c:if test="${flag == 1}">
+                        <c:if test="${flag2 == 1}">
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                                Cancer Order
+                            </button>
+                        </c:if>
+                    </c:if>  
+                    <c:if test="${flag == 0}">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" disabled>
+                            Cancer Order
+                        </button>
+                    </c:if>
                 </div>
                 <form action="cancelorder" method="GET">
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -201,7 +261,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <input type="submit" class="btn btn-danger" value="Delete">
+                                    <input type="submit" class="btn btn-danger" value="Cancel">
                                 </div>
                             </div>
                         </div>

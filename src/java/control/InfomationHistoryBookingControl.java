@@ -54,10 +54,47 @@ public class InfomationHistoryBookingControl extends HttpServlet {
             }
             if (typeReceive.equalsIgnoreCase("fixed")) {
                 typeReceiveCar = 0;
+                String address = "Thăng Long/Hòa Cường Nam/Hải Châu/Đà Nẵng";
+                String[] adds = address.split("/");
+                String add = adds[0];
+                String city = adds[3];
+                String district = adds[2];
+                String wards = adds[1];
+                request.setAttribute("add", add);
+                request.setAttribute("city", city);
+                request.setAttribute("district", district);
+                request.setAttribute("wards", wards);
             } else {
                 typeReceiveCar = 1;
+                String address = orderDetail.getLocation();
+                String[] adds = address.split("/");
+                String add = adds[0];
+                String city = adds[3];
+                String district = adds[2];
+                String wards = adds[1];
+                request.setAttribute("add", add);
+                request.setAttribute("city", city);
+                request.setAttribute("district", district);
+                request.setAttribute("wards", wards);
             }
-
+            int flag = 0;
+            if (dao.compareDate(orderDetail.getFromDay()) < 7) {
+                flag = 0;
+                String notification = "You cannot cancel your order before 7 days of receiving the car";
+                request.setAttribute("notification", notification);
+                request.setAttribute("flag", flag);
+            } else {
+                flag = 1;
+                request.setAttribute("flag", flag);
+            }
+            int flag2 = 0;
+            if (orderDetail.getStatus().equals("Canceled order")) {
+                flag2 = 0;
+                request.setAttribute("flag2", flag2);
+            } else {
+                flag2 = 1;
+                request.setAttribute("flag2", flag2);
+            }
             request.setAttribute("returnDay", returnDay);
             request.setAttribute("idCar", idCar);
             request.setAttribute("returnHour", returnHour);
@@ -74,7 +111,7 @@ public class InfomationHistoryBookingControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
     }
 
 }

@@ -23,41 +23,51 @@ public class UserChangeBookingControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAO dao = new DAO();
+
         try {
+
             String idOrder = request.getParameter("idOrder");
             OrderDetail orderDtail = dao.getOrderDetailById(idOrder);
             String typeRecieve = request.getParameter("typeRecieve");
-            String location = request.getParameter("location");
+//            String location = request.getParameter("location");
+            String add = request.getParameter("address");
+            String city = request.getParameter("city");
+            String district = request.getParameter("district");
+            String wards = request.getParameter("wards");
+            request.setAttribute("add", add);
+            request.setAttribute("city", city);
+            request.setAttribute("district", district);
+            request.setAttribute("wards", wards);
+            String location = add + "/" + wards + "/" + district + "/" + city;
+
             String methodPay = request.getParameter("methodPay");
             if (orderDtail.getTypeRent().equalsIgnoreCase("day")) {
                 String fromDay = request.getParameter("fromday");
                 int numday = Integer.parseInt(request.getParameter("numDay"));
                 int pricePerDay = dao.getPricePerdayByIdOrder(idOrder);
                 int totalPrice = 0;
-                if(request.getParameter("typeRecieve").equalsIgnoreCase("fixed")){
-                    totalPrice = pricePerDay*numday;
-                } else{
-                    totalPrice = pricePerDay*numday+50;
+                if (request.getParameter("typeRecieve").equalsIgnoreCase("fixed")) {
+                    totalPrice = pricePerDay * numday;
+                } else {
+                    totalPrice = pricePerDay * numday + 50;
                 }
-                
-                dao.updateBookingDay(idOrder, fromDay, numday, location,methodPay, totalPrice);
+
+                dao.updateBookingDay(idOrder, numday, location, methodPay, totalPrice);
             } else {
                 String fromHour = request.getParameter("fromHour");
                 int numHour = Integer.parseInt(request.getParameter("numHour"));
                 int pricePerHour = dao.getPricePerhourByIdOrder(idOrder);
                 int totalPrice = 0;
-                if(request.getParameter("typeRecieve").equalsIgnoreCase("fixed")){
-                    totalPrice = pricePerHour*numHour;
-                } else{
-                    totalPrice = pricePerHour*numHour+50;
+                if (request.getParameter("typeRecieve").equalsIgnoreCase("fixed")) {
+                    totalPrice = pricePerHour * numHour;
+                } else {
+                    totalPrice = pricePerHour * numHour + 50;
                 }
-                System.out.println(idOrder+fromHour+numHour+location+methodPay+totalPrice);
-                
+
                 String fromHour1 = fromHour.replace("T", " ");
-                dao.updateBookingHour(idOrder, fromHour1, numHour, location, methodPay, totalPrice);
+                dao.updateBookingHour(idOrder, numHour, location, methodPay, totalPrice);
             }
             dao.updateTypeRecieveCar(idOrder, typeRecieve);
-            
 
         } catch (Exception e) {
         }
