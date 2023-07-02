@@ -78,23 +78,24 @@ public class InfomationHistoryBookingControl extends HttpServlet {
                 request.setAttribute("wards", wards);
             }
             int flag = 0;
-            if (dao.compareDate(orderDetail.getFromDay()) < 7) {
+            if (dao.compareDate(orderDetail.getFromDay()) < 5) {
                 flag = 0;
-                String notification = "You cannot cancel your order before 7 days of receiving the car";
+                String notification = "You cannot cancel your order before 5 days of receiving the car";
                 request.setAttribute("notification", notification);
-                request.setAttribute("flag", flag);
             } else {
-                flag = 1;
-                request.setAttribute("flag", flag);
+//                if (orderDetail.getStatus().equalsIgnoreCase("Canceled order") || orderDetail.getStatus().equals("Order successful")) {
+//                    flag = 0;
+//                } else {
+//                    flag = 1;
+//                }
+                if (orderDetail.getStatus().equalsIgnoreCase("Order processing")) {
+                    flag = 1;
+                } else {
+                    flag = 0;
+                }
             }
-            int flag2 = 0;
-            if (orderDetail.getStatus().equals("Canceled order")) {
-                flag2 = 0;
-                request.setAttribute("flag2", flag2);
-            } else {
-                flag2 = 1;
-                request.setAttribute("flag2", flag2);
-            }
+
+            request.setAttribute("flag", flag);
             request.setAttribute("returnDay", returnDay);
             request.setAttribute("idCar", idCar);
             request.setAttribute("returnHour", returnHour);

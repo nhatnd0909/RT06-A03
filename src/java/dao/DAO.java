@@ -963,7 +963,7 @@ public class DAO {
     public List<OrderDetail> getAllOrderDetail() {
         List<OrderDetail> list = new ArrayList<>();
         String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
-                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue";
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue order by trangthai desc";
         try {
             conn = new dbcontext.DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -1328,5 +1328,6 @@ public class DAO {
         for(String o: day){
             System.out.println(o);
         }
+        System.out.println(dao.compareDate("07/02/2023"));
     }
 }

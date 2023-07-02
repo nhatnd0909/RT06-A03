@@ -217,9 +217,7 @@
                         </div>
 
                         <c:if test="${flag == 1}">
-                            <c:if test="${flag2 == 1}">
-                                <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
-                            </c:if>
+                            <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
                         </c:if> 
                         <c:if test="${flag == 0}">
                             <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px" disabled>
@@ -231,11 +229,9 @@
             <div>
                 <div class="d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px">
                     <c:if test="${flag == 1}">
-                        <c:if test="${flag2 == 1}">
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-                                Cancer Order
-                            </button>
-                        </c:if>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                            Cancer Order
+                        </button>
                     </c:if>  
                     <c:if test="${flag == 0}">
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" disabled>

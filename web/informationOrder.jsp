@@ -117,7 +117,7 @@
                     </div>
                 </div>   
             </main>
-            <div class="container">
+            <div class="container" style="margin-bottom: 50px">
                 <div class="py-5 text-center">
                     <h2>Information Order</h2>
                 </div>
@@ -125,7 +125,7 @@
                     <div class="col-md-8 col-lg-8">
                         <form class="border rounded" action="informationorder" method="POST" style="padding: 10px">
                             <div class="row g-3">
-                                <div class="col-sm-6">
+                                <div class="col-sm-6" hidden="">
                                     <label class="form-label">Id order</label>
                                     <input name="idOrder" type="text" class="form-control"value="${orderDetail.idOrder}">
                                 </div>
@@ -133,7 +133,7 @@
                                     <label class="form-label">Customer Name</label>
                                     <input name="customerName" type="text" class="form-control"value="${account.name}"disabled>
                                 </div>
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <label class="form-label">Car name</label>
                                     <input name="carName" type="text" class="form-control"value="${car.carName}"disabled>
                                 </div>
@@ -153,19 +153,19 @@
                                 <c:if test="${typeRentCar == 0}">
                                     <div class="col-sm-6">
                                         <label class="form-label">Number of day rent</label>
-                                        <input name="numOfDayRent" type="text" class="form-control"value="${orderDetail.numDay}">
+                                        <input name="numOfDayRent" type="text" class="form-control"value="${orderDetail.numDay}" disabled>
                                     </div>
                                 </c:if>
                                 <c:if test="${typeRentCar == 1}">
                                     <div class="col-sm-6">
                                         <label class="form-label">Number of hour rent</label>
-                                        <input name="numOfDayRent" type="text" class="form-control"value="${orderDetail.numHour}">
+                                        <input name="numOfDayRent" type="text" class="form-control"value="${orderDetail.numHour}" disabled>
                                     </div>
                                 </c:if>
                                 <c:if test="${typeRentCar == 0}">
                                     <div class="col-sm-6">
                                         <label class="form-label">From day</label>
-                                        <input name="fromDay" class="form-control" type="date" value="${orderDetail.fromDay}">
+                                        <input name="fromDay" class="form-control" type="date" value="${orderDetail.fromDay}" disabled>
                                     </div>
                                     <div class="col-sm-6">
                                         <label class="form-label">To day</label>
@@ -175,7 +175,7 @@
                                 <c:if test="${typeRentCar == 1}">
                                     <div class="col-sm-6">
                                         <label class="form-label">From Hour</label>
-                                        <input name="fromHour" class="form-control" type="datetime-local" value="${orderDetail.fromHour}">  
+                                        <input name="fromHour" class="form-control" type="datetime-local" value="${orderDetail.fromHour}" disabled>  
                                     </div>
                                     <div class="col-sm-6">
                                         <label class="form-label">To Hour</label>
@@ -185,25 +185,25 @@
 
                                 <div class="col-sm-4">
                                     <label class="form-label">Type pick up car</label>
-                                    <select name="typePickupCar" class="form-control form-control">
+                                    <select name="typePickupCar" class="form-control form-control" disabled>
                                         <c:if test="${typeReceiveCar == 0}">
-                                            <option value="hour">optional</option>
-                                            <option value="day" selected>fixed</option>
+                                            <option value="hour">Optional</option>
+                                            <option value="day" selected>Fixed</option>
                                         </c:if>
                                         <c:if test="${typeReceiveCar == 1}">
-                                            <option value="hour" selected>optional</option>
-                                            <option value="day">fixed</option>
+                                            <option value="hour" selected>Optional</option>
+                                            <option value="day">Fixed</option>
                                         </c:if>
 
                                     </select> 
                                 </div>
                                 <div class="col-sm-8">
                                     <label class="form-label">Location pick up car</label>
-                                    <input name="locationPickup" type="text" class="form-control"value="${orderDetail.location}">
+                                    <input name="locationPickup" type="text" class="form-control"value="${orderDetail.location}" disabled>
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Method Payment</label>
-                                    <select name="methodPay" class="form-control form-control">
+                                    <select name="methodPay" class="form-control form-control" disabled>
                                         <c:if test="${methodPayCar == 0}">
                                             <option value="day" selected>Credit Payment</option>
                                             <option value="hour">Direct Payment</option>
@@ -234,7 +234,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label">Car return date</label>
-                                    <input name="dayReturn" type="datetime-local" class="form-control"value="" disabled>
+                                    <input name="dayReturn" type="datetime-local" class="form-control"value="">
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label">Status return car</label>
@@ -268,139 +268,6 @@
 
                 </div>
                 <div>
-                    <div class="d-flex justify-content-center" style="margin-bottom:50px ">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-                            Delete Order
-                        </button>
-                    </div>
-
-                    <form action="" method="">
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Delete order</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to delete this order information?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <!--                                    <button type="button" class="btn btn-danger">Delete</button>-->
-                                        <input type="submit" class="btn btn-danger" value="Delete">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>         
-                <!--                <form action="informationStaff" method="Post">
-                                    <div>
-                                        <div class="">
-                                            <div class="">
-                                                <div class="">
-                                                    <h5 class="modal-title" id="">Information Order</h5>
-                                                </div>
-                                                <div class="">
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td>
-                                                                ID
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" name="id" value="${staff.id}">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Name
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" name="name" value="${staff.name}">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Day of Birth
-                                                            </td>
-                                                            <td>
-                                                                <input type="date" name="dob" value="${staff.dob}" value="Enter Day of birth">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Gender
-                                                            </td>
-                                                            <td>
-                                                                <select name="gender">
-                <c:if test="${test == 1}">
-                    <option value="Male" selected="">Male</option>
-                    <option value="Female">Female</option>
-                </c:if>
-                <c:if test="${test == 0}">
-                    <option value="Male" >Male</option>
-                    <option value="Female" selected="">Female</option>
-                </c:if>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Phone Number
-        </td>
-        <td>
-            <input type="text" name="phone" value="${staff.phone}">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Address
-        </td>
-        <td>
-            <input type="text" name="address" value="${staff.address}">
-        </td>
-    </tr>
-</table>
-</div>
-<input type="submit" class="btn btn-primary" value="Save changes">
-
-</div>
-</div>
-</div>
-</form>-->
-                <!--                <div>
-                                    <div class="d-flex justify-content-center" style="margin-top: 50px">
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-                                            Delete Staff
-                                        </button>
-                                    </div>
-                
-                                    <form action="deleteStaff?sid=${staff.id}" method="Post">
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Delete Staff</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Are you sure you want to delete this staff information?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                            <button type="button" class="btn btn-danger">Delete</button>
-                                                        <input type="submit" class="btn btn-danger" value="Delete">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>                        -->
             </div>
             <script src="js/script.js"></script>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
