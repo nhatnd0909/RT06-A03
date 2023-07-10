@@ -66,6 +66,12 @@
                         <span class="text">Rental Schedule Management</span>
                     </a>
                 </li>
+                <li class="">
+                    <a href="feedbackadmin">
+                        <i class="fa-solid fa-calendar-days fa-xs"></i>
+                        <span class="text">Feedback</span>
+                    </a>
+                </li>
             </ul>
             <ul class="side-menu">
                 <li>
@@ -142,8 +148,8 @@
                                     <th>Type rent</th>
                                     <th>Total price</th>
                                     <th>Method pay</th>
-                                    <th>Status</th>
                                     <th>Type recieve car</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <c:forEach items="${pageSchedule}" var="list">
@@ -155,8 +161,8 @@
                                         <td>${list.typeRent}</td>
                                         <td>${list.totalPrice}</td>
                                         <td>${list.methodPay}</td>
-                                        <td>${list.status}</td>
                                         <td>${list.typeRecieve}</td>
+                                        <td>${list.status}</td>
                                         <td>
                                             <a href="informationorder?oid=${list.idOrder}">
                                                 <i class="fa-solid fa-circle-info fa-xl"></i>

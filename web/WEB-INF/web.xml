@@ -39,6 +39,14 @@
         <servlet-name>ReSendVerificationControl</servlet-name>
         <servlet-class>control.ReSendVerificationControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FeedBackAdminControl</servlet-name>
+        <servlet-class>control.FeedBackAdminControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteFeedBackControl</servlet-name>
+        <servlet-class>control.DeleteFeedBackControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>
         <url-pattern>/vnpayajax/*</url-pattern>
@@ -370,6 +378,14 @@
     <servlet-mapping>
         <servlet-name>ReSendVerificationControl</servlet-name>
         <url-pattern>/resendverification</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedBackAdminControl</servlet-name>
+        <url-pattern>/feedbackadmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFeedBackControl</servlet-name>
+        <url-pattern>/deletefeedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : adminDashBoard
-    Created on : May 29, 2023, 9:14:18 PM
-    Author     : ACER
+    Document   : FeedbackPage
+    Created on : Jun 22, 2023, 2:19:50 PM
+    Author     : ADMIN
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,6 +21,7 @@
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
 
     <body>
@@ -33,8 +34,8 @@
                 <span class="text">Admin Dashboard</span>
             </a>
             <ul class="side-menu top">
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="admindashboard">
                         <i class='bx bxs-dashboard'></i>
                         <span class="text">Dashboard</span>
                     </a>
@@ -58,7 +59,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="Graph">
                         <i class="fa-solid fa-money-bill-transfer fa-xs"></i>
                         <span class="text">Income Management</span>
                     </a>
@@ -67,6 +68,12 @@
                     <a href="scheduledashboard">
                         <i class="fa-solid fa-calendar-days fa-xs"></i>
                         <span class="text">Rental Schedule Management</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="FeedbackControl">
+                        <i class="fa-solid fa-calendar-days fa-xs"></i>
+                        <span class="text">Feedback</span>
                     </a>
                 </li>
             </ul>
@@ -99,7 +106,7 @@
                 <label for="switch-mode" class="switch-mode"></label>
                 <a href="#" class="notification">
                     <i class='bx bxs-bell'></i>
-                    <span class="num">!</span>
+                    <span class="num">8</span>
                 </a>
                 <a href="#" class="profile">
                     <i class="fa-solid fa-user"></i>
@@ -118,7 +125,7 @@
                             </li>
                             <li><i class='bx bx-chevron-right'></i></li>
                             <li>
-                                <a class="active" href="#">Home</a>
+                                <a class="active" href="#">FeedBack</a>
                             </li>
                         </ul>
                     </div>
@@ -126,104 +133,95 @@
 
                 <ul class="box-info">
                     <li>
-                        <i class='bx bxs-calendar-check'></i>
+                        <i class="fa-solid fa-user fa-2xl"></i>
                         <span class="text">
-                            <h3>${totalCar}</h3>
-                            <p>Car</p>
-                        </span>
-                    </li>
-                    <li>
-                        <i class='bx bxs-group'></i>
-                        <span class="text">
-                            <h3>${totalUser}</h3>
-                            <p>User</p>
-                        </span>
-                    </li>
-                    <li>
-                        <i class='bx bxs-dollar-circle'></i>
-                        <span class="text">
-                            <h3>$2543</h3>
-                            <p>Total Income</p>
+                            <h3>${totalFeedback}</h3>
+                            <p>Total Feedback</p>
                         </span>
                     </li>
                 </ul>
                 <div class="table-data">
                     <div class="order">
                         <div class="head">
-                            <h3>User</h3>
-                            <a href="userdashboard"><i class='bx bx-filter'></i></a>
+                            <h3>Feedback</h3>
                         </div>
                         <table>
-
                             <thead>
                                 <tr>
-                                    <th>UserName</th>
+                                    <th>ID</th>
+                                    <th>Date</th>
                                     <th>Name</th>
-                                    <th>Day Of Birth</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Feedback</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <c:forEach items="${listUser}" var="list">
-                                <tbody>
-                                    <tr>
-                                        <td>${list.userName}</td>
-                                        <td>${list.name}</td>
-                                        <td>${list.DOB}</td>
-                                        <td>${list.gender}</td>
-                                        <td>${list.phone}</td>
-                                        <td>${list.address}</td>
-                                    </tr>
-                                </tbody>
-                            </c:forEach>        
-                        </table>
-                    </div>
-                </div>   
-                <div class="table-data">
-                    <div class="order">
-                        <div class="head">
-                            <h3>Car Infomation</h3>
-                            <a href="cardashboard"><i class='bx bx-filter'></i></a>
-                        </div>
-                        <table>
-
-                            <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Manufactor</th>
-                                    <th>Type Fuel</th>
-                                    <th>Status</th>
-                                    <th>Year</th>
-                                    <th>Price Per Day</th>
-                                    <th>Price Per Month</th>
+                                    <td>${list.id}</td>
+                                    <td>${list.day}</td> 
+                                    <td>${list.name}</td>
+                                    <td>${list.email}</td>
+                                    <td>${list.subject}</td>
+                                    <td>${list.message}</td>
+                                    <td>
+                                        <a href="deletefeedback?id=${list.id}"><i class="fa fa-trash"></i></a>
+                                    </td>
+
                                 </tr>
-                            </thead>
-                            <c:forEach items="${listCar}" var="list">
-                                <tbody>
-                                    <tr>
-                                        <td>${list.carName}</td>
-                                        <td>${list.carType}</td>
-                                        <td>${list.manufacturer}</td>
-                                        <td>${list.typeFuel}</td>
-                                        <td>${list.status}</td>
-                                        <td>${list.yearOfManufacture}</td>
-                                        <td>${list.pricePerDay}</td>
-                                        <td>${list.pricePerHour}</td>
-                                    </tr>
-                                </tbody>
-                            </c:forEach>        
+                            </c:forEach>
+
+
+
                         </table>
+                        <div >
+                            <ul class="pagination">
+                                <c:if test="${currentPage == 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">First</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${currentPage > 1}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1">First</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=${currentPage - 1}">${currentPage-1}</a>
+                                    </li>
+                                </c:if>
+                                <li class="page-item active"><a class="page-link" href="?page=${currentPage}">${currentPage}</a></li>
+
+                                <c:if test="${currentPage < totalPages}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=${currentPage + 1}">${currentPage + 1}</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=${totalPages}">End</a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${currentPage == totalPages}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">End</a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </div>
                     </div>
-                </div> 
+                </div>
             </main>
+
             <!-- MAIN -->
         </section>
+
         <!-- CONTENT -->
 
+        <!-- Modal -->
 
         <script src="js/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 
 </html>

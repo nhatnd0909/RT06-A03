@@ -70,6 +70,12 @@
                         <span class="text">Rental Schedule Management</span>
                     </a>
                 </li>
+                <li class="">
+                    <a href="feedbackadmin">
+                        <i class="fa-solid fa-calendar-days fa-xs"></i>
+                        <span class="text">Feedback</span>
+                    </a>
+                </li>
             </ul>
             <ul class="side-menu">
                 <li>

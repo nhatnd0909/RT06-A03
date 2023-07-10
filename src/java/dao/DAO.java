@@ -6,6 +6,7 @@ package dao;
 
 import entity.Account;
 import entity.Car;
+import entity.FeedBack;
 import entity.Order;
 import entity.OrderDetail;
 import entity.ScheduleDay;
@@ -1049,21 +1050,6 @@ public class DAO {
         return list;
     }
 
-    public void insertFeedBack(String name, String email, String subject, String message) {
-        String query = "INSERT INTO FeedBack( name, email,subject,message)\n"
-                + "VALUES (?, ?, ?,?);";
-        try {
-            conn = new dbcontext.DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            ps.setString(1, name);
-            ps.setString(2, email);
-            ps.setString(3, subject);
-            ps.setString(4, message);
-            ps.executeUpdate();
-        } catch (Exception e) {
-        }
-    }
-
     public void updateAccount2(String imgCI, String imgLd, int id) {
         String query = "UPDATE NguoiDung\n"
                 + "SET ImgCCCD =?,ImgBangLai=?\n"
@@ -1322,12 +1308,58 @@ public class DAO {
         return dateList;
     }
 
+    public void insertFeedBack(String name, String email, String subject, String message) {
+        String query = "INSERT INTO FeedBack( name, email,subject,message,day)\n"
+                + "VALUES (?, ?, ?,?,?);";
+        String day = java.time.LocalDate.now().toString();
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, subject);
+            ps.setString(4, message);
+            ps.setString(5, day);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public List<FeedBack> getAllFeeback() {
+        List<FeedBack> list = new ArrayList<>();
+        String query = "select * from FeedBack order by day desc";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new FeedBack(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public void deleteFeedback(int id) {
+        String query = "delete from FeedBack \n"
+                + "where id = ?";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<String> day = dao.listDayRent("09/09/2023", "12/09/2023");
-        for(String o: day){
-            System.out.println(o);
+        List<FeedBack> list = dao.getAllFeeback();
+        for (FeedBack f : list) {
+            System.out.println(f);
         }
-        System.out.println(dao.compareDate("07/02/2023"));
+        dao.deleteFeedback(1004);
     }
 }

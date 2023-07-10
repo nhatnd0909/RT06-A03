@@ -70,6 +70,12 @@
                         <span class="text">Rental Schedule Management</span>
                     </a>
                 </li>
+                <li class="">
+                    <a href="feedbackadmin">
+                        <i class="fa-solid fa-calendar-days fa-xs"></i>
+                        <span class="text">Feedback</span>
+                    </a>
+                </li>
             </ul>
             <ul class="side-menu">
                 <li>
@@ -155,7 +161,6 @@
                                     <th>Status</th>
                                     <th>Decription</th>
                                     <th>Year</th>
-                                    <th>Img</th>
                                     <th>Price Per Day</th>
                                     <th>Price Per Hour</th>
                                     <th></th>
@@ -173,7 +178,6 @@
                                         <td>${list.status}</td>
                                         <td>${list.description}</td>
                                         <td>${list.yearOfManufacture}</td>
-                                        <td>${list.img}</td>
                                         <td>${list.pricePerDay}</td>
                                         <td>${list.pricePerHour}</td>
                                         <td>

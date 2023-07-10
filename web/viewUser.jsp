@@ -135,19 +135,19 @@
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <label class="form-label">Name user</label>
-                                    <input class="form-control" type="text" name="name" value="${account.name}">
+                                    <input class="form-control" type="text" name="name" value="${account.name}" disabled="">
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Citizen Identification</label>
-                                    <input class="form-control" type="text" name="name" value="${account.CCCD}">
+                                    <input class="form-control" type="text" name="name" value="${account.CCCD}" disabled>
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Day of Birth</label>
-                                    <input class="form-control" type="date" name="dob" value="${account.DOB}">
+                                    <input class="form-control" type="date" name="dob" value="${account.DOB}" disabled>
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Gender</label>
-                                    <select class="form-control" name="gender">
+                                    <select class="form-control" name="gender" disabled>
                                         <c:if test="${test == 0}">
                                             <option value="Male" selected="">Male</option>
                                             <option value="Female">Female</option>
@@ -160,15 +160,15 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Phone number</label>
-                                    <input class="form-control" type="text" name="phone" value="${account.phone}">
+                                    <input class="form-control" type="text" name="phone" value="${account.phone}" disabled>
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Address</label>
-                                    <input class="form-control" type="text" name="address" value="${account.address}">
+                                    <input class="form-control" type="text" name="address" value="${account.address}" disabled>
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Email</label>
-                                    <input class="form-control" type="text" name="address" value="${account.email}">
+                                    <input class="form-control" type="text" name="address" value="${account.email}" disabled>
                                 </div>
                                 <div class="col-sm-6">
                                 </div>
@@ -187,101 +187,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">
+<!--                            <input type="submit" class="btn btn-primary" value="Save changes" style="margin-top: 20px">-->
                         </form>
                     </div>
                 </div>
             </div>
 
-
-
             <div class="container">
-                <!--                <form action="" method="">
-                                    <div>
-                                        <div class="">
-                                            <div class="">
-                                                <div class="">
-                                                    <h5 class="modal-title" id="">Information User</h5>
-                                                </div>
-                                                <div class="">
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td>
-                                                                Name
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" name="name" value="${account.name}">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Citizen Identification
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" name="name" value="${account.CCCD}">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Day of Birth
-                                                            </td>
-                                                            <td>
-                                                                <input type="date" name="dob" value="${account.DOB}" value="Enter Day of birth">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Gender
-                                                            </td>
-                                                            <td>
-                                                                <select name="gender">
-                <c:if test="${test == 0}">
-                    <option value="Male" selected="">Male</option>
-                    <option value="Female">Female</option>
-                </c:if>
-                <c:if test="${test == 1}">
-                    <option value="Male" >Male</option>
-                    <option value="Female" selected="">Female</option>
-                </c:if>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Phone Number
-        </td>
-        <td>
-            <input type="text" name="phone" value="${account.phone}">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Address
-        </td>
-        <td>
-            <input type="text" name="address" value="${account.address}">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Email
-        </td>
-        <td>
-            <input type="text" name="address" value="${account.email}">
-        </td>
-    </tr>
-</table>
-</div>
-                            <input type="submit" class="btn btn-primary" value="Save changes">
-
-</div>
-</div>
-</div>
-</form>-->
                 <div>
                     <div class="d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px">
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-                            Delete User
+                            Restrict users
                         </button>
                     </div>
                     <form action="deleteuser?uid=${uid}" method="POST">

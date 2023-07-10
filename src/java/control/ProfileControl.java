@@ -42,15 +42,19 @@ public class ProfileControl extends HttpServlet {
             }
         }
         String address = account.getAddress();
-        String[] adds = address.split("/");
-        String add = adds[0];
-        String city = adds[3];
-        String district = adds[2];
-        String wards = adds[1];
-        request.setAttribute("add", add);
-        request.setAttribute("city", city);
-        request.setAttribute("district", district);
-        request.setAttribute("wards", wards);
+        if (address == null) {
+
+        } else {
+            String[] adds = address.split("/");
+            String add = adds[0];
+            String city = adds[3];
+            String district = adds[2];
+            String wards = adds[1];
+            request.setAttribute("add", add);
+            request.setAttribute("city", city);
+            request.setAttribute("district", district);
+            request.setAttribute("wards", wards);
+        }
 
         request.setAttribute("test", test);
         request.setAttribute("account", account);
@@ -98,7 +102,7 @@ public class ProfileControl extends HttpServlet {
 
         request.setAttribute("test", test);
         request.setAttribute("account", account);
-        
+
         request.setAttribute("add", address);
         request.setAttribute("city", city);
         request.setAttribute("district", district);
