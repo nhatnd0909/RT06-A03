@@ -79,11 +79,11 @@
             </div>
             <div class="row g-5 d-flex justify-content-center">
                 <div class="col-md-10 col-lg-10">
-                    <form class="border rounded" action="userchangebooking" method="GET" style="padding: 10px">
+                    <form class="border rounded" action="userchangebooking" method="POST" style="padding: 10px">
                         <div class="row g-3">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" hidden="">
                                 <label class="form-label">Id order</label>
-                                <input class="form-control" type="text" name="idOrder" value="${orderDetail.idOrder}" disabled="">
+                                <input class="form-control" type="text" name="idOrder" value="${orderDetail.idOrder}" >
                             </div>
                             <div class="col-sm-12">
                                 <label class="form-label">Car Name</label>
@@ -208,12 +208,10 @@
                                 <label class="form-label">Status</label>
                                 <input class="form-control" type="text" name="status" value="${orderDetail.status}" disabled>
                             </div>
-                            <c:if test="${flag == 0}">
-                                <div class="col-sm-12" style="margin-top: 20px">
-                                    <h6 class="text-danger">${notification}</h6>
-                                </div>
-                            </c:if>
 
+                            <div class="col-sm-12" style="margin-top: 20px">
+                                <h6 class="text-danger">${notification}</h6>
+                            </div>
                         </div>
 
                         <c:if test="${flag == 1}">

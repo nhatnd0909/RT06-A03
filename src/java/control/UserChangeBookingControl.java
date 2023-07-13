@@ -42,7 +42,6 @@ public class UserChangeBookingControl extends HttpServlet {
 
             String methodPay = request.getParameter("methodPay");
             if (orderDtail.getTypeRent().equalsIgnoreCase("day")) {
-                String fromDay = request.getParameter("fromday");
                 int numday = Integer.parseInt(request.getParameter("numDay"));
                 int pricePerDay = dao.getPricePerdayByIdOrder(idOrder);
                 int totalPrice = 0;
@@ -53,6 +52,7 @@ public class UserChangeBookingControl extends HttpServlet {
                 }
 
                 dao.updateBookingDay(idOrder, numday, location, methodPay, totalPrice);
+                System.out.println("thanh cong 2");
             } else {
                 String fromHour = request.getParameter("fromHour");
                 int numHour = Integer.parseInt(request.getParameter("numHour"));
@@ -70,13 +70,53 @@ public class UserChangeBookingControl extends HttpServlet {
             dao.updateTypeRecieveCar(idOrder, typeRecieve);
 
         } catch (Exception e) {
+            System.out.println(e);
         }
-        request.getRequestDispatcher("historybooking").forward(request, response);
+//        request.getRequestDispatcher("historybooking").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DAO dao = new DAO();
+        try {
+            String idOrder = request.getParameter("idOrder");
+            OrderDetail orderDtail = dao.getOrderDetailById(idOrder);
+            String typeRent = orderDtail.getTypeRent();
+            String typeRecive = request.getParameter("typeRecieve");
+            String address = request.getParameter("address");
+            String city = request.getParameter("city");
+            String district = request.getParameter("district");
+            String wards = request.getParameter("wards");
+            String location = address + "/" + wards + "/" + district + "/" + city;
+            String methodPay = request.getParameter("methodPay");
 
+            if (typeRent.equalsIgnoreCase("day")) {
+                int numday = Integer.parseInt(request.getParameter("numDay"));
+                int pricePerDay = dao.getPricePerdayByIdOrder(idOrder);
+                int totalPrice = 0;
+                if (typeRecive.equalsIgnoreCase("fixed")) {
+                    totalPrice = pricePerDay * numday;
+                } else {
+                    totalPrice = pricePerDay * numday + 50;
+                }
+                dao.updateBookingDay(idOrder, numday, location, methodPay, totalPrice);
+
+            } else {
+                int numHour = Integer.parseInt(request.getParameter("numHour"));
+                int pricePerHour = dao.getPricePerhourByIdOrder(idOrder);
+                int totalPrice = 0;
+                if (typeRecive.equalsIgnoreCase("fixed")) {
+                    totalPrice = pricePerHour * numHour;
+                } else {
+                    totalPrice = pricePerHour * numHour + 50;
+                }
+                dao.updateBookingHour(idOrder, numHour, location, methodPay, totalPrice);
+            }
+            dao.updateTypeRecieveCar(idOrder, typeRecive);
+            
+        } catch (Exception e) {
+        }
+        response.sendRedirect("historybooking");
     }
 }

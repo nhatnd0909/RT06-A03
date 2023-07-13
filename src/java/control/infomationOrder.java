@@ -106,7 +106,7 @@ public class infomationOrder extends HttpServlet {
 //            dao.updateStatusOrder(idOrder, status, isReturn);
 
             if (statusRe == 3 || statusRe == 4) {
-                dao.updateSchedule(idOrder);
+                dao.updateSchedule1(idOrder);
             }
         } catch (Exception e) {
         }

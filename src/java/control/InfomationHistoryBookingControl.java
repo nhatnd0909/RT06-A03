@@ -80,25 +80,48 @@ public class InfomationHistoryBookingControl extends HttpServlet {
                 request.setAttribute("wards", wards);
             }
             int flag = 0;
-            String notification = "";
-            if (dao.compareDate(orderDetail.getFromDay()) < 5) {
-                flag = 0;
-                notification = "You cannot change your order before 5 days of receiving the car";
-//                request.setAttribute("notification", notification);
-            } else {
-//                if (orderDetail.getStatus().equalsIgnoreCase("Canceled order") || orderDetail.getStatus().equals("Order successful")) {
-//                    flag = 0;
-//                } else {
-//                    flag = 1;
-//                }
+
+            if (orderDetail.getTypeRent().equalsIgnoreCase("day")) {
+                if (dao.compareDate(orderDetail.getFromDay()) < 5) {
+                    flag = 0;
+                } else {
+                }
                 if (orderDetail.getStatus().equalsIgnoreCase("Order processing")) {
                     flag = 1;
                 } else {
                     flag = 0;
-//                    notification = "Your order has been confirmed";
-//                    request.setAttribute("notification", notification);
+                }
+            } else {
+                if (dao.compareDate(orderDetail.getFromHour()) < 5) {
+                    flag = 0;
+                } else {
+                }
+                if (orderDetail.getStatus().equalsIgnoreCase("Order processing")) {
+                    flag = 1;
+                } else {
+                    flag = 0;
                 }
             }
+//            if (dao.compareDate(orderDetail.getFromDay()) < 5) {
+//                flag = 0;
+////                notification = "You cannot change your order before 5 days of receiving the car";
+////                request.setAttribute("notification", notification);
+//            } else {
+////                if (orderDetail.getStatus().equalsIgnoreCase("Canceled order") || orderDetail.getStatus().equals("Order successful")) {
+////                    flag = 0;
+////                } else {
+////                    flag = 1;
+////                }
+//                if (orderDetail.getStatus().equalsIgnoreCase("Order processing")) {
+//                    flag = 1;
+//                } else {
+//                    flag = 0;
+////                    notification = "Your order has been confirmed";
+////                    request.setAttribute("notification", notification);
+//                }
+//            }
+            String notification = "";
+
             if (dao.compareDate(orderDetail.getFromDay()) < 5) {
                 notification = "You cannot change your order before 5 days of receiving the car";
             }
@@ -111,8 +134,11 @@ public class InfomationHistoryBookingControl extends HttpServlet {
             if (orderDetail.getStatus().equalsIgnoreCase("Canceled order")) {
                 notification = "This order is pending cancellation request";
             }
-            if (orderDetail.getStatus().equalsIgnoreCase("Canceled successful")) {
+            if (orderDetail.getStatus().equalsIgnoreCase("Order successful")) {
                 notification = "Order has been confirmed successfully";
+            }
+            if (orderDetail.getStatus().equalsIgnoreCase("Order processing")) {
+                notification = "Your order is being checked";
             }
             request.setAttribute("notification", notification);
             request.setAttribute("chargedFee", chargedFee);

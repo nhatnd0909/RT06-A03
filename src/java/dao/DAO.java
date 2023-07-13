@@ -843,7 +843,7 @@ public class DAO {
         List<ScheduleDay> list = new ArrayList<>();
         String query = "select NgayDat, DATEADD(day, SoNgayDat, NgayDat) as DenNgay\n"
                 + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
-                + "where MaXe = ? and NgayDat between '1900-01-01' and '2050-01-01'";
+                + "where MaXe = ? and NgayDat between '1900-01-01' and '2050-01-01' and datra = 0";
         try {
             conn = new dbcontext.DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -862,7 +862,7 @@ public class DAO {
         List<ScheduleHour> list = new ArrayList<>();
         String query = "select GioDat, DATEADD(hour, SoGioDat, GioDat) as DenGio\n"
                 + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
-                + "where MaXe = ? and GioDat between '1900-01-01' and '2050-01-01'";
+                + "where MaXe = ? and GioDat between '1900-01-01' and '2050-01-01' and datra = 0";
         try {
             conn = new dbcontext.DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -1241,6 +1241,19 @@ public class DAO {
         }
     }
 
+    public void updateSchedule1(String idOrder) {
+        String query = "UPDATE chitietthuexe\n"
+                + "SET datra=1\n"
+                + "WHERE mathue = ?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idOrder);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public Account checkEmailExit(String email) {
         List<Account> list = getAllAccount();
         for (Account a : list) {
@@ -1594,11 +1607,11 @@ public class DAO {
         List<ScheduleDay> list = getScheduleDay(carID);
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
-            
+
         }
         return schedule;
     }
-    
+
 //    public List<ScheduleDay> getScheduleDay(String idCar) {
 //        List<ScheduleDay> list = new ArrayList<>();
 //        String query = "select NgayDat, DATEADD(day, SoNgayDat, NgayDat) as DenNgay\n"
@@ -1617,10 +1630,9 @@ public class DAO {
 //        }
 //        return list;
 //    }
-
     public static void main(String[] args) {
         DAO dao = new DAO();
         List<String> list = dao.getScheduleDayByCarID("MCS450");
-
+        dao.updateBookingDay("4593028", 10, "", "", 10000);
     }
 }
