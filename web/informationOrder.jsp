@@ -234,7 +234,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label">Car return date</label>
-                                    <input name="dayReturn" type="datetime-local" class="form-control"value="">
+                                    <input name="dayReturn" type="datetime-local" class="form-control"value="${returnDay}">
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="form-label">Status return car</label>

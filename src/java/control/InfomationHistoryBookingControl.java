@@ -38,6 +38,8 @@ public class InfomationHistoryBookingControl extends HttpServlet {
             String returnDay = dao.getDayReturnCarByIdOrder(idOrder);
             String returnHour = dao.getHourReturnCarByIdOrder(idOrder);
             String idCar = orderDetail.getIdCar();
+            int chargedFee = (orderDetail.getTotalPrice() / 100) * 5;
+            //System.out.println(chargedFee);
             if (methodPay.equalsIgnoreCase("credit")) {
                 methodPayCar = 0;
             } else {
@@ -78,10 +80,11 @@ public class InfomationHistoryBookingControl extends HttpServlet {
                 request.setAttribute("wards", wards);
             }
             int flag = 0;
+            String notification = "";
             if (dao.compareDate(orderDetail.getFromDay()) < 5) {
                 flag = 0;
-                String notification = "You cannot cancel your order before 5 days of receiving the car";
-                request.setAttribute("notification", notification);
+                notification = "You cannot change your order before 5 days of receiving the car";
+//                request.setAttribute("notification", notification);
             } else {
 //                if (orderDetail.getStatus().equalsIgnoreCase("Canceled order") || orderDetail.getStatus().equals("Order successful")) {
 //                    flag = 0;
@@ -92,9 +95,27 @@ public class InfomationHistoryBookingControl extends HttpServlet {
                     flag = 1;
                 } else {
                     flag = 0;
+//                    notification = "Your order has been confirmed";
+//                    request.setAttribute("notification", notification);
                 }
             }
-
+            if (dao.compareDate(orderDetail.getFromDay()) < 5) {
+                notification = "You cannot change your order before 5 days of receiving the car";
+            }
+            if (orderDetail.getStatus().equalsIgnoreCase("Order rejected")) {
+                notification = "This order has been rejected";
+            }
+            if (orderDetail.getStatus().equalsIgnoreCase("Order completion")) {
+                notification = "This order has been completion";
+            }
+            if (orderDetail.getStatus().equalsIgnoreCase("Canceled order")) {
+                notification = "This order is pending cancellation request";
+            }
+            if (orderDetail.getStatus().equalsIgnoreCase("Canceled successful")) {
+                notification = "Order has been confirmed successfully";
+            }
+            request.setAttribute("notification", notification);
+            request.setAttribute("chargedFee", chargedFee);
             request.setAttribute("flag", flag);
             request.setAttribute("returnDay", returnDay);
             request.setAttribute("idCar", idCar);

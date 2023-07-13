@@ -35,6 +35,8 @@ public class infomationOrder extends HttpServlet {
         String typeRent = order.getTypeRent();
         String typeReceive = order.getTypeReceive();
         String methodPay = orderDetail.getMethodPay();
+        String returnDay = orderDetail.getReturnDay();
+
         if (methodPay.equalsIgnoreCase("credit")) {
             methodPayCar = 0;
         } else {
@@ -56,11 +58,10 @@ public class infomationOrder extends HttpServlet {
             request.setAttribute("toDay", toDay);
         } else {
             String toHour = dao.getHourReturnCarByIdOrder(oid).substring(0, dao.getHourReturnCarByIdOrder(oid).lastIndexOf(":"));
-            System.out.println(toHour);
             request.setAttribute("toHour", toHour);
 
         }
-
+        request.setAttribute("returnDay", returnDay);
         request.setAttribute("methodPayCar", methodPayCar);
         request.setAttribute("typeReceiveCar", typeReceiveCar);
         request.setAttribute("typeRentCar", typeRentCar);
@@ -99,8 +100,12 @@ public class infomationOrder extends HttpServlet {
             } else {
                 statusReturn = "Paid car";
             }
-            dao.updateStatusOrder(idOrder, status, isReturn);
-            if(statusRe==3||statusRe==4){
+            String returnDay = request.getParameter("dayReturn");
+            returnDay = returnDay.replace("T", " ");
+            dao.updateStatusOrder1(idOrder, status, isReturn, returnDay);
+//            dao.updateStatusOrder(idOrder, status, isReturn);
+
+            if (statusRe == 3 || statusRe == 4) {
                 dao.updateSchedule(idOrder);
             }
         } catch (Exception e) {

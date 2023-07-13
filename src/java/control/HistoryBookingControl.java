@@ -29,7 +29,7 @@ public class HistoryBookingControl extends HttpServlet {
         int typeRentCar = 0, typeReceiveCar = 0, methodPayCar = 0;
         try {
             String uid = session.getAttribute("id").toString();
-            List<OrderDetail> list = dao.getOrderDetailByIdUser(uid);
+            List<OrderDetail> list = dao.getOrderDetailByIdUser1(uid);
             int totalOrder = list.size();
             int size = list.size();
             int totalItems = list.size();

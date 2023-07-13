@@ -81,9 +81,9 @@
                 <div class="col-md-10 col-lg-10">
                     <form class="border rounded" action="userchangebooking" method="GET" style="padding: 10px">
                         <div class="row g-3">
-                            <div class="col-sm-6" hidden="">
+                            <div class="col-sm-12">
                                 <label class="form-label">Id order</label>
-                                <input class="form-control" type="text" name="idOrder" value="${orderDetail.idOrder}">
+                                <input class="form-control" type="text" name="idOrder" value="${orderDetail.idOrder}" disabled="">
                             </div>
                             <div class="col-sm-12">
                                 <label class="form-label">Car Name</label>
@@ -202,7 +202,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label">Total price</label>
-                                <input class="form-control" type="text" name="price" value="${orderDetail.totalPrice}" disabled>
+                                <input class="form-control" type="text" name="price" value="${orderDetail.totalPrice}.000VNĐ" disabled>
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label">Status</label>
@@ -250,7 +250,12 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Are you sure you want to cancer this order?
+                                    <p style="color: black">If you cancel, you will be charged 5% of the order value. 
+                                        The order will be canceled after we receive the money</p>
+                                    <p style="color: black">Your cancellation fee is: <span class="text-danger">${chargedFee}.000VNĐ</span></p>
+                                    <p style="color: black">MB Bank (Military Bank) - 123456789 <br>
+                                        Account holder : Website Rentcar <br>
+                                        Please write the transfer details : IdOrder-${orderDetail.idOrder}</p>
                                 </div>
                                 <div class="col-sm-6">
                                     <input class="form-control" type="hidden" name="idOrder" value="${orderDetail.idOrder}">

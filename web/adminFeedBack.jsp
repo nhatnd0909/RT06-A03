@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="FeedbackControl">
+                    <a href="feedbackadmin">
                         <i class="fa-solid fa-calendar-days fa-xs"></i>
                         <span class="text">Feedback</span>
                     </a>

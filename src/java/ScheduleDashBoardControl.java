@@ -28,7 +28,7 @@ public class ScheduleDashBoardControl extends HttpServlet {
     throws ServletException, IOException {
         DAO dao = new DAO();
         int totalSchedule = dao.getAllOrderDetail().size();
-        List<OrderDetail> list = dao.getAllOrderDetail();
+        List<OrderDetail> list = dao.getAllOrderDetail1();
         int size = list.size();
         int totalItems = list.size();
         int itemsPerPage = 9;

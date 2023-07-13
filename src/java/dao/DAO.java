@@ -1354,12 +1354,273 @@ public class DAO {
         }
     }
 
+    public List<OrderDetail> getOrderSuccessfulByIdUser(String idUser) {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where ThueXe.MaNguoiDung = ? and TrangThai = 'Order successful'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idUser);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getOrderCancelByIdUser(String idUser) {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where ThueXe.MaNguoiDung = ? and TrangThai = 'Canceled order'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idUser);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getOrderRejectByIdUser(String idUser) {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where ThueXe.MaNguoiDung = ? and TrangThai = 'Order rejected'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idUser);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getOrderCompleteByIdUser(String idUser) {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where ThueXe.MaNguoiDung = ? and TrangThai = 'Order completion'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idUser);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getOrderProcessingByIdUser(String idUser) {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where ThueXe.MaNguoiDung = ? and TrangThai = 'Order processing'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, idUser);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getOrderDetailByIdUser1(String id) {
+        List<OrderDetail> list = getOrderProcessingByIdUser(id);
+        List<OrderDetail> listReject = getOrderRejectByIdUser(id);
+        List<OrderDetail> listCancel = getOrderCancelByIdUser(id);
+        List<OrderDetail> listSuscess = getOrderSuccessfulByIdUser(id);
+        List<OrderDetail> listCompleted = getOrderCompleteByIdUser(id);
+        for (OrderDetail f : listSuscess) {
+            list.add(f);
+        }
+        for (OrderDetail f : listCompleted) {
+            list.add(f);
+        }
+        for (OrderDetail f : listCancel) {
+            list.add(f);
+        }
+        for (OrderDetail f : listReject) {
+            list.add(f);
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getAllOrderProcessing() {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue \n"
+                + "where TrangThai = 'Order processing'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getAllOrderCanceled() {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue \n"
+                + "where TrangThai = 'Canceled order'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getAllOrderCompletion() {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue \n"
+                + "where TrangThai = 'Order completion'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getAllOrderReject() {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue \n"
+                + "where TrangThai = 'Order rejected'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getAllOrderSuccessful() {
+        List<OrderDetail> list = new ArrayList<>();
+        String query = "select ThueXe.MaThue,MaNguoiDung,MaNhanVien,MaXe,KieuThue,KieuNhanXe,NgayDat,SoNgayDat,GioDat,SoGioDat,ViTriNhanXe,TongGiaThue,PhuongThucThanhToan,TrangThai,DaTra,NgayTra\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue \n"
+                + "where TrangThai = 'Order successful'";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new OrderDetail(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getInt(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<OrderDetail> getAllOrderDetail1() {
+        List<OrderDetail> list = getAllOrderProcessing();
+        List<OrderDetail> listReject = getAllOrderReject();
+        List<OrderDetail> listCancel = getAllOrderCanceled();
+        List<OrderDetail> listSuscess = getAllOrderSuccessful();
+        List<OrderDetail> listCompleted = getAllOrderCompletion();
+        for (OrderDetail f : listSuscess) {
+            list.add(f);
+        }
+        for (OrderDetail f : listCompleted) {
+            list.add(f);
+        }
+        for (OrderDetail f : listCancel) {
+            list.add(f);
+        }
+        for (OrderDetail f : listReject) {
+            list.add(f);
+        }
+        return list;
+    }
+
+    public void updateStatusOrder1(String idOrder, String status, int isReturn, String dayReturn) {
+        String query = "UPDATE chitietthuexe\n"
+                + "SET trangthai=?, datra = ?,NgayTra = ?\n"
+                + "WHERE mathue = ?;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, status);
+            ps.setInt(2, isReturn);
+            ps.setString(3, dayReturn);
+            ps.setString(4, idOrder);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public List<String> getScheduleDayByCarID(String carID) {
+        List<String> schedule = null;
+        String ngayDat = "";
+        int soNgayDat = 0;
+        List<ScheduleDay> list = getScheduleDay(carID);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+            
+        }
+        return schedule;
+    }
+    
+//    public List<ScheduleDay> getScheduleDay(String idCar) {
+//        List<ScheduleDay> list = new ArrayList<>();
+//        String query = "select NgayDat, DATEADD(day, SoNgayDat, NgayDat) as DenNgay\n"
+//                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+//                + "where MaXe = ? and NgayDat between '1900-01-01' and '2050-01-01'";
+//        try {
+//            conn = new dbcontext.DBContext().getConnection();
+//            ps = conn.prepareStatement(query);
+//            ps.setString(1, idCar);
+//            rs = ps.executeQuery();
+//            while (rs.next()) {
+////                list.add(new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
+//                list.add(new ScheduleDay(rs.getString(1), rs.getString(2)));
+//            }
+//        } catch (Exception e) {
+//        }
+//        return list;
+//    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<FeedBack> list = dao.getAllFeeback();
-        for (FeedBack f : list) {
-            System.out.println(f);
-        }
-        dao.deleteFeedback(1004);
+        List<String> list = dao.getScheduleDayByCarID("MCS450");
+
     }
 }
