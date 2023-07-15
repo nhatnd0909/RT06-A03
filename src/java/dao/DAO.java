@@ -10,7 +10,9 @@ import entity.FeedBack;
 import entity.Order;
 import entity.OrderDetail;
 import entity.ScheduleDay;
+import entity.ScheduleDay1;
 import entity.ScheduleHour;
+import entity.ScheduleHour1;
 import entity.Staff;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -24,6 +26,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -1600,39 +1603,119 @@ public class DAO {
         }
     }
 
-    public List<String> getScheduleDayByCarID(String carID) {
-        List<String> schedule = null;
-        String ngayDat = "";
-        int soNgayDat = 0;
-        List<ScheduleDay> list = getScheduleDay(carID);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+    public static String addDays(String inputDate, int daysToAdd) {
+        LocalDate currentDate = LocalDate.parse(inputDate);
+        LocalDate newDate = currentDate.plusDays(daysToAdd);
+        return newDate.toString();
+    }
 
+    public List<String> getScheduleRentDay(String fromDay, int numDay) {
+        List<String> schedule = new ArrayList<>();
+        for (int j = 0; j < numDay + 1; j++) {
+            String result = addDays(fromDay, j);
+            schedule.add(result);
         }
         return schedule;
     }
 
-//    public List<ScheduleDay> getScheduleDay(String idCar) {
-//        List<ScheduleDay> list = new ArrayList<>();
-//        String query = "select NgayDat, DATEADD(day, SoNgayDat, NgayDat) as DenNgay\n"
-//                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
-//                + "where MaXe = ? and NgayDat between '1900-01-01' and '2050-01-01'";
-//        try {
-//            conn = new dbcontext.DBContext().getConnection();
-//            ps = conn.prepareStatement(query);
-//            ps.setString(1, idCar);
-//            rs = ps.executeQuery();
-//            while (rs.next()) {
-////                list.add(new Car(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
-//                list.add(new ScheduleDay(rs.getString(1), rs.getString(2)));
-//            }
-//        } catch (Exception e) {
-//        }
-//        return list;
-//    }
+    public List<String> getScheduleRentHour(String fromHour) {
+        List<String> schedule = new ArrayList<>();
+        String fromHour1 = fromHour.substring(0, fromHour.indexOf("T"));
+        for (int j = 0; j < 2; j++) {
+            String result = addDays(fromHour1, j);
+            schedule.add(result);
+        }
+        return schedule;
+    }
+
+    public List<String> getScheduleDayByCarID(String carID) {
+        List<ScheduleDay1> list = new ArrayList<>();
+        String query = "select NgayDat, songaydat\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where MaXe = ? and NgayDat between '1900-01-01' and '2050-01-01';";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, carID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ScheduleDay1(rs.getString(1), rs.getInt(2)));
+            }
+        } catch (Exception e) {
+        }
+        List<String> schedule = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            String fromDay = list.get(i).getFromDay();
+            int numDay = list.get(i).getNumday();
+            for (int j = 0; j < numDay + 1; j++) {
+                String result = addDays(fromDay, j);
+                schedule.add(result);
+            }
+        }
+        return schedule;
+    }
+
+    public List<String> getScheduleHourByCarID(String carID) {
+        List<ScheduleHour1> list = new ArrayList<>();
+        String query = "select GioDat, SoGioDat\n"
+                + "from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "where MaXe = ? and GioDat between '1900-01-01' and '2050-01-01';";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, carID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ScheduleHour1(rs.getString(1), rs.getInt(2)));
+            }
+        } catch (Exception e) {
+        }
+        List<String> schedule = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            String fromHour1 = list.get(i).getFromHour();
+            String fromHour = fromHour1.substring(0, fromHour1.indexOf(" "));
+            int numHour = list.get(i).getNumHour();
+            for (int j = 0; j < 2 + 1; j++) {
+                String result = addDays(fromHour, j);
+                schedule.add(result);
+            }
+        }
+        return schedule;
+    }
+
+    public List<String> getAllScheduleByCarID(String carID) {
+        List<String> schedule = new ArrayList<>();
+        List<String> scheduleDay = getScheduleDayByCarID(carID);
+        List<String> scheduleHour = getScheduleHourByCarID(carID);
+        for (String o : scheduleDay) {
+            schedule.add(o);
+        }
+        for (String o : scheduleHour) {
+            schedule.add(o);
+        }
+
+        return schedule;
+    }
+
+    public boolean checkSameSchedule(List<String> a, List<String> b) {
+        for (String o : a) {
+            for(String o1 : b){
+                if(o.equalsIgnoreCase(o1)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<String> list = dao.getScheduleDayByCarID("MCS450");
-        dao.updateBookingDay("4593028", 10, "", "", 10000);
+//        String day = "2023-08-03";
+        List<String> schedule = dao.getAllScheduleByCarID("MCS450");
+        System.out.println(schedule);
+        List<String> schedule2 = dao.getScheduleRentDay("2023-08-15", 3);
+        System.out.println(schedule2);
+        System.out.println(dao.checkSameSchedule(schedule, schedule2));
+        
     }
 }

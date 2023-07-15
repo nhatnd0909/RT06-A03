@@ -78,6 +78,7 @@
             <div class="py-5 text-center">
                 <h2>Detail Booking</h2>
             </div>
+            <h5 class="text-danger">${mess}</h5>
             <div class="row g-5 d-flex justify-content-center">   
 
                 <div class="col-md-8 col-lg-8">

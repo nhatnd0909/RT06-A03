@@ -126,7 +126,7 @@
                         <form action="search" method="GET">
                             <div class="d-flex float-left">
                                 <div class="filter">
-                                    <select class="form-control form-control-lg" name="manufacturer">
+                                    <select class="form-control form-control-lg" name="manufacturer">                                        
                                         <option value="">Manufacturer</option>
                                         <c:forEach items="${listManufactory}" var="listManufactory">
                                             <option value="${listManufactory}">${listManufactory}</option>
