@@ -5,6 +5,7 @@
 package control;
 
 import dao.DAO;
+import entity.Account;
 import entity.Car;
 import entity.Order;
 import entity.OrderDetail;
@@ -15,6 +16,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -36,6 +44,9 @@ public class PaymentControl extends HttpServlet {
             String typeRent = order.getTypeRent();
             String typeReceive = order.getTypeReceive();
             String typePay = dao.getTypePayByIdOrder(idOrder);
+            OrderDetail orderDetail = dao.getOrderDetailById(idOrder);
+            String location = orderDetail.getLocation();
+            request.setAttribute("location", location);
             if (typePay.equalsIgnoreCase("direct")) {
                 typePayCar = 0;
             } else {
@@ -78,6 +89,7 @@ public class PaymentControl extends HttpServlet {
             request.setAttribute("typePayCar", typePayCar);
         } catch (Exception e) {
         }
+
         request.getRequestDispatcher("payment.jsp").forward(request, response);
     }
 
@@ -96,16 +108,22 @@ public class PaymentControl extends HttpServlet {
         HttpSession session = request.getSession();
         try {
             String idOrder = session.getAttribute("idOrder").toString();
-            System.out.println(idOrder);
+//            System.out.println(idOrder);
             OrderDetail orderDetail = dao.getOrderDetailById(idOrder);
             int price = orderDetail.getTotalPrice();
-
+            int typePayCar = 0;
             if (orderDetail.getMethodPay().equalsIgnoreCase("direct")) {
+                typePayCar = 0;
+                request.setAttribute("typePayCar", typePayCar);
                 response.sendRedirect("historybooking");
             } else {
+                typePayCar = 1;
+                request.setAttribute("typePayCar", typePayCar);
                 request.setAttribute("price", price);
-                request.getRequestDispatcher("vnpay_pay.jsp").forward(request, response);
+                response.sendRedirect("historybooking");
             }
+
+            request.setAttribute("idOrder", idOrder);
         } catch (Exception e) {
         }
     }

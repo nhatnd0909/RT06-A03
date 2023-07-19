@@ -116,7 +116,7 @@
                                 <td>${list.idCar}</td>
                                 <td>${list.typeRent}</td>
                                 <td>${list.typeRecieve}</td>
-                                <td>${list.totalPrice}</td>
+                                <td>${list.totalPrice}.000VND</td>
                                 <td>${list.status}</td>
                                 <td>
                                     <a href="infomationhistorybooking?oid=${list.idOrder}">

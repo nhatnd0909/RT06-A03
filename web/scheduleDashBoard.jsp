@@ -159,7 +159,7 @@
                                         <td>${list.idUser}</td>
                                         <td>${list.idCar}</td>
                                         <td>${list.typeRent}</td>
-                                        <td>${list.totalPrice}</td>
+                                        <td>${list.totalPrice}.000VNĐ</td>
                                         <td>${list.methodPay}</td>
                                         <td>${list.typeRecieve}</td>
                                         <td>${list.status}</td>

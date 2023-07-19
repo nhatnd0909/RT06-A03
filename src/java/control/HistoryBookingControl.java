@@ -5,6 +5,7 @@
 package control;
 
 import dao.DAO;
+import entity.Car;
 import entity.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,12 +40,25 @@ public class HistoryBookingControl extends HttpServlet {
             int offset = (currentPage - 1) * itemsPerPage;
             List<OrderDetail> pageOrder = list.subList(offset, Math.min(offset + itemsPerPage, totalItems));
             int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
-
+            
+            List<String> listIDCar = new ArrayList<>();
+            for (OrderDetail o : list) {
+                listIDCar.add(o.getIdCar());
+            }
+            List<Car> listCar = new ArrayList<>();
+            for (String o : listIDCar) {
+                listCar.add(dao.getCarByID(o).get(0));
+            }
+            List<String> listCarName = new ArrayList<>();
+             for (Car o : listCar) {
+                listCarName.add(o.getCarName());
+            }
+             
+            request.setAttribute("listCarName", listCarName);
             request.setAttribute("totalOrder", totalOrder);
             request.setAttribute("totalPages", totalPages);
             request.setAttribute("currentPage", currentPage);
             request.setAttribute("listOrder", pageOrder);
-
 
         } catch (Exception e) {
         }

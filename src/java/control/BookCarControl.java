@@ -49,20 +49,8 @@ public class BookCarControl extends HttpServlet {
                 request.setAttribute("district", district);
                 request.setAttribute("wards", wards);
             }
-//            String address = account.getAddress();
-//            String[] adds = address.split("/");
-//            String add = adds[0];
-//            String city = adds[3];
-//            String district = adds[2];
-//            String wards = adds[1];
-
             request.setAttribute("account", account);
             request.setAttribute("car", car);
-
-//            request.setAttribute("add", add);
-//            request.setAttribute("city", city);
-//            request.setAttribute("district", district);
-//            request.setAttribute("wards", wards);
             List<ScheduleDay> scheduleDay = dao.getScheduleDay(cid);
             request.setAttribute("scheduleDay", scheduleDay);
             List<ScheduleHour> scheduleHour = dao.getScheduleHour(cid);
@@ -72,7 +60,6 @@ public class BookCarControl extends HttpServlet {
             e.printStackTrace();
             request.getRequestDispatcher("loginForm.jsp").forward(request, response);
         }
-
         request.getRequestDispatcher("bookCar.jsp").forward(request, response);
     }
 

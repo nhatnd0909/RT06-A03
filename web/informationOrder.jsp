@@ -216,7 +216,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Total Price</label>
-                                    <input name="totalPrice" type="text" class="form-control"value="${orderDetail.totalPrice}"disabled>
+                                    <input name="totalPrice" type="text" class="form-control"value="${orderDetail.totalPrice}.000VNĐ"disabled>
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="form-label">Citizen identification</label>

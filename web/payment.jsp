@@ -98,7 +98,7 @@
                                         <c:if test="${typeRentCar == 0}">
                                             <div class="clearfix" style="">
                                                 <p class="float-left" style="color: black">Price per Day</p>
-                                                <p class="float-right" style="color: black"><span>${car.pricePerDay}K</span>/ Day</p>
+                                                <p class="float-right" style="color: black"><span>${car.pricePerDay}</span>.000VNĐ</p>
                                             </div>
                                         </c:if>
                                         <c:if test="${typeRentCar == 1}">
@@ -122,13 +122,13 @@
                                         <c:if test="${typeReceiveCar == 0}">
                                             <div class="clearfix" style="">
                                                 <p class="float-left" style="color: black">Car shipping fee</p>
-                                                <p class="float-right" style="color: black;"><span>0K</span></p>
+                                                <p class="float-right" style="color: black;"><span>0VNĐ</span></p>
                                             </div>
                                         </c:if>
                                         <c:if test="${typeReceiveCar == 1}">
                                             <div class="clearfix" style="">
                                                 <p class="float-left" style="color: black">Car shipping fee</p>
-                                                <p class="float-right" style="color: black;"><span>50K</span></p>
+                                                <p class="float-right" style="color: black;"><span>50.000VND</span></p>
                                             </div>
                                         </c:if>
                                         <c:if test="${typePayCar == 0}">
@@ -143,24 +143,42 @@
                                                 <p class="float-right" style="color: black;"><span>Bank transfer</span></p>
                                             </div>
                                         </c:if>
-
                                         <hr class="my-4">
                                         <div class="clearfix" style="">
                                             <h4 class="float-left" style="color: black">Total</h4>
-                                            <h4 class="float-right" style="color: black;"><span>${total}K</span></h4>  
+                                            <h4 class="float-right" style="color: black;"><span>${total}.000VNĐ</span></h4>  
                                         </div>
+                                        <c:if test="${typePayCar == 1}">
+                                            <div class="clearfix" style="">
+                                                <p style="color: black">MB Bank (Military Bank) - 123456789</p> 
+                                                <p style="color: black">Account holder: Nguyen Dinh Nhat</p> 
+                                                <p style="color: black">Please write the transfer content: ${idOrder}_${car.carName}</p> 
+                                            </div>
+                                        </c:if>
                                     </div>
                                 </div>   
                             </div>                       
                         </div>
                         <c:if test="${typePayCar == 0}">
-                            <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Order confirmation</button>
+                            <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Confirmation Order</button>
                         </c:if>  
                         <c:if test="${typePayCar == 1}">
-                            <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Purchase orders</button>
+                            <button class="w-100 btn btn-danger btn-lg" type="submit" style="margin-bottom: 50px">Confirmation Orders</button>
 
                         </c:if>
                     </form>
+                </div>
+                <div class="col-md-5 col-lg-5">
+                    <ul class="list-group mb-3">
+                        <div class="card" style="width: 25rem;">
+                            <img class="card-img-top" src="images/${car.img}" alt="Card image cap">
+                            <div class="card-body">
+                                <h3 class="card-title">${car.carName}</h3>
+                                <p style="color: red">Car pick up location:</p>
+                                <p style="color: black">${location}</p>
+                            </div>
+                        </div>
+                    </ul>
                 </div>
                 <!--                <div>
                 <c:if test="${typePayCar == 1}">

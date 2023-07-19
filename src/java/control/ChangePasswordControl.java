@@ -22,20 +22,6 @@ public class ChangePasswordControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        DAO dao = new DAO();
-//        int ID = Integer.parseInt(request.getParameter("id"));
-//        Account account = dao.getAccountByID(ID);
-//        String oddPass = request.getParameter("oddPass");
-//        String newPass = request.getParameter("newPass");
-//        String rePass = request.getParameter("rePass");
-//        if(!account.getPassword().equals(oddPass)){
-//            String mess = "Your odd pass does not match!";
-//            request.setAttribute("mess", mess);
-//            request.setAttribute("oddPass", oddPass);
-//            request.setAttribute("newPass", newPass);
-//            request.setAttribute("rePass", rePass);
-//            request.getRequestDispatcher("profile");
-//        }
         DAO dao = new DAO();
         int ID = Integer.parseInt(request.getParameter("id"));
         String oddPass = dao.MD5(request.getParameter("oddPass"));

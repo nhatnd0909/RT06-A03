@@ -110,6 +110,7 @@ public class infomationOrder extends HttpServlet {
             }
         } catch (Exception e) {
         }
+        
         response.sendRedirect("scheduledashboard");
     }
 

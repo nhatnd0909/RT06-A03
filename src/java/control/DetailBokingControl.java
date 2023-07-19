@@ -144,7 +144,7 @@ public class DetailBokingControl extends HttpServlet {
                 String fromHour = request.getParameter("fromHour");
                 numberHour = Integer.parseInt(request.getParameter("numberHour"));
                 List<String> scheduleCarRent = dao.getScheduleRentHour(fromHour);
-                System.out.println(scheduleCarRent);
+//                System.out.println(scheduleCarRent);
                 if (dao.checkSameSchedule(scheduleCar, scheduleCarRent)) {
 //                    System.out.println("không trùng");
                     String hour = fromHour.replace("T", " ");
