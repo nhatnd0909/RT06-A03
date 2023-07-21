@@ -354,31 +354,31 @@
                             <div class="row g-3">
                                 <div class="col-sm-12">
                                     <label class="form-label">Full name</label>
-                                    <input name="name" type="text" class="form-control" value="${account.name}" >
+                                    <input name="name" type="text" class="form-control" value="${account.name}" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                                    <input name="email" type="email" class="form-control" value="${account.email}" >
+                                    <input name="email" type="email" class="form-control" value="${account.email}" required>
                                 </div>
                                 <div class="col-sm-12">
                                     <label class="form-label">Phone number</label>
-                                    <input name="phone" type="text" class="form-control"value="${account.phone}" >
+                                    <input name="phone" type="text" class="form-control"value="${account.phone}" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="address" class="form-label">Address</label>
-                                    <input name="address" type="text" class="form-control" value="${add}" >
+                                    <input name="address" type="text" class="form-control" value="${add}" required>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label for="country" class="form-label">Province/ City</label>
-                                    <input name="city" type="text" class="form-control" value="${city}" >    
+                                    <input name="city" type="text" class="form-control" value="${city}" required>    
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label for="state" class="form-label">District</label>
-                                    <input name="district" type="text" class="form-control" value="${district}" >   
+                                    <input name="district" type="text" class="form-control" value="${district}" required>   
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label class="form-label">Wards</label>
-                                    <input name="wards" type="text" class="form-control" value="${wards}" >  
+                                    <input name="wards" type="text" class="form-control" value="${wards}" required>  
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Rental type</label>
@@ -402,7 +402,7 @@
                                         <div class="file-select">
                                             <div class="file-select-button" id="fileName">Choose File</div>
                                             <div class="file-select-name" id="noFile">No file chosen...</div> 
-                                            <input type="file" name="ci" id="chooseFile" value="${account.imgCCCD}" >
+                                            <input type="file" name="ci" id="chooseFile" value="${account.imgCCCD}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -414,7 +414,7 @@
                                         <div class="file-select">
                                             <div class="file-select-button" id="fileName2">Choose File</div>
                                             <div class="file-select-name" id="noFile2">No file chosen...</div> 
-                                            <input type="file" name="dl" id="chooseFile2" value="${account.imgLicense}" >
+                                            <input type="file" name="dl" id="chooseFile2" value="${account.imgLicense}" required>
                                         </div>
                                     </div>
                                 </div>

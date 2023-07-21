@@ -87,7 +87,7 @@
                             <c:if test="${typeRentCar == 0}">
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Rent date</label> <br>
-                                    <input name="fromDay" min="${curentDay}" max="${maxDay}" class="form-control form-control-lg" value="${curentDay}" type="date">
+                                    <input name="fromDay" min="${curentDay}" max="${maxDay}" class="form-control form-control-lg" value="${curentDay}" type="date" required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Number of days rent</label>
@@ -102,7 +102,7 @@
                             <c:if test="${typeRentCar == 1}">
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Rent hour</label>
-                                    <input name="fromHour" min="${minHour}T00:00" max="${maxDay}T00:00" class="form-control" type="datetime-local" value="${minHour}T00:00">
+                                    <input name="fromHour" min="${minHour}T00:00" max="${maxDay}T00:00" class="form-control" type="datetime-local" value="${minHour}T00:00"required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="form-label">Number of days rent</label>
@@ -135,19 +135,19 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Address</label>
-                                    <input name="address" type="text" class="form-control" >
+                                    <input name="address" type="text" class="form-control" required>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label for="country" class="form-label">Province/ City</label>
-                                    <input name="city" type="text" class="form-control" id="address" >    
+                                    <input name="city" type="text" class="form-control" id="address" required>    
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label for="state" class="form-label">District</label>
-                                    <input name="district" type="text" class="form-control" >   
+                                    <input name="district" type="text" class="form-control" required>   
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label class="form-label">Wards</label>
-                                    <input name="wards" type="text" class="form-control" >   
+                                    <input name="wards" type="text" class="form-control" required>   
                                 </div>
                             </c:if>
                         </div>

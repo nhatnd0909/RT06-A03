@@ -178,7 +178,7 @@
                 <p>Not a member ? <a href="register" style="text-decoration: none;color: #337ab7">Register</a></p>
             </div>
         </div>
-        <div id="my-signin2"></div>
+        <!--<div id="my-signin2"></div>-->
     </div>
     <!-- JavaScript -->
     <script>
