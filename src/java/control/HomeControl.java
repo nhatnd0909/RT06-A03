@@ -26,7 +26,7 @@ public class HomeControl extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
-        List<Car> list = dao.getAllFeeaturedCar();
+        List<Car> list = dao.getListFeatureCar();
         int total = dao.getTotalCar();
         request.setAttribute("listFeeaturedCar", list);
         request.setAttribute("totalCar", total);   

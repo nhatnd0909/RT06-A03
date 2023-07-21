@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Graph">
+                    <a href="income">
                         <i class="fa-solid fa-money-bill-transfer fa-xs"></i>
                         <span class="text">Income Management</span>
                     </a>

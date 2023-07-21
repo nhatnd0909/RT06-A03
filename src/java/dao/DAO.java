@@ -1726,14 +1726,52 @@ public class DAO {
         return list;
     }
 
+    public int getTotalIncome() {
+        int income = 0;
+        String query = "select Sum(TongGiaThue) from ChiTietThueXe;";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                income = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return income;
+    }
+
+    public List<String> getIdFeatureCar() {
+        List<String> list = new ArrayList<>();
+        List<String> listMaxe = new ArrayList<>();
+        String query = "select top 5 maxe, count (maxe)from ChiTietThueXe inner join ThueXe on ChiTietThueXe.MaThue = ThueXe.MaThue\n"
+                + "group by MaXe \n"
+                + "order by count (maxe) desc";
+        try {
+            conn = new dbcontext.DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    public List<Car> getListFeatureCar() {
+        List<String> listIdCar = new ArrayList<>();
+        listIdCar = getIdFeatureCar();
+        List<Car> listCar = new ArrayList<>();
+        for(String id:listIdCar){
+            Car car = getCarByID(id).get(0);
+            listCar.add(car);
+        }
+        return listCar;
+    }
+    
     public static void main(String[] args) {
         DAO dao = new DAO();
-//        String day = "2023-08-03";
-        List<String> schedule = dao.getAllScheduleByCarID("MCS450");
-        System.out.println(schedule);
-        List<String> schedule2 = dao.getScheduleRentDay("2023-08-15", 3);
-        System.out.println(schedule2);
-        System.out.println(dao.checkSameSchedule(schedule, schedule2));
+        System.out.println(dao.getListFeatureCar());
 
     }
 }

@@ -47,6 +47,10 @@
         <servlet-name>DeleteFeedBackControl</servlet-name>
         <servlet-class>control.DeleteFeedBackControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>IncomeControl</servlet-name>
+        <servlet-class>IncomeControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>
         <url-pattern>/vnpayajax/*</url-pattern>
@@ -386,6 +390,10 @@
     <servlet-mapping>
         <servlet-name>DeleteFeedBackControl</servlet-name>
         <url-pattern>/deletefeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IncomeControl</servlet-name>
+        <url-pattern>/income</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

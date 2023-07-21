@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
               integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <title>Admin Dashboard</title>
+        <title>Income Dashboard</title>
     </head>
 
     <body>
@@ -28,13 +28,13 @@
 
         <!-- SIDEBAR -->
         <section id="sidebar">
-            <a href="#" class="brand">
+            <a href="admindashboard" class="brand">
                 <i class='bx bxs-smile'></i>
                 <span class="text">Admin Dashboard</span>
             </a>
             <ul class="side-menu top">
-                <li class="active">
-                    <a href="#">
+                <li>
+                    <a href="admindashboard">
                         <i class='bx bxs-dashboard'></i>
                         <span class="text">Dashboard</span>
                     </a>
@@ -57,8 +57,8 @@
                         <span class="text">Staff Management</span>
                     </a>
                 </li>
-                <li>
-                    <a href="income">
+                <li class="active">
+                    <a href="#">
                         <i class="fa-solid fa-money-bill-transfer fa-xs"></i>
                         <span class="text">Income Management</span>
                     </a>
@@ -117,7 +117,7 @@
             <main>
                 <div class="head-title">
                     <div class="left">
-                        <h1>Dashboard</h1>
+                        <h1>Income Management</h1>
                         <ul class="breadcrumb">
                             <li>
                                 <a href="#">Dashboard</a>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
 
-<!--                <ul class="box-info">
+                <ul class="box-info">
                     <li>
                         <i class='bx bxs-calendar-check'></i>
                         <span class="text">
@@ -138,58 +138,25 @@
                             <p>Car</p>
                         </span>
                     </li>
-                    <li>
+<!--                    <li>
                         <i class='bx bxs-group'></i>
                         <span class="text">
                             <h3>${totalUser}</h3>
                             <p>User</p>
                         </span>
-                    </li>
+                    </li>-->
                     <li>
                         <i class='bx bxs-dollar-circle'></i>
                         <span class="text">
-                            <h3>$2543</h3>
+                            <h3>${totalIncome}.000 VNĐ</h3>
                             <p>Total Income</p>
                         </span>
-                    </li>
-                </ul>-->
+                    </li>   
+                </ul>
                 <div class="table-data">
                     <div class="order">
                         <div class="head">
-                            <h3>User</h3>
-                            <a href="userdashboard"><i class='bx bx-filter'></i></a>
-                        </div>
-                        <table>
-
-                            <thead>
-                                <tr>
-                                    <th>UserName</th>
-                                    <th>Name</th>
-                                    <th>Day Of Birth</th>
-                                    <th>Gender</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                </tr>
-                            </thead>
-                            <c:forEach items="${listUser}" var="list">
-                                <tbody>
-                                    <tr>
-                                        <td>${list.userName}</td>
-                                        <td>${list.name}</td>
-                                        <td>${list.DOB}</td>
-                                        <td>${list.gender}</td>
-                                        <td>${list.phone}</td>
-                                        <td>${list.address}</td>
-                                    </tr>
-                                </tbody>
-                            </c:forEach>        
-                        </table>
-                    </div>
-                </div>   
-                <div class="table-data">
-                    <div class="order">
-                        <div class="head">
-                            <h3>Car Infomation</h3>
+                            <h3>Top Rented Car</h3>
                             <a href="cardashboard"><i class='bx bx-filter'></i></a>
                         </div>
                         <table>
