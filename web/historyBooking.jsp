@@ -79,7 +79,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-10">
-                    <h1>Nguyễn Đình Nhật</h1>
+                    <h1>${name}</h1>
                 </div>
             </div>
             <div class="row">

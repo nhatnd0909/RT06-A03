@@ -5,6 +5,7 @@
 package control;
 
 import dao.DAO;
+import entity.Account;
 import entity.Car;
 import entity.OrderDetail;
 import java.io.IOException;
@@ -53,7 +54,10 @@ public class HistoryBookingControl extends HttpServlet {
              for (Car o : listCar) {
                 listCarName.add(o.getCarName());
             }
-             
+            int id = Integer.parseInt(uid);
+            Account user = dao.getAccountByID(id);
+            String name = user.getName();
+            request.setAttribute("name", name);
             request.setAttribute("listCarName", listCarName);
             request.setAttribute("totalOrder", totalOrder);
             request.setAttribute("totalPages", totalPages);
